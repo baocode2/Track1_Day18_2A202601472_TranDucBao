@@ -1,7 +1,7 @@
 # Evidence Huddle — Day 18
 
 **Nhóm:** cuong
-**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo
+**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472)
 **Case B** — AI Notes: Personal Learning Notes
 
 ## Nguồn
@@ -12,7 +12,7 @@ Nhóm ba người. Hiện có **hai** buổi phỏng vấn độc lập, đều 
 |---|---|---|
 | Lê Quang Huy — 2A202601821 | Có. Interviewee: Phạm Duy Hoàn — 2026A201378. 4'30". Có transcript nguyên văn để đối chiếu. | Ghi chú lúc xem bài giảng: take note chỗ tính toán và từ khó, giảng nhanh thì chụp ảnh slide. Ôn vào tối trước hôm học môn đó. Chỗ không hiểu thì gửi ảnh hỏi AI giải thích. Bỏ bài theo mục tiêu điểm. Không nêu được hậu quả cụ thể — interviewer không hỏi tới. |
 | Đàm Việt Cường — 2A202601566 | Có. Interviewee: Trần Thị Hoa Mai — 01317. 5'10". Mới có exact quote, chưa có transcript đầy đủ. | Chuyển slide VLearn sang iPad viết tay, đồng thời gõ Notepad cho ý quan trọng. Ôn trên iPad chỉ đọc tuần tự được, không đảo kiến thức lên để tự dò. Muốn tự làm quiz nhưng tổng hợp từ ghi chú tay quá tốn công. Notepad hay thất lạc, quên Ctrl+S thì mất. |
-| Trần Đức Bảo | **Chưa có.** Chưa thực hiện buổi phỏng vấn nào; đã tham gia các phần khác của bài. | Ở buổi huddle chọn chi tiết **#4** (Mai — ôn trên iPad chỉ đọc tuần tự được, không đảo kiến thức lên để tự dò). Đây là **chi tiết bạn ấy chọn**, không phải buổi phỏng vấn bạn ấy làm — #4 do Cường phỏng vấn Mai mà ra. |
+| Trần Đức Bảo — 2A202601472 | **Chưa có.** Chưa thực hiện buổi phỏng vấn nào; đã tham gia các phần khác của bài. | Ở buổi huddle chọn chi tiết **#4** (Mai — ôn trên iPad chỉ đọc tuần tự được, không đảo kiến thức lên để tự dò). Đây là **chi tiết bạn ấy chọn**, không phải buổi phỏng vấn bạn ấy làm — #4 do Cường phỏng vấn Mai mà ra. |
 
 Đề giả định ba Practice Note từ ba thành viên. Nhóm đủ ba người nhưng mới **hai** note, nên
 câu hỏi *"có gì lặp lại?"* trả lời được qua hai nguồn, chưa phải ba. Note thứ ba còn thiếu —

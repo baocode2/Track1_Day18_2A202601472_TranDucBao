@@ -1,9 +1,9 @@
 # Track 1 — Day 18 — Solution Test
 
-**Lê Quang Huy — 2026A201821**
+**Lê Quang Huy — 2A202601821**
 Case tiếp nối Day 17: **B — AI Notes: Personal Learning Notes**.
 
-Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo.
+Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472).
 
 > Không đổi case. Day 18 không tiếp tục problem interview.
 
@@ -22,7 +22,7 @@ Bốn artifact đặt cạnh nhau trước khi bắt đầu, copy nguyên văn t
 
 **Lệch so với đề:** đề nêu *ba* Practice Note từ ba thành viên. Nhóm đủ ba người nhưng mới
 **hai** note: Huy phỏng vấn Phạm Duy Hoàn, Cường phỏng vấn Trần Thị Hoa Mai (01317).
-Trần Đức Bảo chưa thực hiện buổi phỏng vấn nào, đã tham gia các phần khác của bài; ở buổi
+Trần Đức Bảo (2A202601472) chưa thực hiện buổi phỏng vấn nào, đã tham gia các phần khác của bài; ở buổi
 huddle chọn chi tiết #4.
 Chi tiết trong [Evidence Huddle](01-evidence-huddle.md).
 

@@ -11,7 +11,7 @@ Trục phân biệt là **ai làm việc biến ghi chú thành thứ dùng lạ
 
 | | Option A | Option B | Option C |
 |---|---|---|---|
-| Phụ trách | **Lê Quang Huy** | Đàm Việt Cường | Trần Đức Bảo |
+| Phụ trách | **Lê Quang Huy**<br>2A202601821 | Đàm Việt Cường<br>2A202601566 | Trần Đức Bảo<br>2A202601472 |
 | Vai trò AI | Không hành động | Ask / Propose | Act |
 | AI làm gì | Xếp ghi chú theo slide, tự lưu chống mất file. Không sinh chữ nào. | Soạn sẵn hai nhóm thẻ, mỗi thẻ ghi rõ nguồn slide | Soạn sẵn 100%: 3 ý cốt lõi + 1 mục giải thích + 3 câu tự kiểm tra |
 | User làm gì | Kéo mẩu ghi chú vào ba khung mẫu, tự gõ toàn bộ nội dung | Duyệt / sửa / đổi / loại từng thẻ | Đọc luôn, đổi mục tiêu, hoặc rollback |

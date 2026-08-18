@@ -4,7 +4,7 @@
 **Thành viên:** 
 1. Lê Quang Huy (2A202601821)
 2. Đàm Việt Cường (2A202601566)
-3. Trần Đức Bảo  
+3. Trần Đức Bảo (2A202601472)  
 **Case B:** AI Notes — Personal Learning Notes  
 
 ---
@@ -41,7 +41,7 @@ Nhóm phân công 3 thành viên phụ trách thiết kế 3 cơ chế giải ph
 
 | Thành phần | Option A (User-Led / Structured Hub) | Option B (Co-Creation / Interactive Co-Pilot) | Option C (AI-Led / Autonomous 1-Click Pack) |
 |---|---|---|---|
-| **Thành viên phụ trách** | **Lê Quang Huy** | **Đàm Việt Cường** | **Trần Đức Bảo** |
+| **Thành viên phụ trách** | **Lê Quang Huy**<br>2A202601821 | **Đàm Việt Cường**<br>2A202601566 | **Trần Đức Bảo**<br>2A202601472 |
 | **Solution Mechanism** | **Interactive Snippet Hub & Manual Binder (Zero-Inference)**: Hệ thống gom tự động các ảnh chụp, highlight và note thành khay Dock bên phải theo slide. Cung cấp sẵn các khung mẫu (Template: Tóm tắt ý chính / Thẻ giải thích / Thẻ Quiz). User tự kéo thả mẩu note vào khung và tự gõ nội dung. | **Interactive AI Co-Pilot (Ask & Propose with Dual Mode)**: AI phân tích các mẩu note/chưa hiểu và đề xuất 2 dạng thẻ: (1) Thẻ tóm tắt & giải thích điểm khó (cho Hoàn) và (2) Thẻ câu hỏi tự kiểm tra kèm trích dẫn slide (cho Mai). User duyệt từng thẻ (*Chấp nhận / Chỉnh sửa / Đổi câu khác*). | **Autonomous Study Digest & Mini-Quiz (Act with Guardrails & Instant Rollback)**: Hệ thống tự động tạo 100% bản tóm tắt trọn gói gồm: 3 ý cốt lõi + 1 mục giải thích điểm khó + Bộ 3 câu trắc nghiệm tự kiểm tra. Cung cấp nút *"Tùy chỉnh theo mục tiêu"* và nút *"Rollback về ghi chú thô"*. |
 | **User làm gì?** | Tự kéo thả các mẩu ghi chú vào khung mẫu, tự viết lời giải thích hoặc tự soạn câu hỏi ôn tập theo tư duy cá nhân. | Đọc các thẻ do AI đề xuất, bấm *Chấp nhận*, bấm *Sửa nội dung* hoặc bấm *Đổi câu khác*, quyết định giữ lại những phần mình thực sự cần. | Đọc ngay bản tóm tắt hoặc bấm làm bài trắc nghiệm tự kiểm tra; bấm *Rollback* nếu muốn quay về ghi chú gốc hoặc bấm *Điều chỉnh độ khó*. |
 | **AI làm gì?** | **Don't Act / Zero-Inference**: Không tự ý suy luận hay sinh text. Chỉ làm nhiệm vụ sắp xếp, lưu trữ và auto-save đồng bộ dữ liệu chống mất file. | **Ask & Propose**: Đề xuất bản thảo giải thích và câu hỏi dựa trên đúng dữ liệu note của user, hiển thị trích dẫn nguồn slide minh bạch. | **Act with Guardrails**: Tự động biên soạn hoàn chỉnh 100% tài liệu ôn tập và bài trắc nghiệm ngay khi mở trang, hỗ trợ đường khôi phục dữ liệu tức thì. |
