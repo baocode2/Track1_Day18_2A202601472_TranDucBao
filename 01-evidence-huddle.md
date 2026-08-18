@@ -1,33 +1,52 @@
 # Evidence Huddle — Day 18
 
 **Nhóm:** cuong
-**Thành viên:** Lê Quang Huy (2A202601821) & Đàm Việt Cường (2A202601566)
+**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo
 **Case B** — AI Notes: Personal Learning Notes
 
 ## Nguồn
 
-Hai nguồn phỏng vấn độc lập, mỗi thành viên một buổi, đều ngày 17/08/2026.
+Nhóm ba người. Hiện có **hai** buổi phỏng vấn độc lập, đều ngày 17/08/2026.
 
 | Thành viên | Practice Note | Interviewee | Thời lượng | Đối chiếu được nguyên văn |
 |---|---|---|---|---|
-| Lê Quang Huy | [03-practice-note-lequanghuy.md](day17-inputs/03-practice-note-lequanghuy.md) | Phạm Duy Hoàn — 2026A201378 | 4'30" | Có — [transcript đầy đủ](day17-inputs/06-transcript-day17.md) |
-| Đàm Việt Cường | [03-practice-note-damvietcuong.md](day17-inputs/03-practice-note-damvietcuong.md) | Trần Thị Hoa Mai — 01317 | 5'10" | Chưa — mới có exact quote, chưa có transcript đầy đủ |
+| Lê Quang Huy — 2A202601821 | [03-practice-note-lequanghuy.md](day17-inputs/03-practice-note-lequanghuy.md) | Phạm Duy Hoàn — 2026A201378 | 4'30" | Có — [transcript đầy đủ](day17-inputs/06-transcript-day17.md) |
+| Đàm Việt Cường — 2A202601566 | [03-practice-note-damvietcuong.md](day17-inputs/03-practice-note-damvietcuong.md) | Trần Thị Hoa Mai — 01317 | 5'10" | Chưa — mới có exact quote, chưa có transcript đầy đủ |
+| Trần Đức Bảo | **Chưa có** | — | — | — |
 
-Đề giả định ba Practice Note từ ba thành viên. Nhóm có **hai** thành viên, **hai** interviewee.
-Đủ để trả lời câu hỏi *"có gì lặp lại?"* — nhưng lặp qua hai nguồn, không phải ba.
+Đề giả định ba Practice Note từ ba thành viên. Nhóm đủ ba người nhưng mới **hai** note, nên
+câu hỏi *"có gì lặp lại?"* trả lời được qua hai nguồn, chưa phải ba. Note thứ ba còn thiếu —
+đây là chỗ lệch so với đề, không phải chỗ đã xong.
 
 ## Bảng huddle
 
 Cột giữa chỉ chứa **lời user và hành vi quan sát được**. Mọi suy luận nằm ở cột phải.
+Ba chi tiết dưới đây là ba mẩu evidence mạnh nhất, chọn theo bốn tiêu chí: đã xảy ra hay
+chưa, có bị câu hỏi mớm không, đối chiếu được nguyên văn không, và sai thì có đổi quyết
+định không.
 
 | # | Nguồn | User đã thực sự làm / nói gì | Điều nhóm đang diễn giải |
 |---|---|---|---|
-| 1 | Huy → Hoàn | *"Thầy cô giảng nhanh quá thì mình sẽ là chụp ảnh lại hoặc là các slide thì mình cũng sẽ chụp lại cái đấy. Mình không hiểu thì mình cứ gửi lên mình hỏi là cái này tại sao như này à xong rồi giải thích cho tôi cách dễ hiểu nhất."* | Workaround đang chạy là **hỏi giải thích từng chỗ**, không phải tổng hợp cả bài. "Từng chỗ" là suy luận từ cách mô tả; bạn ấy không nói mỗi lần gửi mấy ảnh. |
-| 2 | Huy → Hoàn | *"mình cũng khá là học khá nhiều môn ấy nên mình sẽ là thường sẽ là tối trước hôm đấy của hôm hôm sau học môn đấy."* | Ôn theo **lịch học sắp tới**, không theo buổi vừa xong. Bạn ấy không nói vì sao chọn thời điểm đó. |
-| 3 | Huy → Hoàn | *"Đầu tiên nếu mà mình sẽ thấy khó quá mình vượt qua khả năng của mình mình sẽ bỏ."* / *"mình chỉ mục tiêu là 8 điểm thôi thì bài đấy nó 9 10 điểm thì mình cũng có thể sẽ bỏ qua."* | Quyết định **chi phí / lợi ích theo mục tiêu điểm**, không phải bị vướng. Chữ "bỏ có chủ đích" là của nhóm, không phải của bạn ấy. |
-| 4 | Cường → Mai | Chuyển slide VLearn sang iPad viết tay, đồng thời gõ Notepad trên máy cho các ý quan trọng. *"Nếu như mà ghi chú ở iPad thì nó sẽ hơi có một cái bất tiện là khi mà mình muốn ôn tập lại thì mình sẽ chỉ có cách là đọc lại từ đầu đến cuối thôi... không thể nào mà đảo lẫn các cái kiến thức đấy lên để mình biết là mình đang quên hoặc là nhớ..."* | Cường diễn giải là nhu cầu **active recall** — đảo ngẫu nhiên để tự dò chỗ hổng. Chữ "active recall" là của Cường; Mai chỉ nói không đảo kiến thức lên được. |
-| 5 | Cường → Mai | *"Thực ra mình cảm thấy tốn thời gian nhất là mình sẽ lại phải từ cái file ghi chú đấy để tổng hợp ra... mấy cái phần mềm làm quiz để có thể tạo ra được những cái câu hỏi... Nhưng mà cái phần mình ghi chú trên giấy tay thì việc tổng hợp lại khá là khó."* | Rào cản nằm ở **chi phí chuyển note thô thành công cụ tự kiểm tra**, không nằm ở việc ghi. |
-| 6 | Cường → Mai | *"Notepad ở máy tính thì bình thường là kiểu lưu rất là linh tinh ấy... hoặc là có thể là mình chưa Ctrl S chẳng hạn. Thế sau đó là nó sẽ bị mất."* | Cường diễn giải là **phân mảnh và mất dữ liệu** do nhiều công cụ không đồng bộ. |
+| **1** | Huy → Hoàn | *"Đầu tiên nếu mà mình sẽ thấy khó quá mình vượt qua khả năng của mình mình sẽ bỏ."* / *"mình chỉ mục tiêu là 8 điểm thôi thì bài đấy nó 9 10 điểm thì mình cũng có thể sẽ bỏ qua."*<br><br>Interviewer đã nêu sẵn hai lý do (*"bạn vướng ở đâu đấy hoặc là nó dài quá"*); bạn ấy **không lấy** khung nào, tự đưa lý do khác. | Quyết định **chi phí / lợi ích theo mục tiêu điểm**, không phải bị vướng. Chữ "bỏ có chủ đích" là của nhóm, không phải của bạn ấy. |
+| **2** | Huy → Hoàn | *"Thầy cô giảng nhanh quá thì mình sẽ là chụp ảnh lại hoặc là các slide thì mình cũng sẽ chụp lại cái đấy. Mình không hiểu thì mình cứ gửi lên mình hỏi là cái này tại sao như này à xong rồi giải thích cho tôi cách dễ hiểu nhất."*<br><br>Câu hỏi cài sẵn chữ "tổng hợp"; bạn ấy trả lời bằng một việc **không phải** tổng hợp. | Workaround đang chạy là **hỏi giải thích từng chỗ**, không phải tổng hợp cả bài. Đây là **baseline** mọi solution phải vượt qua. "Từng chỗ" là suy luận; bạn ấy không nói mỗi lần gửi mấy ảnh. |
+| **3** | Cường → Mai | *"Thực ra mình cảm thấy tốn thời gian nhất là mình sẽ lại phải từ cái file ghi chú đấy để tổng hợp ra... mấy cái phần mềm làm quiz để có thể tạo ra được những cái câu hỏi... Nhưng mà cái phần mình ghi chú trên giấy tay thì việc tổng hợp lại khá là khó."* | Chính user chỉ ra khâu đắt nhất. Rào cản nằm ở **chi phí chuyển note thô thành thứ dùng lại được**, không nằm ở việc ghi. |
+
+Bộ ba này lệch **2 Huy – 1 Cường**. Lý do: buổi của Huy có transcript đầy đủ nên soi lại được
+câu hỏi nào dẫn tới câu trả lời nào; buổi của Cường mới có exact quote, chưa kiểm được ngữ cảnh.
+
+## Bảng phụ — evidence giữ lại, chưa đưa vào bộ ba
+
+Ba mẩu này thật và không bị loại, chỉ là yếu hơn hoặc trỏ sang hướng khác. Mỗi mẩu có một
+người phụ trách đào tiếp.
+
+> **Cột "phụ trách" là người đào tiếp ở vòng sau, không phải người đã phỏng vấn.**
+> Cột "nguồn" mới là người thực hiện buổi phỏng vấn.
+
+| # | Nguồn | Evidence | Vì sao chưa vào bộ ba | Phụ trách đào tiếp | Câu cần trả lời |
+|---|---|---|---|---|---|
+| 4 | Huy → Hoàn | *"mình cũng khá là học khá nhiều môn ấy nên mình sẽ là thường sẽ là tối trước hôm đấy của hôm hôm sau học môn đấy."* | Sửa **phạm vi**, không phải bằng chứng về pain. Việc của nó đã xong: đổi situation trong hypothesis. | **Lê Quang Huy** | Thời điểm "trước buổi kế tiếp" mới có một nguồn. Có nguồn thứ hai nào ôn theo lịch học sắp tới không, hay Hoàn là ngoại lệ vì học nhiều môn? |
+| 5 | Cường → Mai | *"Nếu như mà ghi chú ở iPad... mình sẽ chỉ có cách là đọc lại từ đầu đến cuối thôi... không thể nào mà đảo lẫn các cái kiến thức đấy lên để mình biết là mình đang quên hoặc là nhớ..."* | Trùng lớn với dòng 3 bảng chính, cùng nguồn cùng mạch. Thiên về mô tả giới hạn công cụ hơn là hành vi. | **Trần Đức Bảo** | Mai muốn **tự kiểm tra** hay chỉ muốn **tra nhanh tới đúng chỗ**? Mới một nguồn nói tới việc đảo kiến thức; Hoàn không nhắc lần nào. Cần nguồn thứ hai. |
+| 6 | Cường → Mai | *"Notepad ở máy tính thì bình thường là kiểu lưu rất là linh tinh ấy... hoặc là có thể là mình chưa Ctrl S chẳng hạn. Thế sau đó là nó sẽ bị mất."* | Trỏ sang **một vấn đề khác**: mất dữ liệu, không phải chi phí chuyển đổi. Vào bộ ba sẽ kéo hypothesis đi hai hướng. | **Đàm Việt Cường** | Mất file bao nhiêu lần, gần nhất là khi nào, và hậu quả thật là gì? Nếu đây là pain riêng đủ lớn thì nó là **hypothesis khác**, không phải nhánh của cái đang chốt. |
 
 ## Thảo luận
 

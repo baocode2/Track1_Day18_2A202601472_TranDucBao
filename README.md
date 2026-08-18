@@ -3,7 +3,7 @@
 **Lê Quang Huy — 2026A201821**
 Case tiếp nối Day 17: **B — AI Notes: Personal Learning Notes**.
 
-Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566).
+Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo.
 
 > Không đổi case. Day 18 không tiếp tục problem interview.
 
@@ -20,8 +20,9 @@ Bốn artifact đặt cạnh nhau trước khi bắt đầu, copy nguyên văn t
 | Practice Note — Cường → Trần Thị Hoa Mai | [day17-inputs/03-practice-note-damvietcuong.md](day17-inputs/03-practice-note-damvietcuong.md) |
 | Conversation Guide cuối (chỉ để tham khảo context) | [day17-inputs/04-conversation-guide-final.md](day17-inputs/04-conversation-guide-final.md) |
 
-**Lệch so với đề:** đề nêu *ba* Practice Note từ ba thành viên. Nhóm hiện có **hai** thành viên
-và **hai** interviewee: Huy phỏng vấn Phạm Duy Hoàn, Cường phỏng vấn bạn Mai (01317).
+**Lệch so với đề:** đề nêu *ba* Practice Note từ ba thành viên. Nhóm đủ ba người nhưng mới
+**hai** note: Huy phỏng vấn Phạm Duy Hoàn, Cường phỏng vấn Trần Thị Hoa Mai (01317).
+Trần Đức Bảo chưa có Practice Note.
 Chi tiết trong [Evidence Huddle](01-evidence-huddle.md).
 
 Tài liệu tham khảo thêm, không nằm trong bốn artifact bắt buộc:
