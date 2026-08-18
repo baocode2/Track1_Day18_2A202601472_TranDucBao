@@ -16,7 +16,8 @@ Bốn artifact đặt cạnh nhau trước khi bắt đầu, copy nguyên văn t
 |---|---|
 | Hypothesis Problem | [day17-inputs/01-problem-hypothesis.md](day17-inputs/01-problem-hypothesis.md) |
 | Solution Parking Lot (5 hướng) | [day17-inputs/02-solution-parking-lot.md](day17-inputs/02-solution-parking-lot.md) |
-| Practice Note (Interview Record) | [day17-inputs/03-practice-note-lequanghuy.md](day17-inputs/03-practice-note-lequanghuy.md) |
+| Practice Note — Huy → Phạm Duy Hoàn | [day17-inputs/03-practice-note-lequanghuy.md](day17-inputs/03-practice-note-lequanghuy.md) |
+| Practice Note — Cường → Trần Thị Hoa Mai | [day17-inputs/03-practice-note-damvietcuong.md](day17-inputs/03-practice-note-damvietcuong.md) |
 | Conversation Guide cuối (chỉ để tham khảo context) | [day17-inputs/04-conversation-guide-final.md](day17-inputs/04-conversation-guide-final.md) |
 
 **Lệch so với đề:** đề nêu *ba* Practice Note từ ba thành viên. Nhóm hiện có **hai** thành viên

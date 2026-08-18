@@ -1,85 +1,99 @@
 # Evidence Huddle — Day 18
 
-Case B — AI Notes.
+**Nhóm:** cuong
+**Thành viên:** Lê Quang Huy (2A202601821) & Đàm Việt Cường (2A202601566)
+**Case B** — AI Notes: Personal Learning Notes
 
 ## Nguồn
 
-| Thành viên | Practice Note | Interviewee | Ghi chú |
-|---|---|---|---|
-| Lê Quang Huy — 2A202601821 | [Interview Record CP3](day17-inputs/03-practice-note-lequanghuy.md) | Phạm Duy Hoàn — 2026A201378 | 17/08/2026, 4'30". Có [transcript nguyên văn](day17-inputs/06-transcript-day17.md) |
-| Đàm Việt Cường — 2A202601566 | Phần 1.1 trong [three-option-design-sheet.md](three-option-design-sheet.md) | Bạn Mai — 01317 | Trích theo đúng file Cường commit. **Chưa có transcript gốc để đối chiếu.** |
+Hai nguồn phỏng vấn độc lập, mỗi thành viên một buổi, đều ngày 17/08/2026.
 
-Đề yêu cầu ba Practice Note từ ba thành viên. Hiện có **hai thành viên, hai interviewee**.
-Cường ghi ba note nhưng cả ba đều từ cùng một buổi với Mai; Huy một note với Hoàn.
+| Thành viên | Practice Note | Interviewee | Thời lượng | Đối chiếu được nguyên văn |
+|---|---|---|---|---|
+| Lê Quang Huy | [03-practice-note-lequanghuy.md](day17-inputs/03-practice-note-lequanghuy.md) | Phạm Duy Hoàn — 2026A201378 | 4'30" | Có — [transcript đầy đủ](day17-inputs/06-transcript-day17.md) |
+| Đàm Việt Cường | [03-practice-note-damvietcuong.md](day17-inputs/03-practice-note-damvietcuong.md) | Trần Thị Hoa Mai — 01317 | 5'10" | Chưa — mới có exact quote, chưa có transcript đầy đủ |
 
-Điểm quan trọng: giờ **có hai nguồn độc lập**, nên câu hỏi *"có gì lặp lại?"* trả lời được —
-điều mà một mình note của Huy không làm được.
+Đề giả định ba Practice Note từ ba thành viên. Nhóm có **hai** thành viên, **hai** interviewee.
+Đủ để trả lời câu hỏi *"có gì lặp lại?"* — nhưng lặp qua hai nguồn, không phải ba.
 
 ## Bảng huddle
+
+Cột giữa chỉ chứa **lời user và hành vi quan sát được**. Mọi suy luận nằm ở cột phải.
 
 | # | Nguồn | User đã thực sự làm / nói gì | Điều nhóm đang diễn giải |
 |---|---|---|---|
 | 1 | Huy → Hoàn | *"Thầy cô giảng nhanh quá thì mình sẽ là chụp ảnh lại hoặc là các slide thì mình cũng sẽ chụp lại cái đấy. Mình không hiểu thì mình cứ gửi lên mình hỏi là cái này tại sao như này à xong rồi giải thích cho tôi cách dễ hiểu nhất."* | Workaround đang chạy là **hỏi giải thích từng chỗ**, không phải tổng hợp cả bài. "Từng chỗ" là suy luận từ cách mô tả; bạn ấy không nói mỗi lần gửi mấy ảnh. |
 | 2 | Huy → Hoàn | *"mình cũng khá là học khá nhiều môn ấy nên mình sẽ là thường sẽ là tối trước hôm đấy của hôm hôm sau học môn đấy."* | Ôn theo **lịch học sắp tới**, không theo buổi vừa xong. Bạn ấy không nói vì sao chọn thời điểm đó. |
 | 3 | Huy → Hoàn | *"Đầu tiên nếu mà mình sẽ thấy khó quá mình vượt qua khả năng của mình mình sẽ bỏ."* / *"mình chỉ mục tiêu là 8 điểm thôi thì bài đấy nó 9 10 điểm thì mình cũng có thể sẽ bỏ qua."* | Quyết định **chi phí / lợi ích theo mục tiêu điểm**, không phải bị vướng. Chữ "bỏ có chủ đích" là của nhóm, không phải của bạn ấy. |
-| 4 | Cường → Mai | Xuất slide VLearn sang iPad viết tay, đồng thời gõ vội vào Notepad trên máy. *"nếu ghi chú ở iPad... chỉ có cách là đọc lại từ đầu đến cuối thôi... không thể đảo lẫn kiến thức lên để biết mình đang quên hay thiếu chỗ nào"* | Cường diễn giải là nhu cầu **active recall** (quiz/flashcard đảo ngẫu nhiên) thay cho đọc thụ động. Chữ "active recall" là của Cường; Mai chỉ nói không đảo được kiến thức lên. |
-| 5 | Cường → Mai | *"Thực ra mình cảm thấy tốn thời gian nhất là mình sẽ lại phải từ cái file ghi chú đấy để tổng hợp ra... mấy cái phần mềm làm quiz để có thể tạo ra được những câu hỏi... Nhưng ghi chú trên giấy tay thì tổng hợp lại khá là khó"* | Rào cản nằm ở **chi phí chuyển note thô thành công cụ tự kiểm tra**, không nằm ở việc ghi. |
-| 6 | Cường → Mai | *"Notepad ở máy tính thì bình thường là lưu rất linh tinh nên sẽ bị miss rất nhiều ghi chú quan trọng và đến lúc tìm lại thì-- hoặc là có thể chưa Ctrl S... sẽ bị mất"* | Cường diễn giải là **phân mảnh và mất dữ liệu** do dùng nhiều công cụ không đồng bộ. |
+| 4 | Cường → Mai | Chuyển slide VLearn sang iPad viết tay, đồng thời gõ Notepad trên máy cho các ý quan trọng. *"Nếu như mà ghi chú ở iPad thì nó sẽ hơi có một cái bất tiện là khi mà mình muốn ôn tập lại thì mình sẽ chỉ có cách là đọc lại từ đầu đến cuối thôi... không thể nào mà đảo lẫn các cái kiến thức đấy lên để mình biết là mình đang quên hoặc là nhớ..."* | Cường diễn giải là nhu cầu **active recall** — đảo ngẫu nhiên để tự dò chỗ hổng. Chữ "active recall" là của Cường; Mai chỉ nói không đảo kiến thức lên được. |
+| 5 | Cường → Mai | *"Thực ra mình cảm thấy tốn thời gian nhất là mình sẽ lại phải từ cái file ghi chú đấy để tổng hợp ra... mấy cái phần mềm làm quiz để có thể tạo ra được những cái câu hỏi... Nhưng mà cái phần mình ghi chú trên giấy tay thì việc tổng hợp lại khá là khó."* | Rào cản nằm ở **chi phí chuyển note thô thành công cụ tự kiểm tra**, không nằm ở việc ghi. |
+| 6 | Cường → Mai | *"Notepad ở máy tính thì bình thường là kiểu lưu rất là linh tinh ấy... hoặc là có thể là mình chưa Ctrl S chẳng hạn. Thế sau đó là nó sẽ bị mất."* | Cường diễn giải là **phân mảnh và mất dữ liệu** do nhiều công cụ không đồng bộ. |
 
 ## Thảo luận
 
 ### Có situation / behavior / workaround nào lặp lại qua hai nguồn
 
-**Lặp 1 — capture bằng nhiều công cụ rời rạc.** Hoàn: chụp ảnh slide và bài giảng, cộng
-take note. Mai: xuất slide sang iPad viết tay, cộng gõ Notepad. Hai người, hai bộ công cụ
-khác nhau, cùng một hình dạng hành vi: bắt lấy nội dung nhanh bằng nhiều kênh song song.
-Đây là pattern duy nhất xuất hiện ở cả hai nguồn độc lập.
+**Lặp 1 — capture bằng nhiều công cụ rời rạc.** Hoàn: chụp ảnh slide và bài giảng, cộng take
+note. Mai: xuất slide sang iPad viết tay, cộng gõ Notepad. Hai người, hai bộ công cụ khác
+nhau, cùng một hình dạng hành vi: bắt lấy nội dung nhanh bằng nhiều kênh song song.
 
-**Lặp 2 — chỗ vướng nằm ở khâu chuyển đổi, không nằm ở khâu ghi.** Cả hai đều ghi được
-bình thường. Hoàn phải đẩy ảnh sang AI mới dùng được; Mai gọi thẳng khâu tổng hợp từ file
-note ra quiz là *"tốn thời gian nhất"*. Không ai than về việc ghi chú khó.
+**Lặp 2 — chỗ vướng nằm ở khâu chuyển đổi, không nằm ở khâu ghi.** Cả hai đều ghi được bình
+thường. Hoàn phải đẩy ảnh sang AI mới dùng được; Mai gọi thẳng khâu tổng hợp từ file note ra
+quiz là *"tốn thời gian nhất"*. Không ai than về việc ghi chú khó.
+
+Đây là **hai pattern duy nhất** có mặt ở cả hai nguồn độc lập.
 
 ### Evidence nào mâu thuẫn hoặc gây bất ngờ
 
 **Mâu thuẫn 1 — hai người muốn output khác hẳn nhau.**
 Mai muốn **tự kiểm tra**: câu hỏi, đảo ngẫu nhiên, đo xem hổng chỗ nào. Hoàn muốn **được
-giải thích**: *"giải thích cho tôi cách dễ hiểu nhất"*. Không có chỗ nào Hoàn nhắc tới
-quiz hay tự kiểm tra; không có chỗ nào Mai nhắc tới việc nhờ giải thích. Đây là hai job
-khác nhau, và nó chẻ đôi không gian solution.
+giải thích**: *"giải thích cho tôi cách dễ hiểu nhất"*. Không chỗ nào Hoàn nhắc quiz hay tự
+kiểm tra; không chỗ nào Mai nhắc chuyện nhờ giải thích. Hai job khác nhau, và nó chẻ đôi
+không gian solution. **Chưa được gộp thành một nhu cầu chung** khi mới một người nói.
 
 **Mâu thuẫn 2 — động cơ ngược nhau.**
-Hoàn chủ động **bỏ bớt** theo mục tiêu điểm. Mai muốn **ôn kỹ hơn**, đang bị chặn bởi chi
-phí thủ công. Một người cắt việc, một người muốn làm nhiều hơn. Solution thiết kế cho Mai
-chưa chắc có ý nghĩa với Hoàn.
+Hoàn chủ động **bỏ bớt** theo mục tiêu điểm. Mai muốn **ôn kỹ hơn**, đang bị chặn bởi chi phí
+thủ công. Một người cắt việc, một người muốn làm nhiều hơn. Solution thiết kế cho Mai chưa
+chắc có nghĩa với Hoàn. Đây là cách giải thích thứ ba mà CP1 Day 17 không có: người học có
+khi **chọn không ôn**, chứ không phải bị cản.
 
-**Bất ngờ — thời điểm ôn lệch với Hypothesis Problem của Huy.**
-Hypothesis đặt situation là *"sau buổi học"*. Hoàn ôn *"tối trước hôm sau học môn đấy"*, do
-lịch đẩy. Cường đặt situation là *"vừa học xong bài học dài và phức tạp trên VLearn"* — cũng
-là ngay sau buổi. Chưa nguồn nào xác nhận situation "ngay sau buổi học".
+**Bất ngờ — thời điểm ôn lệch với Hypothesis Problem gốc.**
+Hypothesis Day 17 đặt situation là *"sau buổi học"*. Hoàn ôn *"tối trước hôm sau học môn
+đấy"*, do lịch đẩy. Chưa nguồn nào xác nhận situation "ngay sau buổi học".
 
 ### Điều gì vẫn chỉ là suy đoán
 
-- Rằng note rời rạc là thứ **cản** việc hiểu bài. Mẩu duy nhất nghe giống vậy trong buổi
-  của Huy — *"Chắc là do nhiều bài quá có thể quên mất"* — bật ra **sau khi** interviewer
-  đã nêu sẵn nguyên nhân. Không dùng được.
+- Rằng note rời rạc là thứ **cản** việc hiểu bài. Mẩu duy nhất nghe giống vậy trong buổi của
+  Huy — *"Chắc là do nhiều bài quá có thể quên mất"* — bật ra **sau khi** interviewer đã nêu
+  sẵn nguyên nhân. Không dùng được.
 - Rằng có nhiều lần chụp rồi không mở lại. Câu *"cũng có cho nhiều"* trả lời cho câu hỏi mà
   interviewer **nói hộ luôn vế sau**. Không dùng được.
-- **Hậu quả.** Không nguồn nào có. Buổi của Huy không hỏi tới; phần của Cường không ghi lại
-  hậu quả cụ thể nào của Mai — không có số giờ, không có điểm số, không có lần hỏng việc.
-- Mức can thiệp nào của AI là vừa. Cường nêu đúng câu này ở mục 1.3 và nó vẫn mở.
-- Sau khi AI tổng hợp / giải thích xong, người học có mở lại kết quả đó không.
+- **Hậu quả có định lượng.** Practice Note của Cường ghi *"mất nhiều giờ đọc lại thụ động"* ở
+  mục hậu quả, nhưng ba exact quote kèm theo không có mẩu nào nói tới thời gian → hiện xếp là
+  diễn giải. Buổi của Huy không hỏi hậu quả lần nào. **Chưa nguồn nào cho ra con số.**
+- Mức can thiệp nào của AI là vừa: user tự kéo thả, AI gợi ý từng câu, hay AI sinh sẵn 100%.
+- Sau khi có bản tổng hợp / bộ quiz, người học có thật sự mở lại và dùng đều không.
 
-### Hypothesis Problem nào đủ cụ thể để xuất phát hôm nay
+### Hypothesis Problem làm điểm xuất phát hôm nay
 
-> _Để trống chờ nhóm chốt. Mục 10 cấm AI chọn thay nhóm._
+Hướng chốt: giữ khung của Huy — **chỗ vướng là chuyển note thô thành thứ dùng lại được**, vì
+đó là pattern duy nhất lặp qua cả hai nguồn. Nhu cầu quiz của Mai vào làm **một dạng** của
+"thứ dùng lại được", không phải toàn bộ định nghĩa.
 
-Hai thành viên đang cầm hai hypothesis khác nhau — phải chốt một trước khi sang Chặng 2.
+> **Khi** ngồi ôn lại trước buổi học kế tiếp, **người học** khó biến các mẩu ghi chú, ảnh
+> chụp và điểm đánh dấu chưa hiểu thành một thứ dùng lại được **vì** chúng nằm rải rác trên
+> nhiều công cụ và phải tốn công tổng hợp thủ công mới dùng được, **dẫn đến** phải đọc lại
+> tuần tự từ đầu hoặc đẩy sang công cụ ngoài, và không đo được mình đang hổng chỗ nào.
 
-| | Hypothesis | Được gì | Mất gì |
-|---|---|---|---|
-| **A** | Bản Day 17 của Huy: note là các mẩu rời chưa hệ thống thành **sơ đồ** | Liền mạch với CP1 | Situation "sau buổi học" bị dòng 2 phản chứng; không nguồn nào nhắc tới sơ đồ |
-| **B** | Bản của Cường (mục 1.3): không tự tạo được **bộ câu hỏi tự kiểm tra** vì note phân mảnh | Đứng trên lời Mai, khớp thẳng với ba option Cường đã thiết kế | Chỉ một nguồn nói tới quiz; Hoàn không hề nhắc |
-| **C** | Bản gộp: chỗ vướng nằm ở **chi phí chuyển note thô thành thứ dùng lại được** | Là pattern duy nhất lặp qua cả hai nguồn | Trừu tượng hơn, phải chốt "thứ dùng lại được" là gì thì mới test được |
+Vì sao bản này chứ không phải hai bản kia:
+- Bỏ chữ **"sơ đồ"** của bản Day 17. Không nguồn nào nhắc tới sơ đồ; giữ lại là tự áp solution vào problem.
+- Bỏ **"quiz / active recall"** khỏi phần lõi. Chỉ Mai nói; đưa vào lõi là lấy một nguồn gán cho cả hai.
+- Situation đổi thành **"trước buổi học kế tiếp"** theo đúng lời Hoàn, thay cho "sau buổi học".
 
-Chọn: ……
-Vì sao: ……
+Cái gì làm bản này sai:
+- Nếu đa số người học **chọn bỏ** như Hoàn, chứ không phải bị cản → cả hypothesis lẫn năm hướng trong Parking Lot đều lệch.
+- Nếu workaround hiện có (đẩy ảnh cho AI) đã đủ tốt → pain chỉ ở mức bất tiện.
+- Vẫn **chưa nguồn nào cho hậu quả định lượng**. Chưa được tuyên bố validated.
+
+> Cần Cường xác nhận bản này trước khi sang Chặng 2, vì ba option trong
+> [three-option-design-sheet.md](three-option-design-sheet.md) đang dựng trên bản quiz.
