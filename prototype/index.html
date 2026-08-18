@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Notes — Micro-Prototype Day 18</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --ink:#16181d; --muted:#6b7280; --line:#e3e6ea;
+  --accent:#2f5bd7; --accent-soft:#eaf0ff; --warn:#b45309; --warn-soft:#fff7ed;
+  --ok:#15803d; --ok-soft:#ecfdf3; --ai:#7c3aed; --ai-soft:#f5f0ff;
+  --radius:10px; --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.55 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif}
+.wrap{max-width:1120px;margin:0 auto;padding:20px 20px 60px}
+h1{font-size:20px;margin:0 0 2px}
+h2{font-size:15px;margin:0 0 10px}
+.sub{color:var(--muted);font-size:13px;margin:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.col{flex:1 1 340px;min-width:0}
+button{font:inherit;cursor:pointer;border-radius:7px;border:1px solid var(--line);
+  background:#fff;padding:7px 12px;color:var(--ink)}
+button:hover{border-color:#c3c9d2}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.primary:hover{background:#2549b0}
+button.ghost{background:transparent}
+button:disabled{opacity:.45;cursor:not-allowed}
+.switcher{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.switcher button{padding:9px 15px;font-weight:600}
+.switcher button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.banner{background:var(--warn-soft);border:1px solid #fed7aa;color:#7c2d12;
+  border-radius:var(--radius);padding:11px 13px;font-size:13px;margin-bottom:14px}
+.snip{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:7px;
+  padding:10px 12px;margin-bottom:9px;background:#fcfcfd}
+.snip.unclear{border-left-color:var(--warn);background:var(--warn-soft)}
+.snip .meta{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.snip .body{font-size:14px}
+.tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:99px;
+  background:var(--accent-soft);color:var(--accent);font-weight:600;vertical-align:middle}
+.tag.ai{background:var(--ai-soft);color:var(--ai)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.ok{background:var(--ok-soft);color:var(--ok)}
+.qcard{border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;background:#fff}
+.qcard.done{border-color:#bbf7d0;background:var(--ok-soft)}
+.qcard.gone{opacity:.4}
+.qcard .q{font-weight:600;margin-bottom:5px}
+.qcard .a{color:var(--muted);font-size:13.5px;margin-bottom:8px}
+.qcard .acts{display:flex;gap:6px;flex-wrap:wrap}
+.slot{border:1.5px dashed #c7ccd4;border-radius:8px;padding:11px;margin-bottom:9px;background:#fafbfc}
+.slot.filled{border-style:solid;border-color:var(--line);background:#fff}
+input[type=text],textarea,select{width:100%;font:inherit;padding:7px 9px;border:1px solid var(--line);
+  border-radius:6px;background:#fff;color:var(--ink)}
+textarea{resize:vertical;min-height:52px}
+label{display:block;font-size:12px;color:var(--muted);margin:7px 0 3px;font-weight:600}
+.log{font-family:var(--mono);font-size:12px;background:#101318;color:#d6dae1;
+  border-radius:8px;padding:11px;max-height:230px;overflow:auto;white-space:pre-wrap}
+.log .t{color:#7f8894}
+.result{background:var(--ok-soft);border:1px solid #bbf7d0;border-radius:8px;padding:13px;margin-top:8px}
+.hint{font-size:12.5px;color:var(--muted);margin-top:7px}
+.slider{display:flex;align-items:center;gap:10px;margin:10px 0}
+input[type=range]{flex:1;width:auto}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+  border-top:1px solid var(--line);padding-top:11px;margin-top:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="card">
+  <h1>AI Notes — Micro-Prototype</h1>
+  <p class="sub">Track 1 · Day 18 · Case B · Lê Quang Huy — 2A202601821</p>
+</div>
+
+<div class="banner" id="facilitator">
+  <b>Bảng của facilitator — che phần này khi tester ngồi vào.</b>
+  <div id="facilNote" style="margin-top:6px"></div>
+</div>
+
+<div class="card">
+  <h2>Ngữ cảnh chung — giữ nguyên ở cả ba option</h2>
+  <p class="sub" style="margin-bottom:10px">
+    Bài học Day 17 — <i>Finding &amp; Validating Pain Points</i>. Hệ thống đã lưu sẵn những
+    dấu vết dưới đây trong lúc bạn học.
+  </p>
+  <div id="snippets"></div>
+  <div class="hint">
+    <b>Việc của bạn:</b> từ mấy mẩu ghi chú này, tạo ra một thứ bạn dùng lại được để ôn
+    trước buổi thực hành kế tiếp.
+  </div>
+</div>
+
+<div class="switcher" id="switcher"></div>
+
+<div class="row">
+  <div class="col">
+    <div class="card" id="stage"></div>
+  </div>
+  <div class="col" style="flex:0 1 360px">
+    <div class="card">
+      <h2>Nhật ký hành vi tester</h2>
+      <p class="sub" style="margin-bottom:9px">
+        Ghi tester <b>đã làm gì</b>, không ghi tester nghĩ gì.
+      </p>
+      <div class="log" id="log"></div>
+      <div class="foot">
+        <button class="ghost" onclick="copyLog()">Copy nhật ký</button>
+        <button class="ghost" onclick="resetAll()">Reset về ngữ cảnh ban đầu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+/* ---- Content fixture: mẩu ghi chú giả lập, lấy từ design sheet của nhóm ---- */
+var SNIPPETS = [
+  {id:"s1", kind:"Highlight · Slide 3", unclear:false,
+   text:"Problem Hypothesis: Khi [situation], [user] gặp khó khăn [job] vì [barrier], dẫn đến [consequence]."},
+  {id:"s2", kind:"Ghi chú ngắn · Slide 7", unclear:false,
+   text:"Ba phản xạ: Deflect (gạt đi), Anchor (neo lại), Dig (đào sâu) khi gặp lời khen hoặc đòi hỏi tính năng."},
+  {id:"s3", kind:"Đánh dấu Chưa hiểu · Slide 11", unclear:true,
+   text:"Phân biệt Pain (khó khăn lúc làm job) và Consequence (hậu quả nếu không giải quyết)."}
+];
+
+/* ---- Canned AI output. Không gọi model thật; nội dung viết sẵn ---- */
+var AI_CARDS = [
+  {id:"c1", src:"Đánh dấu Chưa hiểu · Slide 11",
+   q:"Pain khác Consequence ở chỗ nào?",
+   a:"Pain là chỗ vướng ngay lúc người dùng đang làm việc. Consequence là cái giá phải trả sau đó nếu chỗ vướng không được gỡ."},
+  {id:"c2", src:"Highlight · Slide 3",
+   q:"Một Problem Hypothesis đủ dùng phải có mấy phần?",
+   a:"Bốn: situation, job, barrier, consequence. Thiếu consequence thì không biết pain có đáng giải quyết không."},
+  {id:"c3", src:"Ghi chú ngắn · Slide 7",
+   q:"Người được phỏng vấn đòi thẳng một tính năng thì phản xạ nào đúng?",
+   a:"Anchor rồi Dig — neo về lần gần nhất họ gặp chuyện đó, rồi đào hành vi đã xảy ra. Không bàn tính năng."}
+];
+var AI_PACK = AI_CARDS.concat([
+  {id:"c4", src:"Highlight · Slide 3",
+   q:"Vì sao situation phải là một thời điểm cụ thể?",
+   a:"Situation mơ hồ thì không kiểm chứng được. Có mốc cụ thể mới hỏi được lần gần nhất là khi nào."},
+  {id:"c5", src:"Ghi chú ngắn · Slide 7",
+   q:"Khi nào dùng Deflect?",
+   a:"Khi người được phỏng vấn khen ý tưởng. Gạt lời khen đi để quay lại chuyện đã xảy ra."}
+]);
+
+var OPTIONS = {
+  A:{name:"A — User tự làm", ai:"Không hành động",
+     facil:"Option A kiểm tra: khi AI không sinh nội dung, tester có tự bỏ công tạo bộ ôn tập không, hay bỏ dở giữa chừng."},
+  B:{name:"B — Cùng làm", ai:"Ask / Propose",
+     facil:"Option B kiểm tra: tester duyệt thẳng, sửa, hay loại thẻ AI đề xuất — và có mở nguồn ra đối chiếu không."},
+  C:{name:"C — AI làm sẵn", ai:"Act",
+     facil:"Option C kiểm tra: tester dùng luôn bộ AI tạo sẵn, hay đi chỉnh / rollback về ghi chú thô."}
+};
+
+var opt="A", log=[], state={};
+
+function ts(){ var d=new Date(); return d.toTimeString().slice(0,8) }
+function rec(ev){ log.push({t:ts(),opt:opt,ev:ev}); draw("log") }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c] }) }
+
+function fresh(){
+  return {
+    slots:[{q:"",a:"",src:null},{q:"",a:"",src:null},{q:"",a:"",src:null}],
+    cards:AI_CARDS.map(function(c){ return {id:c.id,src:c.src,q:c.q,a:c.a,status:"pending",edited:false} }),
+    pack:AI_PACK.slice(),
+    level:3, rolledBack:false, saved:false
+  };
+}
+function st(){ if(!state[opt]) state[opt]=fresh(); return state[opt] }
+
+function draw(what){
+  if(!what||what==="snippets"){
+    document.getElementById("snippets").innerHTML = SNIPPETS.map(function(s){
+      return '<div class="snip '+(s.unclear?"unclear":"")+'">'+
+        '<div class="meta">'+esc(s.kind)+(s.unclear?" · chưa hiểu":"")+'</div>'+
+        '<div class="body">'+esc(s.text)+'</div></div>' }).join("");
+  }
+  if(!what||what==="switcher"){
+    document.getElementById("switcher").innerHTML = Object.keys(OPTIONS).map(function(k){
+      return '<button aria-pressed="'+(k===opt)+'" onclick="setOpt(\''+k+'\')">'+esc(OPTIONS[k].name)+'</button>'
+    }).join("");
+    document.getElementById("facilNote").innerHTML =
+      "<b>"+esc(OPTIONS[opt].name)+'</b> · vai trò AI: <span class="tag ai">'+esc(OPTIONS[opt].ai)+
+      "</span><br>"+esc(OPTIONS[opt].facil);
+  }
+  if(!what||what==="stage"){
+    var s=st(), el=document.getElementById("stage");
+    el.innerHTML = opt==="A" ? viewA(s) : opt==="B" ? viewB(s) : viewC(s);
+  }
+  if(!what||what==="log"){
+    var el2=document.getElementById("log");
+    el2.innerHTML = log.length ? log.map(function(l){
+      return '<span class="t">'+l.t+"  ["+l.opt+"]</span>  "+esc(l.ev) }).join("\n")
+      : '<span class="t">chưa có thao tác nào</span>';
+    el2.scrollTop = el2.scrollHeight;
+  }
+}
+
+function viewA(s){
+  var filled = s.slots.filter(function(x){ return x.q.trim() }).length;
+  return '<h2>Tự soạn bộ ôn tập <span class="tag">AI không sinh nội dung</span></h2>'+
+  '<p class="sub">Hệ thống chỉ gom ghi chú lại và tự lưu. Câu hỏi và câu trả lời do bạn viết.</p>'+
+  s.slots.map(function(x,i){
+    return '<div class="slot '+(x.q.trim()?"filled":"")+'">'+
+      "<label>Thẻ "+(i+1)+" — chọn nguồn</label>"+
+      '<select onchange="pickSrc('+i+',this.value)"><option value="">— chưa chọn —</option>'+
+      SNIPPETS.map(function(sn){
+        return '<option value="'+sn.id+'" '+(x.src===sn.id?"selected":"")+">"+esc(sn.kind)+"</option>" }).join("")+
+      "</select><label>Câu hỏi</label>"+
+      '<input type="text" value="'+esc(x.q)+'" oninput="editSlot('+i+',\'q\',this.value)" placeholder="bạn tự gõ">'+
+      "<label>Câu trả lời</label>"+
+      '<textarea oninput="editSlot('+i+',\'a\',this.value)" placeholder="bạn tự gõ">'+esc(x.a)+"</textarea></div>"
+  }).join("")+
+  '<div class="foot"><span class="sub">'+filled+"/3 thẻ đã có câu hỏi</span>"+
+  '<button class="primary" '+(filled?"":"disabled")+' onclick="saveA()">Lưu bộ ôn tập</button></div>'+
+  (s.saved?'<div class="result"><b>Đã lưu '+filled+" thẻ.</b> Toàn bộ nội dung do bạn viết.</div>":"");
+}
+
+function viewB(s){
+  var done=s.cards.filter(function(c){ return c.status==="accepted" }).length;
+  var open=s.cards.filter(function(c){ return c.status==="pending" }).length;
+  return '<h2>AI đề xuất, bạn duyệt <span class="tag ai">Ask / Propose</span></h2>'+
+  '<p class="sub">AI đã soạn 3 câu hỏi từ ghi chú của bạn. Mỗi thẻ ghi rõ lấy từ đâu. Bạn duyệt, sửa, hoặc loại.</p>'+
+  s.cards.map(function(c){
+    return '<div class="qcard '+(c.status==="accepted"?"done":"")+" "+(c.status==="rejected"?"gone":"")+'">'+
+      '<div class="q">'+esc(c.q)+'</div><div class="a">'+esc(c.a)+"</div>"+
+      '<div style="margin-bottom:8px"><span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
+      (c.edited?' <span class="tag warn">bạn đã sửa</span>':"")+
+      (c.status==="accepted"?' <span class="tag ok">đã duyệt</span>':"")+
+      (c.status==="rejected"?' <span class="tag warn">đã loại</span>':"")+"</div>"+
+      (c.status==="pending"
+        ? '<div class="acts"><button class="primary" onclick="cardAct(\''+c.id+'\',\'accept\')">Chấp nhận</button>'+
+          '<button onclick="cardAct(\''+c.id+'\',\'edit\')">Sửa</button>'+
+          '<button onclick="cardAct(\''+c.id+'\',\'regen\')">Đổi câu khác</button>'+
+          '<button class="ghost" onclick="cardAct(\''+c.id+'\',\'reject\')">Loại</button></div>'
+        : '<button class="ghost" onclick="cardAct(\''+c.id+'\',\'undo\')">Hoàn tác</button>')+
+      "</div>"
+  }).join("")+
+  '<div class="foot"><span class="sub">'+done+" duyệt · "+open+" chưa xử lý</span>"+
+  '<button class="primary" '+(open?"disabled":"")+' onclick="finishB()">Xác nhận &amp; bắt đầu ôn</button></div>'+
+  (s.saved?'<div class="result"><b>Chốt '+done+" thẻ.</b> Mỗi thẻ đều đi qua tay bạn.</div>":"");
+}
+
+function viewC(s){
+  if(s.rolledBack){
+    return '<h2>Đã quay về ghi chú thô <span class="tag warn">rollback</span></h2>'+
+      '<p class="sub">Bộ câu hỏi AI tạo đã bị gỡ. Còn lại đúng ba mẩu ghi chú ban đầu ở đầu trang.</p>'+
+      '<button onclick="undoRollback()">Tạo lại bộ ôn tập</button>';
+  }
+  var shown=s.pack.slice(0,Math.max(1,s.level));
+  return '<h2>AI đã tạo sẵn bộ ôn tập <span class="tag ai">Act</span></h2>'+
+  '<p class="sub">Tạo tự động ngay khi bạn kết thúc bài học. Bạn không phải thao tác gì trước đó.</p>'+
+  '<div class="slider"><span class="sub">Số câu</span>'+
+  '<input type="range" min="1" max="5" value="'+s.level+'" oninput="setLevel(this.value)">'+
+  '<span class="sub"><b>'+s.level+"</b>/5</span></div>"+
+  shown.map(function(c){
+    return '<div class="qcard"><div class="q">'+esc(c.q)+'</div><div class="a">'+esc(c.a)+"</div>"+
+      '<span class="tag ai">Dựa vào '+esc(c.src)+"</span></div>" }).join("")+
+  '<div class="foot"><button class="primary" onclick="startC()">Bắt đầu làm ngay</button>'+
+  '<span style="display:flex;gap:6px">'+
+  '<button onclick="rec(\'mở màn chỉnh sửa bộ đề\')">Chỉnh sửa bộ đề</button>'+
+  '<button class="ghost" onclick="rollback()">Quay về ghi chú thô</button></span></div>'+
+  (s.saved?'<div class="result"><b>Bắt đầu ôn với '+s.level+" câu.</b> Bộ này do AI soạn toàn bộ.</div>":"");
+}
+
+function setOpt(k){ opt=k; rec("chuyển sang option "+k); draw() }
+function pickSrc(i,v){
+  var s=st(); s.slots[i].src = v || null;
+  var name = v ? SNIPPETS.filter(function(x){ return x.id===v })[0].kind : "bỏ chọn";
+  rec("thẻ "+(i+1)+": chọn nguồn "+name); draw("stage");
+}
+function editSlot(i,f,v){
+  var s=st(), first=!s.slots[i][f];
+  s.slots[i][f]=v;
+  if(first&&v) rec("thẻ "+(i+1)+": bắt đầu gõ "+(f==="q"?"câu hỏi":"câu trả lời"));
+}
+function saveA(){
+  var s=st(); s.saved=true;
+  rec("lưu bộ ôn tập tự soạn — "+s.slots.filter(function(x){ return x.q.trim() }).length+" thẻ");
+  draw("stage");
+}
+function cardAct(id,act){
+  var s=st(), c=s.cards.filter(function(x){ return x.id===id })[0];
+  if(act==="accept"){ c.status="accepted"; rec('duyệt thẻ "'+c.q.slice(0,34)+'…"') }
+  if(act==="reject"){ c.status="rejected"; rec('loại thẻ "'+c.q.slice(0,34)+'…"') }
+  if(act==="undo"){ c.status="pending"; rec("hoàn tác một thẻ") }
+  if(act==="regen"){ c.q="["+c.q+"] — bản viết lại"; c.edited=true; rec("bấm đổi câu khác cho thẻ nguồn "+c.src) }
+  if(act==="edit"){
+    var nq=prompt("Sửa câu hỏi:",c.q);
+    if(nq!==null&&nq.trim()){ c.q=nq.trim(); c.edited=true; rec("sửa tay câu hỏi của thẻ nguồn "+c.src) }
+  }
+  draw("stage");
+}
+function finishB(){
+  var s=st(); s.saved=true;
+  rec("chốt bộ ôn tập — duyệt "+s.cards.filter(function(c){ return c.status==="accepted" }).length+
+      ", loại "+s.cards.filter(function(c){ return c.status==="rejected" }).length+
+      ", sửa "+s.cards.filter(function(c){ return c.edited }).length);
+  draw("stage");
+}
+function setLevel(v){ var s=st(); s.level=+v; rec("kéo thanh số câu về "+v); draw("stage") }
+function startC(){ var s=st(); s.saved=true; rec("bắt đầu làm bộ AI tạo sẵn — "+s.level+" câu"); draw("stage") }
+function rollback(){ var s=st(); s.rolledBack=true; s.saved=false;
+  rec("rollback — bỏ bộ AI tạo sẵn, quay về ghi chú thô"); draw("stage") }
+function undoRollback(){ var s=st(); s.rolledBack=false; rec("tạo lại bộ ôn tập sau rollback"); draw("stage") }
+function resetAll(){ state={}; log=[]; opt="A"; draw() }
+function copyLog(){
+  var txt=log.map(function(l){ return l.t+"\t["+l.opt+"]\t"+l.ev }).join("\n");
+  if(navigator.clipboard) navigator.clipboard.writeText(txt);
+}
+draw();
+</script>
+</body>
+</html>
