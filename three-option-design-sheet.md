@@ -1,7 +1,10 @@
 # Three-Option Design Sheet — Day 18
 
 **Nhóm:** cuong  
-**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo  
+**Thành viên:** 
+1. Lê Quang Huy (2A202601821)
+2. Đàm Việt Cường (2A202601566)
+3. Trần Đức Bảo  
 **Case B:** AI Notes — Personal Learning Notes  
 
 ---
@@ -38,10 +41,11 @@
   - *Snippet 2 (Slide 7 - Note ngắn):* "Lưu ý 3 phản xạ: Deflect (Gạt đi), Anchor (Neo lại), Dig (Đào sâu) khi gặp lời khen hoặc đòi hỏi tính năng."
   - *Snippet 3 (Slide 11 - Ảnh chụp + Chưa hiểu):* "Phân biệt Pain (nỗi đau lúc làm job) vs Consequence (hậu quả nếu không giải quyết)."
 
-### 2.2. Bảng so sánh 3 Solution Options
+### 2.2. Bảng so sánh 3 Solution Options & Phân công thành viên
 
-| Thành phần | Option A (User-Led / Structured Snippet Hub) | Option B (Co-Creation / Interactive AI Study Assistant) | Option C (AI-Led / Autonomous 1-Click Digest & Check) |
+| Thành phần | Option A (User-Led / Structured Hub) | Option B (Co-Creation / Interactive Co-Pilot) | Option C (AI-Led / Autonomous 1-Click Pack) |
 |---|---|---|---|
+| **Thành viên phụ trách** | **Lê Quang Huy** | **Đàm Việt Cường** | **Trần Đức Bảo** |
 | **Solution Mechanism** | **Interactive Snippet Hub & Manual Binder (Zero-Inference)**: Hệ thống gom note/ảnh vào khay Dock bên phải theo slide. Cung cấp sẵn các khung mẫu (Tóm tắt / Thẻ giải thích / Thẻ Quiz). User tự kéo thả mẩu note vào khung và tự gõ nội dung. | **Interactive AI Co-Pilot (Ask & Propose with Dual Mode)**: AI phân tích các mẩu note/chưa hiểu và đề xuất 2 dạng thẻ: (1) Thẻ tóm tắt & giải thích điểm khó (cho Hoàn) và (2) Thẻ câu hỏi tự kiểm tra kèm trích dẫn slide (cho Mai). User duyệt từng thẻ (*Chấp nhận / Chỉnh sửa / Đổi câu khác*). | **Autonomous Study Digest & Mini-Quiz (Act with Guardrails & Instant Rollback)**: Hệ thống tự động tạo 100% bản tóm tắt trọn gói gồm: 3 ý cốt lõi + 1 mục giải thích điểm khó + Bộ 3 câu trắc nghiệm tự kiểm tra. Cung cấp nút *"Tùy chỉnh theo mục tiêu"* và nút *"Rollback về ghi chú thô"*. |
 | **User làm gì?** | Tự kéo thả các mẩu ghi chú vào khung mẫu, tự viết lời giải thích hoặc tự soạn câu hỏi ôn tập theo tư duy cá nhân. | Đọc các thẻ do AI đề xuất, bấm *Chấp nhận*, bấm *Sửa nội dung* hoặc bấm *Đổi câu khác*, quyết định giữ lại những phần mình thực sự cần. | Đọc ngay bản tóm tắt hoặc bấm làm bài trắc nghiệm tự kiểm tra; bấm *Rollback* nếu muốn quay về ghi chú gốc hoặc bấm *Điều chỉnh độ khó*. |
 | **AI làm gì?** | **Don't Act / Zero-Inference**: Không tự ý suy luận hay sinh text. Chỉ làm nhiệm vụ sắp xếp, lưu trữ và auto-save đồng bộ dữ liệu chống mất file. | **Ask & Propose**: Đề xuất bản thảo giải thích và câu hỏi dựa trên đúng dữ liệu note của user, hiển thị trích dẫn nguồn slide minh bạch. | **Act with Guardrails**: Tự động biên soạn hoàn chỉnh 100% tài liệu ôn tập và bài trắc nghiệm ngay khi mở trang, hỗ trợ đường khôi phục dữ liệu tức thì. |
@@ -54,11 +58,11 @@
 - **A khác C vì:** Option A đòi hỏi 100% nỗ lực biên tập từ con người từ trang giấy trắng, còn Option C là trải nghiệm tự động hóa 1-click toàn diện từ AI.
 
 ```text
-[OPTION A] USER CREATES / INITIATES (Zero-Inference Hub & Manual Binder)
+[OPTION A - Lê Quang Huy] USER CREATES / INITIATES (Zero-Inference Hub & Manual Binder)
     ↓
-[OPTION B] USER + AI CO-CREATE (Interactive AI Co-Pilot with Card Review & Dual Mode)
+[OPTION B - Đàm Việt Cường] USER + AI CO-CREATE (Interactive AI Co-Pilot with Card Review & Dual Mode)
     ↓
-[OPTION C] AI CREATES / INITIATES, USER REVIEWS (Autonomous Study Digest with Instant Rollback)
+[OPTION C - Trần Đức Bảo] AI CREATES / INITIATES, USER REVIEWS (Autonomous Study Digest with Instant Rollback)
 ```
 
 ---
@@ -67,7 +71,7 @@
 
 ### 3.1. Bảng quyết định thiết kế Human–AI (Human–AI Decision Table - Gate 3 Passed)
 
-| Tiêu chí thiết kế | Option A (User-Led) | Option B (Co-Creation) | Option C (AI-Led) |
+| Tiêu chí thiết kế | Option A (User-Led — Huy) | Option B (Co-Creation — Cường) | Option C (AI-Led — Bảo) |
 |---|---|---|---|
 | **1. Role & Agency (User & AI làm gì?)** | User nắm 100% quyền sáng tạo nội dung. AI chỉ làm nhiệm vụ lưu trữ và hiển thị khay ghi chú trực quan. | User đóng vai trò "Biên tập viên / Người kiểm duyệt". AI đóng vai trò "Trợ lý soạn thảo đề xuất". | AI đóng vai trò "Gia sư tự động chuẩn bị tài liệu". User đóng vai trò "Người trải nghiệm & Người quyết định cuối cùng". |
 | **2. Decision (Act / Ask / Don't Act? Vì sao?)** | **Don't Act**: AI không suy luận hay tự sinh nội dung vì người dùng muốn tự tay tổng hợp chính xác theo tư duy cá nhân. | **Ask / Propose**: AI đưa ra bản thảo gợi ý kèm nút hành động rõ ràng (*Duyệt / Sửa / Xóa*) để user luôn làm chủ. | **Act with High Transparency**: AI tự động tạo gói ôn tập ngay lập tức để tiết kiệm tối đa thời gian cho học viên, đi kèm trích dẫn nguồn. |
