@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VLearn AI Notes — Option B: Interactive Co-Pilot | Đàm Việt Cường (2A202601566)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM TOKENS (UI/UX PRO MAX - DARK ELEVATION & SEMANTIC TOKENS)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #07090e;
+      --bg-surface: #0f172a;
+      --bg-surface-elevated: #1e293b;
+      --bg-card: rgba(30, 41, 59, 0.72);
+      --bg-card-hover: rgba(51, 65, 85, 0.85);
+      --bg-glass: rgba(15, 23, 42, 0.8);
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --border-focus: #38bdf8;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-inverse: #020617;
+      
+      --primary-500: #3b82f6;
+      --primary-600: #2563eb;
+      --accent-cyan: #06b6d4;
+      --accent-sky: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
+      --shadow-glow-blue: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+      --shadow-glow-emerald: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+      
+      --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+      --transition-smooth: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(168, 85, 247, 0.05) 40%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Top Navigation / App Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 28px;
+    }
+
+    .header-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #ffffff;
+      box-shadow: var(--shadow-glow-blue);
+    }
+
+    .brand-details h1 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .badge-student {
+      font-size: 11px;
+      font-family: var(--font-code);
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-sky);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-header-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-medium);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-header-action:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Main Container */
+    .main-layout {
+      position: relative;
+      z-index: 1;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 28px 24px;
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Context Banner */
+    .context-hero {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.7));
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .context-hero::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 300px;
+      background: radial-gradient(circle at right, rgba(59, 130, 246, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-title-group h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .pill-session {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      max-width: 650px;
+    }
+
+    .hero-stats-strip {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .stat-pill {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-pill strong {
+      color: #ffffff;
+    }
+
+    .hero-task-box {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 13px;
+      color: #fde68a;
+      line-height: 1.5;
+    }
+
+    .hero-task-box strong {
+      color: #fbbf24;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Grid Layout: 2 Columns */
+    .app-workspace-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 1024px) {
+      .app-workspace-grid {
+        grid-template-columns: 1fr;
+      }
+      .context-hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Column: Raw Capture Dock (Fixture Data) */
+    .dock-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      height: fit-content;
+    }
+
+    .dock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .dock-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dock-count-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .raw-notes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .raw-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .raw-card:hover {
+      border-color: var(--border-medium);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .raw-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .badge-unclear {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .badge-highlight {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-sky);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-note {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .raw-quote {
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .raw-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    /* Right Column: AI Co-Pilot Stream (Dual Mode) */
+    .stream-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .stream-control-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .co-pilot-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ai-sparkle-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.06); opacity: 0.85; }
+    }
+
+    .status-text h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .status-text p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .stream-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-batch-accept {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #ffffff;
+      border: none;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-batch-accept:hover {
+      background: linear-gradient(135deg, #047857, #059669);
+      transform: translateY(-1px);
+    }
+
+    /* Stream Cards Stack */
+    .stream-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* DUAL MODE CARD TYPE 1: EXPLANATION CARD (FOR HOAN) */
+    .card-co-pilot {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-co-pilot:hover {
+      border-color: var(--border-medium);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-co-pilot.is-accepted {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(16, 185, 129, 0.04));
+    }
+
+    .card-co-pilot.is-rejected {
+      opacity: 0.35;
+      pointer-events: none;
+      filter: grayscale(1);
+    }
+
+    .card-co-pilot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag-category-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-explanation {
+      background: rgba(14, 165, 233, 0.15);
+      color: var(--accent-sky);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+
+    .tag-quiz {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .badge-evidence-anchor {
+      font-size: 12px;
+      color: var(--accent-sky);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .badge-evidence-anchor:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: var(--accent-sky);
+    }
+
+    .card-headline {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    /* Explanation Body (Type 1) */
+    .explanation-body {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+
+    .explanation-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .explanation-point:last-child {
+      margin-bottom: 0;
+    }
+
+    .explanation-point .point-bullet {
+      color: var(--accent-cyan);
+      font-weight: 800;
+    }
+
+    /* Quiz Body (Type 2) */
+    .quiz-options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .quiz-options-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quiz-choice-item {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.45;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .quiz-choice-item.correct-choice {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+      font-weight: 500;
+    }
+
+    .choice-letter {
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+
+    .correct-choice .choice-letter {
+      color: var(--accent-emerald);
+    }
+
+    /* Card Action Bar (Human-in-the-loop controls) */
+    .card-footer-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .left-controls, .right-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action-sm {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-action-sm:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border-color: var(--border-medium);
+    }
+
+    .btn-action-accept {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      border: none;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-action-accept:hover {
+      background: linear-gradient(135deg, #059669, #047857);
+      transform: translateY(-1px);
+    }
+
+    .btn-action-reject {
+      background: transparent;
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      color: #fb7185;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-action-reject:hover {
+      background: rgba(244, 63, 94, 0.12);
+      border-color: #f43f5e;
+    }
+
+    /* Modal / Popover: Slide Snapshot & Inline Edit */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.is-open {
+      display: flex;
+      animation: modalFadeIn 0.2s ease forwards;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-content-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      max-width: 620px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 12px;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .modal-close-btn:hover {
+      color: #ffffff;
+    }
+
+    .modal-textarea {
+      width: 100%;
+      min-height: 120px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    .modal-textarea:focus {
+      outline: none;
+      border-color: var(--border-focus);
+    }
+
+    /* Practice & Review Mode Overlay */
+    .practice-view-container {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-glow-emerald);
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .practice-view-container.active {
+      display: block;
+    }
+
+    .practice-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .practice-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #34d399;
+    }
+
+    .practice-header p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Interactive Practice Item */
+    .practice-quiz-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .practice-q-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .practice-answers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .practice-ans-btn {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      color: #e2e8f0;
+      font-family: inherit;
+      font-size: 13.5px;
+      text-align: left;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .practice-ans-btn:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .practice-ans-btn.is-correct {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-emerald);
+      color: #6ee7b7;
+      font-weight: 600;
+    }
+
+    .practice-ans-btn.is-wrong {
+      background: rgba(244, 63, 94, 0.15);
+      border-color: var(--accent-rose);
+      color: #fda4af;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e293b;
+      border: 1px solid var(--border-medium);
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2000;
+    }
+
+    .toast-popup.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <!-- Top App Navigation -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-cluster">
+        <div class="brand-logo">V</div>
+        <div class="brand-details">
+          <h1>
+            VLearn AI Notes
+            <span class="badge-student">Đàm Việt Cường — 2A202601566</span>
+          </h1>
+          <span class="brand-subtitle">Option B: Co-Creation AI Co-Pilot (Ask & Propose Architecture)</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-header-action" onclick="showSlidePreview('Slide 11')">
+          📸 Xem Slide gốc
+        </button>
+        <button class="btn-header-action" onclick="resetPrototype()">
+          🔄 Khôi phục ban đầu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-layout">
+
+    <!-- Common Context Hero Banner -->
+    <section class="context-hero">
+      <div class="hero-title-group">
+        <h2>
+          <span>Bài 17: Finding & Validating Pain Points</span>
+          <span class="pill-session">Tối trước buổi học</span>
+        </h2>
+        <p class="hero-desc">
+          Hệ thống ghi nhận bạn đã lưu <strong>3 mẩu ghi chú & ảnh chụp</strong> trong buổi học. AI Co-Pilot đã phân tích và đề xuất sẵn tài liệu ôn tập theo 2 chế độ: <strong>Giải thích điểm khó</strong> và <strong>Câu hỏi tự kiểm tra</strong>.
+        </p>
+        <div class="hero-stats-strip">
+          <div class="stat-pill">📌 <strong>1 Highlight</strong> Slide 3</div>
+          <div class="stat-pill">📝 <strong>1 Note ngắn</strong> Slide 7</div>
+          <div class="stat-pill">⚠️ <strong>1 Chưa hiểu</strong> Slide 11</div>
+        </div>
+      </div>
+
+      <div class="hero-task-box">
+        <strong>🎯 Nhiệm vụ của bạn (Outcome Task):</strong>
+        Duyệt và tinh chỉnh các thẻ do AI gợi ý để tạo ra một <strong>bộ tài liệu ôn tập cá nhân hóa</strong> giúp bạn tự tin nắm vững kiến thức trước giờ lên lớp!
+      </div>
+    </section>
+
+    <!-- Interactive 2-Column Grid Workspace -->
+    <div class="app-workspace-grid" id="mainWorkspace">
+
+      <!-- LEFT COLUMN: Raw Capture Dock (Fixture Data) -->
+      <aside class="dock-panel">
+        <div class="dock-header">
+          <span class="dock-title">📥 Ghi chú gốc của bạn</span>
+          <span class="dock-count-badge">3 dấu vết</span>
+        </div>
+
+        <div class="raw-notes-list">
+          <!-- Item 1: Chưa hiểu -->
+          <div class="raw-card" onclick="highlightStreamCard('card1')">
+            <span class="raw-card-badge badge-unclear">⚠️ Điểm Chưa hiểu • Slide 11</span>
+            <p class="raw-quote">"Phân biệt Pain (nỗi đau lúc làm job) vs Consequence (hậu quả nếu không giải quyết)."</p>
+            <div class="raw-meta">
+              <span>Được trích xuất sang Thẻ 1</span>
+              <span>11:05 AM</span>
+            </div>
+          </div>
+
+          <!-- Item 2: Highlight -->
+          <div class="raw-card" onclick="highlightStreamCard('card2')">
+            <span class="raw-card-badge badge-highlight">✨ Highlight • Slide 3</span>
+            <p class="raw-quote">"Problem Hypothesis: Khi [situation], [user] gặp khó khăn [job] vì [barrier], dẫn đến [consequence]."</p>
+            <div class="raw-meta">
+              <span>Được trích xuất sang Thẻ 2</span>
+              <span>10:15 AM</span>
+            </div>
+          </div>
+
+          <!-- Item 3: Note ngắn -->
+          <div class="raw-card" onclick="highlightStreamCard('card3')">
+            <span class="raw-card-badge badge-note">📝 Note ngắn • Slide 7</span>
+            <p class="raw-quote">"Lưu ý 3 phản xạ: Deflect (Gạt đi), Anchor (Neo lại), Dig (Đào sâu) khi gặp lời khen hoặc đòi hỏi tính năng."</p>
+            <div class="raw-meta">
+              <span>Được trích xuất sang Thẻ 3</span>
+              <span>10:38 AM</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- RIGHT COLUMN: AI Co-Pilot Stream -->
+      <section class="stream-panel">
+
+        <!-- Stream Control Bar -->
+        <div class="stream-control-bar">
+          <div class="co-pilot-status">
+            <div class="ai-sparkle-icon">✨</div>
+            <div class="status-text">
+              <h3>AI Co-Pilot Drafts Ready</h3>
+              <p>Đã duyệt: <strong id="acceptedCount" style="color: var(--accent-emerald);">0</strong> / 3 thẻ • Giữ toàn quyền chỉnh sửa</p>
+            </div>
+          </div>
+
+          <div class="stream-actions">
+            <button class="btn-header-action" onclick="batchAcceptAll()">
+              ⚡ Duyệt nhanh tất cả
+            </button>
+            <button class="btn-batch-accept" id="btnLaunchPractice" onclick="startPracticeMode()">
+              🚀 Bắt đầu Luyện tập (<span id="btnReadyCount">0</span>/3)
+            </button>
+          </div>
+        </div>
+
+        <!-- Stream Cards Stack -->
+        <div class="stream-stack" id="streamCardsContainer">
+
+          <!-- ============================================================== -->
+          <!-- CARD 1: DUAL MODE TYPE 1 - EXPLANATION CARD (FOR HOAN'S NEED)   -->
+          <!-- ============================================================== -->
+          <article class="card-co-pilot" id="card1">
+            <div class="card-co-pilot-header">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="tag-category-pill tag-explanation">💡 Thẻ Giải thích Điểm khó</span>
+                <span class="badge-evidence-anchor" onclick="showSlidePreview('Slide 11')">
+                  🔍 Nguồn: Slide 11 (Điểm Chưa hiểu)
+                </span>
+              </div>
+              <span style="font-size: 11px; color: var(--accent-amber); font-weight: 700;">Độ ưu tiên cao</span>
+            </div>
+
+            <h4 class="card-headline" id="titleCard1">
+              Phân biệt bản chất giữa "Nỗi đau" (Pain) và "Hậu quả" (Consequence) trong JTBD
+            </h4>
+
+            <div class="explanation-body" id="contentCard1">
+              <div class="explanation-point">
+                <span class="point-bullet">●</span>
+                <span><strong>Pain (Nỗi đau):</strong> Là rào cản, sự bất tiện hoặc khó khăn mà người dùng trực tiếp nếm trải <em>trong quá trình thực hiện Job</em> (Ví dụ: Mất hàng giờ để chuyển đổi ghi chú viết tay trên iPad thành quiz).</span>
+              </div>
+              <div class="explanation-point">
+                <span class="point-bullet">●</span>
+                <span><strong>Consequence (Hậu quả):**</strong> Là cái giá thực tế hoặc chi phí mà người dùng phải trả <em>nếu không giải quyết rào cản đó</em> (Ví dụ: Không kịp ôn thi, bị hổng kiến thức cốt lõi trước buổi thực hành).</span>
+              </div>
+            </div>
+
+            <div class="card-footer-controls">
+              <div class="left-controls">
+                <button class="btn-action-sm" onclick="openEditModal(1)">✏️ Sửa giải thích</button>
+                <button class="btn-action-sm" onclick="regenerateCard(1)">🔄 Đổi cách giải thích khác</button>
+              </div>
+              <div class="right-controls">
+                <button class="btn-action-reject" onclick="rejectCard(1)">✕ Bỏ qua</button>
+                <button class="btn-action-accept" id="btnAccept1" onclick="acceptCard(1)">✓ Chấp nhận thẻ này</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ============================================================== -->
+          <!-- CARD 2: DUAL MODE TYPE 2 - ACTIVE RECALL QUIZ (FOR MAI'S NEED) -->
+          <!-- ============================================================== -->
+          <article class="card-co-pilot" id="card2">
+            <div class="card-co-pilot-header">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="tag-category-pill tag-quiz">🎯 Thẻ Tự kiểm tra (Quiz)</span>
+                <span class="badge-evidence-anchor" onclick="showSlidePreview('Slide 3')">
+                  🔍 Nguồn: Slide 3 (Highlight)
+                </span>
+              </div>
+              <span style="font-size: 11px; color: var(--accent-sky); font-weight: 700;">Active Recall</span>
+            </div>
+
+            <h4 class="card-headline" id="titleCard2">
+              Câu hỏi 1: Cấu trúc chuẩn của một Problem Hypothesis gồm những mệnh đề nào?
+            </h4>
+
+            <div class="quiz-options-grid" id="contentCard2">
+              <div class="quiz-choice-item correct-choice">
+                <span class="choice-letter">A.</span>
+                <span>Khi [situation], [user] gặp khó khăn trong [job] vì [barrier], dẫn đến [consequence].</span>
+              </div>
+              <div class="quiz-choice-item">
+                <span class="choice-letter">B.</span>
+                <span>Tôi tin rằng nếu xây dựng tính năng [feature] thì [user] sẽ trả tiền sử dụng.</span>
+              </div>
+              <div class="quiz-choice-item">
+                <span class="choice-letter">C.</span>
+                <span>Vì [user] không có công cụ AI nên họ cần giải pháp [solution] của chúng tôi.</span>
+              </div>
+              <div class="quiz-choice-item">
+                <span class="choice-letter">D.</span>
+                <span>[User] muốn [job] nhanh hơn 50% bằng cách sử dụng ứng dụng di động.</span>
+              </div>
+            </div>
+
+            <div class="card-footer-controls">
+              <div class="left-controls">
+                <button class="btn-action-sm" onclick="openEditModal(2)">✏️ Sửa câu hỏi</button>
+                <button class="btn-action-sm" onclick="regenerateCard(2)">🔄 Đổi câu hỏi khác</button>
+              </div>
+              <div class="right-controls">
+                <button class="btn-action-reject" onclick="rejectCard(2)">✕ Bỏ qua</button>
+                <button class="btn-action-accept" id="btnAccept2" onclick="acceptCard(2)">✓ Chấp nhận câu này</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ============================================================== -->
+          <!-- CARD 3: DUAL MODE TYPE 2 - ACTIVE RECALL QUIZ 2                -->
+          <!-- ============================================================== -->
+          <article class="card-co-pilot" id="card3">
+            <div class="card-co-pilot-header">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="tag-category-pill tag-quiz">🎯 Thẻ Tự kiểm tra (Quiz)</span>
+                <span class="badge-evidence-anchor" onclick="showSlidePreview('Slide 7')">
+                  🔍 Nguồn: Slide 7 (Note ngắn)
+                </span>
+              </div>
+              <span style="font-size: 11px; color: var(--accent-sky); font-weight: 700;">Active Recall</span>
+            </div>
+
+            <h4 class="card-headline" id="titleCard3">
+              Câu hỏi 2: Khi phỏng vấn người dùng mà họ đưa ra lời khen chung chung (Ví dụ: "App này tuyệt vời quá"), bạn nên xử lý theo phản xạ nào?
+            </h4>
+
+            <div class="quiz-options-grid" id="contentCard3">
+              <div class="quiz-choice-item correct-choice">
+                <span class="choice-letter">A.</span>
+                <span>Deflect (Gạt đi): Cảm ơn lịch sự rồi neo người dùng về hành vi cụ thể đã làm trong quá khứ.</span>
+              </div>
+              <div class="quiz-choice-item">
+                <span class="choice-letter">B.</span>
+                <span>Dig (Đào sâu): Hỏi xem họ thích tính năng nào nhất để thêm vào roadmap.</span>
+              </div>
+              <div class="quiz-choice-item">
+                <span class="choice-letter">C.</span>
+                <span>Anchor (Neo lại): Bắt người dùng cam kết mua ngay khi ra mắt sản phẩm.</span>
+              </div>
+              <div class="quiz-choice-item">
+                <span class="choice-letter">D.</span>
+                <span>Ghi nhận ngay lời khen làm bằng chứng chứng minh giải pháp đã thành công.</span>
+              </div>
+            </div>
+
+            <div class="card-footer-controls">
+              <div class="left-controls">
+                <button class="btn-action-sm" onclick="openEditModal(3)">✏️ Sửa câu hỏi</button>
+                <button class="btn-action-sm" onclick="regenerateCard(3)">🔄 Đổi câu hỏi khác</button>
+              </div>
+              <div class="right-controls">
+                <button class="btn-action-reject" onclick="rejectCard(3)">✕ Bỏ qua</button>
+                <button class="btn-action-accept" id="btnAccept3" onclick="acceptCard(3)">✓ Chấp nhận câu này</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </section>
+    </div>
+
+    <!-- PRACTICE & TEST VIEW (UNLOCKED AFTER REVIEW) -->
+    <section class="practice-view-container" id="practiceContainer">
+      <div class="practice-header">
+        <h2>🎉 Bộ Ôn Tập Active Recall Đã Sẵn Sàng!</h2>
+        <p>Các câu hỏi do bạn duyệt đã được đảo ngẫu nhiên để tự kiểm tra kiến thức trước buổi học.</p>
+      </div>
+
+      <div class="practice-quiz-box">
+        <div style="font-size: 12px; color: var(--accent-sky); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+          Câu hỏi kiểm tra nhanh 1/2 • Nguồn Slide 11
+        </div>
+        <div class="practice-q-text">
+          Đâu là ví dụ chính xác nhất về "Consequence" (Hậu quả thực tế) của việc học viên không kịp tổng hợp ghi chú?
+        </div>
+        <div class="practice-answers-list">
+          <button class="practice-ans-btn" onclick="checkPracticeAnswer(this, false)">
+            <span>A. Cảm thấy phần mềm ghi chú trên iPad chưa đủ đẹp.</span>
+            <span>⚪</span>
+          </button>
+          <button class="practice-ans-btn" onclick="checkPracticeAnswer(this, true)">
+            <span>B. Phải tốn 3 giờ đọc lại video từ đầu và bị làm sai bài tập thực hành trên lớp.</span>
+            <span>⚪</span>
+          </button>
+          <button class="practice-ans-btn" onclick="checkPracticeAnswer(this, false)">
+            <span>C. Muốn AI tự vẽ sơ đồ tư duy cho mình.</span>
+            <span>⚪</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 12px; margin-top: 20px;">
+        <button class="btn-header-action" onclick="exitPracticeMode()">
+          ← Quay lại màn hình duyệt thẻ
+        </button>
+        <button class="btn-batch-accept" onclick="showToast('✅ Đã lưu kết quả ôn tập vào hồ sơ cá nhân!')">
+          💾 Hoàn tất buổi ôn tập
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: Inline Edit Card -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-content-box">
+      <div class="modal-header">
+        <span class="modal-title">✏️ Chỉnh sửa nội dung thẻ (Human Control)</span>
+        <button class="modal-close-btn" onclick="closeEditModal()">✕</button>
+      </div>
+      <div>
+        <label style="font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 6px;">Tiêu đề / Câu hỏi:</label>
+        <input type="text" id="modalInputTitle" style="width: 100%; background: #0f172a; border: 1px solid var(--border-medium); padding: 10px; border-radius: 6px; color: #fff; font-family: inherit; font-size: 13.5px; margin-bottom: 14px;">
+        
+        <label style="font-size: 12px; color: var(--text-secondary); display: block; margin-bottom: 6px;">Nội dung chi tiết / Gợi ý đáp án:</label>
+        <textarea id="modalInputBody" class="modal-textarea"></textarea>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="btn-header-action" onclick="closeEditModal()">Hủy</button>
+        <button class="btn-batch-accept" onclick="saveEditedCard()">Lưu chỉnh sửa</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Popup -->
+  <div class="toast-popup" id="toast">
+    <span class="toast-icon">✨</span>
+    <span id="toastMessage">Thông báo</span>
+  </div>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    let acceptedCards = new Set();
+    let currentEditingId = null;
+
+    function acceptCard(id) {
+      const card = document.getElementById('card' + id);
+      const btn = document.getElementById('btnAccept' + id);
+      
+      card.classList.add('is-accepted');
+      card.classList.remove('is-rejected');
+      btn.innerHTML = '✓ Đã chấp nhận';
+      btn.style.background = 'rgba(16, 185, 129, 0.2)';
+      btn.style.color = '#34d399';
+      btn.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+      
+      acceptedCards.add(id);
+      updateCounts();
+      showToast('Đã chấp nhận thẻ ' + id + ' vào bộ ôn tập!');
+    }
+
+    function rejectCard(id) {
+      const card = document.getElementById('card' + id);
+      card.classList.add('is-rejected');
+      card.classList.remove('is-accepted');
+      acceptedCards.delete(id);
+      updateCounts();
+      showToast('Đã bỏ qua thẻ ' + id);
+    }
+
+    function updateCounts() {
+      const count = acceptedCards.size;
+      document.getElementById('acceptedCount').textContent = count;
+      document.getElementById('btnReadyCount').textContent = count;
+    }
+
+    function batchAcceptAll() {
+      [1, 2, 3].forEach(id => acceptCard(id));
+      showToast('✨ Đã duyệt nhanh toàn bộ 3 thẻ đề xuất!');
+    }
+
+    function regenerateCard(id) {
+      showToast('🔄 AI đang soạn thảo phương án khác cho Thẻ ' + id + '...');
+      setTimeout(() => {
+        if (id === 1) {
+          document.getElementById('titleCard1').textContent = 'Giải thích đơn giản: Tại sao Pain là rào cản còn Consequence là cái giá?';
+          document.getElementById('contentCard1').innerHTML = `
+            <div class="explanation-point"><span class="point-bullet">●</span><span><strong>Ví dụ trực quan:</strong> Đau răng là Pain (nỗi đau lúc nhai). Mất răng hoặc phải tốn 10 triệu đi trồng răng sứ là Consequence (hậu quả nếu không chữa).</span></div>
+            <div class="explanation-point"><span class="point-bullet">●</span><span><strong>Trong JTBD:</strong> Phỏng vấn phải chạm tới Consequence thì người dùng mới sẵn sàng thay đổi thói quen hoặc trả tiền mua giải pháp.</span></div>
+          `;
+        } else if (id === 2) {
+          document.getElementById('titleCard2').textContent = 'Câu hỏi 1 (Mới): Thành phần [barrier] trong Problem Hypothesis có ý nghĩa gì?';
+        } else if (id === 3) {
+          document.getElementById('titleCard3').textContent = 'Câu hỏi 2 (Mới): Phản xạ nào giúp đào sâu khi người dùng đòi hỏi tính năng mới?';
+        }
+        showToast('✅ Đã cập nhật nội dung mới cho Thẻ ' + id);
+      }, 600);
+    }
+
+    // Modal Edit Logic
+    function openEditModal(id) {
+      currentEditingId = id;
+      const title = document.getElementById('titleCard' + id).textContent.trim();
+      document.getElementById('modalInputTitle').value = title;
+      document.getElementById('modalInputBody').value = 'Nội dung chi tiết được biên tập tùy chỉnh theo tư duy của bạn...';
+      document.getElementById('editModal').classList.add('is-open');
+    }
+
+    function closeEditModal() {
+      document.getElementById('editModal').classList.remove('is-open');
+    }
+
+    function saveEditedCard() {
+      if (currentEditingId) {
+        const newTitle = document.getElementById('modalInputTitle').value;
+        document.getElementById('titleCard' + currentEditingId).textContent = newTitle;
+        acceptCard(currentEditingId);
+        closeEditModal();
+        showToast('💾 Đã lưu nội dung chỉnh sửa cho Thẻ ' + currentEditingId);
+      }
+    }
+
+    function startPracticeMode() {
+      if (acceptedCards.size === 0) {
+        showToast('⚠️ Vui lòng duyệt ít nhất 1 thẻ trước khi bắt đầu luyện tập!');
+        return;
+      }
+      document.getElementById('mainWorkspace').style.display = 'none';
+      document.getElementById('practiceContainer').classList.add('active');
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    function exitPracticeMode() {
+      document.getElementById('practiceContainer').classList.remove('active');
+      document.getElementById('mainWorkspace').style.display = 'grid';
+    }
+
+    function checkPracticeAnswer(btn, isCorrect) {
+      document.querySelectorAll('.practice-ans-btn').forEach(b => {
+        b.className = 'practice-ans-btn';
+        b.querySelector('span:last-child').textContent = '⚪';
+      });
+
+      if (isCorrect) {
+        btn.classList.add('is-correct');
+        btn.querySelector('span:last-child').textContent = '✅ Chính xác!';
+        showToast('🎉 Bạn đã trả lời hoàn toàn chính xác!');
+      } else {
+        btn.classList.add('is-wrong');
+        btn.querySelector('span:last-child').textContent = '❌ Chưa đúng';
+        showToast('Hãy thử lại hoặc đối chiếu với thẻ giải thích Slide 11 nhé!');
+      }
+    }
+
+    function showSlidePreview(slideName) {
+      showToast('📸 Đang mở Snapshot của ' + slideName + ' (Trích xuất từ bài học 17)');
+    }
+
+    function resetPrototype() {
+      acceptedCards.clear();
+      updateCounts();
+      [1, 2, 3].forEach(id => {
+        const card = document.getElementById('card' + id);
+        const btn = document.getElementById('btnAccept' + id);
+        card.className = 'card-co-pilot';
+        btn.innerHTML = '✓ Chấp nhận thẻ này';
+        btn.style = '';
+      });
+      exitPracticeMode();
+      showToast('🔄 Đã khôi phục toàn bộ trạng thái ban đầu');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMessage').textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    function highlightStreamCard(cardId) {
+      const card = document.getElementById(cardId);
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.style.borderColor = 'var(--accent-sky)';
+      card.style.boxShadow = 'var(--shadow-glow-blue)';
+      setTimeout(() => {
+        card.style.borderColor = '';
+        card.style.boxShadow = '';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
