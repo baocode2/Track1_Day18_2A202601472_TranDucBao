@@ -1,7 +1,11 @@
 # Three-Option Design Sheet — Day 18
 
-**Học viên:** Đàm Việt Cường | **MHV:** 2A202601566 | **Nhóm:** cuong  
-**Case nghiên cứu:** Case B — AI Notes: Personal Learning Notes  
+**Nhóm:** cuong  
+**Thành viên:** 
+1. Lê Quang Huy (2A202601821)
+2. Đàm Việt Cường (2A202601566)
+3. Trần Đức Bảo  
+**Case B:** AI Notes — Personal Learning Notes  
 
 ---
 
@@ -9,77 +13,68 @@
 
 ### 1.1. Bảng đối chiếu Evidence (Evidence Huddle)
 
-| Practice Note / Nguồn | User đã thực sự làm/nói gì? (Observed) | Điều nhóm đang diễn giải (Interpreted) |
-|:---:|---|---|
-| **Note 1 (Bạn Mai - 01317)** | Xuất slide VLearn sang iPad để viết tay + gõ vội vào Notepad trên máy tính. Lúc ôn tập: *"nếu ghi chú ở iPad... chỉ có cách là đọc lại từ đầu đến cuối thôi... không thể đảo lẫn kiến thức lên để biết mình đang quên hay thiếu chỗ nào"*. | Học viên có nhu cầu chủ động kiểm tra lỗ hổng kiến thức (active recall) bằng quiz/flashcard đảo ngẫu nhiên thay vì chỉ đọc lại thụ động (passive reading). |
-| **Note 2 (Bạn Mai - 01317)** | *"Thực ra mình cảm thấy tốn thời gian nhất là mình sẽ lại phải từ cái file ghi chú đấy để tổng hợp ra... mấy cái phần mềm làm quiz để có thể tạo ra được những câu hỏi... Nhưng ghi chú trên giấy tay thì tổng hợp lại khá là khó"*. | Rào cản lớn nhất không phải là ghi chú, mà là chi phí cơ hội và thời gian chuyển đổi các mẩu ghi chú thô/viết tay thành công cụ tự kiểm tra kiến thức. |
-| **Note 3 (Bạn Mai - 01317)** | *"Notepad ở máy tính thì bình thường là lưu rất linh tinh nên sẽ bị miss rất nhiều ghi chú quan trọng và đến lúc tìm lại thì-- hoặc là có thể chưa Ctrl S... sẽ bị mất"*. | Học viên gặp rủi ro phân mảnh dữ liệu (fragmentation) và mất mát dữ liệu khi dùng nhiều công cụ rời rạc không đồng bộ tự động. |
+| # | Nguồn | User đã thực sự làm / nói gì? (Observed) | Điều nhóm đang diễn giải (Interpreted) |
+|:---:|---|---|---|
+| **#3** | **Huy → Hoàn** | *"Đầu tiên nếu mà mình sẽ thấy khó quá mình vượt qua khả năng của mình mình sẽ bỏ."* / *"mình chỉ mục tiêu là 8 điểm thôi thì bài đấy nó 9 10 điểm thì mình cũng có thể sẽ bỏ qua."* | Quyết định **chi phí / lợi ích theo mục tiêu điểm**, không phải bị vướng. Chữ "bỏ có chủ đích" là của nhóm, không phải của bạn ấy. |
+| **#1** | **Huy → Hoàn** | *"Thầy cô giảng nhanh quá thì mình sẽ là chụp ảnh lại hoặc là các slide thì mình cũng sẽ chụp lại cái đấy. Mình không hiểu thì mình cứ gửi lên mình hỏi là cái này tại sao như này à xong rồi giải thích cho tôi cách dễ hiểu nhất."* | Workaround đang chạy là **hỏi giải thích từng chỗ**, không phải tổng hợp cả bài. Đây là baseline mọi solution phải vượt qua. |
+| **#5** | **Cường → Mai** | *"Thực ra mình cảm thấy tốn thời gian nhất là mình sẽ lại phải từ cái file ghi chú đấy để tổng hợp ra... mấy cái phần mềm làm quiz để có thể tạo ra được những cái câu hỏi... Nhưng mà cái phần mình ghi chú trên giấy tay thì việc tổng hợp lại khá là khó."* | Chính user chỉ ra khâu đắt nhất. Rào cản nằm ở **chi phí chuyển note thô thành thứ dùng lại được**, không nằm ở việc ghi. |
 
-### 1.2. Thảo luận nhanh & Pattern nhận diện
-- **Situation & Behavior lặp lại:** Học viên luôn thực hiện hành vi ghi chép trong buổi học trực tiếp nhưng dùng công cụ phân tán (iPad + Notepad + Slide).
-- **Evidence bất ngờ:** Học viên không chỉ muốn "tóm tắt lại để đọc", mà mục tiêu tối hậu là muốn **tạo câu hỏi quiz/trắc nghiệm tự kiểm tra lỗ hổng kiến thức** nhưng bị chặn lại vì chi phí tổng hợp thủ công quá lớn.
-- **Điều vẫn chỉ là suy đoán:** Liệu một bộ câu hỏi ôn tập do AI sinh tự động 100% có thực sự đánh đúng vào điểm học viên chưa hiểu, hay học viên vẫn muốn tự tay chọn lọc và biên tập từng câu hỏi?
-
-### 1.3. Chốt Hypothesis Problem (Gate 1 Passed)
-
-> **Khi** vừa học xong bài học dài và phức tạp trên VLearn, **học viên** gặp khó khăn trong việc **tự tạo bộ tài liệu ôn tập và câu hỏi tự kiểm tra kiến thức cá nhân hóa (Active Recall / Quiz)** **vì** các dấu vết ghi chú, highlight và điểm chưa hiểu nằm phân mảnh rải rác trên nhiều công cụ mà không có cách chuyển đổi nhanh thành dạng câu hỏi ôn tập, **dẫn đến** tốn nhiều giờ đọc lại toàn bộ bài giảng từ đầu một cách thụ động, dễ làm thất lạc kiến thức trọng tâm và không đo lường được mình đang hổng chỗ nào trước buổi thực hành tiếp theo.
-
-- **Evidence ban đầu hỗ trợ giả thuyết:** Lời kể và trích dẫn trực tiếp của học viên Mai (01317) về việc bất tiện khi ôn tập trên iPad, tốn thời gian soạn quiz thủ công và mất note trên Notepad.
-- **Điều vẫn chưa được chứng minh:** Mức độ can thiệp của AI đến đâu là tối ưu (User tự kéo thả vs. AI gợi ý từng câu vs. AI tự động tạo sẵn 100% kèm review)?
+### 1.2. Thảo luận nhóm & Pattern nhận diện
+- **Pattern lặp lại qua hai nguồn:** Cả Hoàn và Mai đều dùng nhiều công cụ capture rời rạc (chụp ảnh slide / iPad viết tay + Notepad) và đều bị nghẽn ở **khâu chuyển đổi từ ghi chú thô sang thứ dùng lại được**.
+- **Evidence mâu thuẫn / bất ngờ:** 
+  - Hoàn muốn **được giải thích chỗ khó**, Mai muốn **tự kiểm tra bằng câu hỏi/quiz**.
+  - Hoàn ôn vào **tối trước buổi học kế tiếp** (lệch với giả định "sau buổi học").
+- **Hypothesis Problem chốt cho Day 18 (Gate 1 Passed):**
+  > **Khi** ngồi ôn lại trước buổi học kế tiếp, **người học** khó biến các mẩu ghi chú, ảnh chụp và điểm đánh dấu chưa hiểu thành một thứ dùng lại được **vì** chúng nằm rải rác trên nhiều công cụ và phải tốn công tổng hợp thủ công mới dùng được, **dẫn đến** phải đọc lại tuần tự từ đầu hoặc đẩy sang công cụ ngoài, và không đo được mình đang hổng chỗ nào.
 
 ---
 
 ## PHẦN 2: THIẾT KẾ BA SOLUTION OPTIONS (CHẶNG 2)
 
 ### 2.1. Những thành phần giữ nguyên chung (A / B / C)
-- **Target User:** Học viên tham gia khóa học AI thực chiến trên nền tảng VLearn.
-- **Situation:** Học viên vừa kết thúc bài học phức tạp *"Finding and Validating Pain Points"*, trên hệ thống đã lưu 3 đoạn text highlight, 2 mẩu ghi chú ngắn và 1 slide đánh dấu *"Chưa hiểu: Phân biệt Pain vs Consequence"*.
-- **Task của Tester:** *"Tạo một bộ câu hỏi ôn tập (Personal Review Quiz) từ các ghi chú của bài học vừa qua để tự kiểm tra kiến thức trước buổi thực hành tiếp theo."*
-- **Desired Outcome:** Có ngay một bộ câu hỏi tự kiểm tra kiến thức tinh gọn, đúng trọng tâm phần mình còn hổng, có thể đảo ngẫu nhiên để luyện tập và đảm bảo không bị mất dữ liệu.
-- **Content/Data Fixture:**
-  - *Snippet 1 (Highlight - Slide 3):* "Problem Hypothesis: Khi [situation], [user] gặp khó khăn [job] vì [barrier], dẫn đến [consequence]."
-  - *Snippet 2 (Note ngắn - Slide 7):* "Lưu ý 3 phản xạ: Deflect (Gạt đi), Anchor (Neo lại), Dig (Đào sâu) khi gặp lời khen hoặc đòi hỏi tính năng."
-  - *Snippet 3 (Đánh dấu Chưa hiểu - Slide 11):* "Phân biệt Pain (nỗi đau/khó khăn lúc làm job) vs Consequence (hậu quả/chi phí nếu không giải quyết)."
+- **Target User:** Người học tham gia khóa học AI thực chiến trên nền tảng VLearn.
+- **Situation:** Tối trước buổi học kế tiếp, mở bài *"Finding & Validating Pain Points"* có 3 highlight, 2 note ngắn và 1 ảnh chụp/slide đánh dấu *"Chưa hiểu"*.
+- **Outcome Task:** *"Trong tình huống này, hãy dùng từng phương án để biến các mẩu ghi chú và điểm chưa hiểu thành một tài liệu/công cụ ôn tập giúp bạn tự tin trước buổi học tiếp theo."*
+- **Desired Outcome:** Có tài liệu ôn tập tinh gọn, giải tỏa được điểm chưa hiểu và tự kiểm tra được lỗ hổng kiến thức mà không mất hàng giờ copy-paste.
+- **Content/Data Fixture (3 Snippets):**
+  - *Snippet 1 (Slide 3 - Highlight):* "Problem Hypothesis: Khi [situation], [user] gặp khó khăn [job] vì [barrier], dẫn đến [consequence]."
+  - *Snippet 2 (Slide 7 - Note ngắn):* "Lưu ý 3 phản xạ: Deflect (Gạt đi), Anchor (Neo lại), Dig (Đào sâu) khi gặp lời khen hoặc đòi hỏi tính năng."
+  - *Snippet 3 (Slide 11 - Ảnh chụp + Chưa hiểu):* "Phân biệt Pain (nỗi đau lúc làm job) vs Consequence (hậu quả nếu không giải quyết)."
 
-### 2.2. Bảng so sánh 3 Solution Options
+### 2.2. Bảng so sánh 3 Solution Options & Phân công thành viên
 
-| Thành phần | Option A (User-Led / Structured Binder) | Option B (Co-Creation / Interactive AI Co-Pilot) | Option C (AI-Led / Autonomous Smart Pack) |
+| Thành phần | Option A (User-Led / Structured Hub) | Option B (Co-Creation / Interactive Co-Pilot) | Option C (AI-Led / Autonomous 1-Click Pack) |
 |---|---|---|---|
-| **Solution Mechanism** | **Interactive Snippet Binder & Manual Quiz Creator**: Gom toàn bộ note/highlight vào khay dock bên phải. User tự kéo-thả vào khung câu hỏi, tự chọn dạng quiz (Flashcard / Multiple Choice). | **AI Suggestion & Structuring Co-Pilot**: AI phân tích các mẩu note/chưa hiểu và gợi ý sẵn 3 câu hỏi trắc nghiệm kèm trích dẫn nguồn. User duyệt từng thẻ (*Accept / Edit / Reject*). | **Autonomous Study-Pack Generator**: Hệ thống tự động biên soạn 100% bộ Smart Quiz 5 câu có phân hóa độ khó ngay khi kết thúc bài. User chỉ việc nhấn *"Làm Quiz ngay"* hoặc bấm *"Điều chỉnh / Rollback"*. |
-| **User làm gì?** | Tự kéo thả các mẩu ghi chú vào khung câu hỏi, tự gõ phương án trả lời và thiết lập thẻ ôn tập. | Đọc các câu hỏi trắc nghiệm do AI đề xuất, bấm *Chấp nhận*, bấm *Sửa nội dung* hoặc bấm *Đổi câu khác*. | Nhìn tổng thể gói Quiz được tạo sẵn, nhấn bắt đầu ôn tập ngay hoặc kéo thanh trượt điều chỉnh mức độ thử thách. |
-| **AI làm gì?** | **Don't Act / Zero-Inference**: Không sinh nội dung, chỉ tự động phân loại nguồn và auto-save chống mất file. | **Ask & Propose**: Đề xuất bản thảo câu hỏi và đáp án dựa trên đúng dữ liệu note của user, trích dẫn rõ slide nguồn. | **Act with Guardrails**: Tự động tạo hoàn chỉnh bộ quiz + tóm tắt bài học, cung cấp nút phục hồi/quay lại dữ liệu thô bất cứ lúc nào. |
-| **Trigger** | User chủ động nhấn mở khay "Tạo Quiz từ Ghi chú". | Hệ thống hiển thị popup gợi ý nhẹ nhàng: *"AI đã chuẩn bị 3 câu hỏi ôn tập từ 2 điểm Chưa hiểu của bạn. Xem ngay?"*. | Tự động kích hoạt khi học viên nhấn nút "Hoàn thành bài học". |
-| **Trade-off chính** | **Ưu điểm:** Kiểm soát 100%, không lo AI bịa đặt (hallucination).<br>**Nhược điểm:** Tốn công sức và thời gian soạn câu hỏi thủ công. | **Ưu điểm:** Cân bằng hoàn hảo giữa tốc độ và quyền kiểm soát; duyệt nhanh từng câu.<br>**Nhược điểm:** Vẫn cần 2-3 lượt click duyệt của học viên. | **Ưu điểm:** Nhanh nhất (0 click ban đầu để có bài ôn tập ngay).<br>**Nhược điểm:** Nếu AI tạo câu hỏi lệch trọng tâm, user có cảm giác bị áp đặt và mất thời gian chỉnh lại. |
+| **Thành viên phụ trách** | **Lê Quang Huy** | **Đàm Việt Cường** | **Trần Đức Bảo** |
+| **Solution Mechanism** | **Interactive Snippet Hub & Manual Binder (Zero-Inference)**: Hệ thống gom note/ảnh vào khay Dock bên phải theo slide. Cung cấp sẵn các khung mẫu (Tóm tắt / Thẻ giải thích / Thẻ Quiz). User tự kéo thả mẩu note vào khung và tự gõ nội dung. | **Interactive AI Co-Pilot (Ask & Propose with Dual Mode)**: AI phân tích các mẩu note/chưa hiểu và đề xuất 2 dạng thẻ: (1) Thẻ tóm tắt & giải thích điểm khó (cho Hoàn) và (2) Thẻ câu hỏi tự kiểm tra kèm trích dẫn slide (cho Mai). User duyệt từng thẻ (*Chấp nhận / Chỉnh sửa / Đổi câu khác*). | **Autonomous Study Digest & Mini-Quiz (Act with Guardrails & Instant Rollback)**: Hệ thống tự động tạo 100% bản tóm tắt trọn gói gồm: 3 ý cốt lõi + 1 mục giải thích điểm khó + Bộ 3 câu trắc nghiệm tự kiểm tra. Cung cấp nút *"Tùy chỉnh theo mục tiêu"* và nút *"Rollback về ghi chú thô"*. |
+| **User làm gì?** | Tự kéo thả các mẩu ghi chú vào khung mẫu, tự viết lời giải thích hoặc tự soạn câu hỏi ôn tập theo tư duy cá nhân. | Đọc các thẻ do AI đề xuất, bấm *Chấp nhận*, bấm *Sửa nội dung* hoặc bấm *Đổi câu khác*, quyết định giữ lại những phần mình thực sự cần. | Đọc ngay bản tóm tắt hoặc bấm làm bài trắc nghiệm tự kiểm tra; bấm *Rollback* nếu muốn quay về ghi chú gốc hoặc bấm *Điều chỉnh độ khó*. |
+| **AI làm gì?** | **Don't Act / Zero-Inference**: Không tự ý suy luận hay sinh text. Chỉ làm nhiệm vụ sắp xếp, lưu trữ và auto-save đồng bộ dữ liệu chống mất file. | **Ask & Propose**: Đề xuất bản thảo giải thích và câu hỏi dựa trên đúng dữ liệu note của user, hiển thị trích dẫn nguồn slide minh bạch. | **Act with Guardrails**: Tự động biên soạn hoàn chỉnh 100% tài liệu ôn tập và bài trắc nghiệm ngay khi mở trang, hỗ trợ đường khôi phục dữ liệu tức thì. |
+| **Trigger** | User chủ động mở khay tổng hợp ghi chú và bắt đầu kéo thả. | Hệ thống hiển thị popup gợi ý: *"AI đã chuẩn bị 1 thẻ giải thích điểm khó và 2 câu hỏi ôn tập từ ghi chú của bạn. Xem ngay?"*. | Tự động kích hoạt khi người học mở trang ôn tập bài cũ. |
+| **Trade-off chính** | **Ưu điểm:** Kiểm soát 100%, không lo AI sinh sai lệch.<br>**Nhược điểm:** Tốn nhiều công sức và thời gian tự soạn thảo. | **Ưu điểm:** Cân bằng hoàn hảo giữa tốc độ và quyền kiểm soát; bao phủ cả 2 nhu cầu (giải thích + tự kiểm tra).<br>**Nhược điểm:** Vẫn cần 2-3 lượt click duyệt của học viên. | **Ưu điểm:** Nhanh nhất (0 click ban đầu để có bài ôn tập hoàn chỉnh).<br>**Nhược điểm:** Nếu AI tóm tắt quá sơ sài hoặc sai ý, user có cảm giác bị áp đặt và mất thời gian chỉnh lại. |
 
-### 2.3. Distance Check (Kiểm tra khoảng cách khác biệt)
-- **A khác B vì:** Option A hoàn toàn do con người tự biên soạn nội dung câu hỏi (AI không suy luận), trong khi Option B AI chủ động soạn sẵn câu hỏi mẫu và user giữ quyền duyệt/sửa từng câu.
-- **B khác C vì:** Option B yêu cầu user tương tác duyệt từng thẻ câu hỏi (Ask pattern), trong khi Option C hệ thống tự động xuất bản trọn gói bài quiz ngay lập tức (Act pattern) và user chỉ can thiệp khi muốn rollback/điều chỉnh.
-- **A khác C vì:** Option A đòi hỏi 100% nỗ lực biên tập từ user từ trang giấy trắng, còn Option C là trải nghiệm 1-click tự động hóa toàn diện từ AI.
+### 2.3. Distance Check & Phổ can thiệp (Gate 2 Passed)
+- **A khác B vì:** Option A hoàn toàn do con người tự biên tập nội dung từ đầu (AI không suy luận), trong khi Option B AI chủ động đề xuất sẵn các thẻ giải thích và câu hỏi để con người duyệt và tinh chỉnh.
+- **B khác C vì:** Option B yêu cầu con người tương tác duyệt từng thẻ (*Ask pattern*), trong khi Option C hệ thống tự động xuất bản trọn gói tài liệu ôn tập ngay lập tức (*Act pattern*) và con người chỉ can thiệp khi muốn rollback/điều chỉnh.
+- **A khác C vì:** Option A đòi hỏi 100% nỗ lực biên tập từ con người từ trang giấy trắng, còn Option C là trải nghiệm tự động hóa 1-click toàn diện từ AI.
+
+```text
+[OPTION A - Lê Quang Huy] USER CREATES / INITIATES (Zero-Inference Hub & Manual Binder)
+    ↓
+[OPTION B - Đàm Việt Cường] USER + AI CO-CREATE (Interactive AI Co-Pilot with Card Review & Dual Mode)
+    ↓
+[OPTION C - Trần Đức Bảo] AI CREATES / INITIATES, USER REVIEWS (Autonomous Study Digest with Instant Rollback)
+```
 
 ---
 
 ## PHẦN 3: HUMAN–AI DESIGN PASS (CHẶNG 3)
 
-### 3.1. Bảng quyết định thiết kế Human–AI (Human–AI Decision Table)
+### 3.1. Bảng quyết định thiết kế Human–AI (Human–AI Decision Table - Gate 3 Passed)
 
-| Tiêu chí thiết kế | Option A (User-Led) | Option B (Co-Creation) | Option C (AI-Led) |
+| Tiêu chí thiết kế | Option A (User-Led — Huy) | Option B (Co-Creation — Cường) | Option C (AI-Led — Bảo) |
 |---|---|---|---|
-| **1. Role & Agency (User & AI làm gì?)** | User nắm 100% quyền sáng tạo nội dung. AI chỉ làm nhiệm vụ lưu trữ và hiển thị khay ghi chú trực quan. | User đóng vai trò "Biên tập viên / Người kiểm duyệt". AI đóng vai trò "Trợ lý soạn thảo đề xuất". | AI đóng vai trò "Giảng viên tự động soạn đề". User đóng vai trò "Người trải nghiệm & Người quyết định cuối cùng". |
-| **2. Decision (Act / Ask / Don't Act? Vì sao?)** | **Don't Act**: AI không suy luận hay tự sinh nội dung vì người dùng muốn tự tay tổng hợp chính xác theo tư duy cá nhân. | **Ask / Propose**: AI đưa ra bản thảo gợi ý kèm nút hành động rõ ràng (*Duyệt / Sửa / Xóa*) để user luôn làm chủ. | **Act with High Transparency**: AI tự động tạo gói quiz ngay lập tức để tiết kiệm tối đa thời gian cho học viên, nhưng đi kèm cơ chế minh bạch nguồn. |
-| **3. Expectation & Limit (Hiểu năng lực/giới hạn)** | Giao diện ghi rõ: *"Ghi chú được trích xuất nguyên văn từ bài học và tự động lưu đám mây"*. | Banner ghi rõ: *"Câu hỏi được tạo tự động từ ghi chú của bạn. Hãy kiểm tra nội dung trước khi lưu"*. | Thông báo: *"Đã tạo 5 câu hỏi dựa trên nội dung bài học. Độ chính xác tham chiếu slide đạt 100%"*. |
-| **4. Evidence & Uncertainty (Minh bạch tín hiệu)** | Mỗi thẻ ghi chú hiển thị rõ: Tên Slide, Vị trí highlight, Thời gian ghi chép. | Mỗi câu hỏi AI sinh đều có badge đính kèm: *"Dựa vào Highlight Slide 3"* hoặc *"Dựa vào điểm Chưa hiểu Slide 11"*. | Hiển thị trích dẫn nguồn (Source Citation) và tỷ lệ phủ kiến thức của bộ câu hỏi đối với các điểm mấu chốt. |
-| **5. Control & Recovery (Kiểm soát & Phục hồi)** | Nút Undo/Redo, kéo thả tự do, chỉnh sửa text trực tiếp bất cứ lúc nào. | Nút *Regenerate* (đổi câu khác), nút *Edit* trực tiếp trên thẻ, nút *Reject* loại bỏ câu không thích. | Nút *Chỉnh sửa bộ đề*, nút *Thêm câu hỏi thủ công*, và nút *Khôi phục về ghi chú gốc* (Instant Reset/Rollback). |
-
----
-
-## PHẦN 4: THIẾT KẾ MICRO-PROTOTYPE & TEST PROTOCOL
-
-### 4.1. Cấu trúc màn hình Micro-Prototype
-Cả 3 Options đều được tích hợp trong cùng một ứng dụng Micro-Prototype tương tác với luồng chuẩn:
-1. **Common Context Header:** Hiển thị bài học Day 17 *"Finding & Validating Pain Points"* + 3 Snippets dữ liệu thật (Highlight, Note, Chưa hiểu).
-2. **Option Switcher & Annotation Banner (Dành cho Facilitator/Reviewer):** Cho phép chuyển đổi linh hoạt giữa Option A, B, C và xem mục tiêu kỳ vọng kiểm tra của từng option.
-3. **Critical Interaction Zone:**
-   - **Option A:** Khay Snippets bên trái $\rightarrow$ Khung soạn Quiz kéo thả bên phải $\rightarrow$ Nút *"Lưu bộ Quiz thủ công"*.
-   - **Option B:** Khung AI Suggestion Stream $\rightarrow$ 3 thẻ câu hỏi kèm Badge nguồn $\rightarrow$ Các nút thao tác *[Chấp nhận]* / *[Chỉnh sửa]* / *[Đổi câu hỏi khác]* $\rightarrow$ Nút *"Xác nhận & Bắt đầu luyện tập"*.
-   - **Option C:** Dashboard Smart Study-Pack tự động $\rightarrow$ 5 câu hỏi phân hóa $\rightarrow$ Nút *"Bắt đầu làm Quiz ngay"* $\rightarrow$ Bảng điều khiển *[Độ khó]* & Nút *[Rollback về ghi chú thô]*.
-4. **Result / Decision State & Reset Path:** Màn hình kết quả làm bài quiz hoặc thông báo hoàn tất bộ thẻ, kèm nút *"Reset về ngữ cảnh ban đầu"* để test lại.
+| **1. Role & Agency (User & AI làm gì?)** | User nắm 100% quyền sáng tạo nội dung. AI chỉ làm nhiệm vụ lưu trữ và hiển thị khay ghi chú trực quan. | User đóng vai trò "Biên tập viên / Người kiểm duyệt". AI đóng vai trò "Trợ lý soạn thảo đề xuất". | AI đóng vai trò "Gia sư tự động chuẩn bị tài liệu". User đóng vai trò "Người trải nghiệm & Người quyết định cuối cùng". |
+| **2. Decision (Act / Ask / Don't Act? Vì sao?)** | **Don't Act**: AI không suy luận hay tự sinh nội dung vì người dùng muốn tự tay tổng hợp chính xác theo tư duy cá nhân. | **Ask / Propose**: AI đưa ra bản thảo gợi ý kèm nút hành động rõ ràng (*Duyệt / Sửa / Xóa*) để user luôn làm chủ. | **Act with High Transparency**: AI tự động tạo gói ôn tập ngay lập tức để tiết kiệm tối đa thời gian cho học viên, đi kèm trích dẫn nguồn. |
+| **3. Expectation & Limit (Hiểu năng lực/giới hạn)** | Giao diện ghi rõ: *"Ghi chú được trích xuất nguyên văn từ bài học và tự động lưu đám mây"*. | Banner ghi rõ: *"Tài liệu được gợi ý từ ghi chú của bạn. Hãy kiểm tra nội dung trước khi lưu"*. | Thông báo: *"Đã tạo bản tóm tắt và 3 câu hỏi trắc nghiệm dựa trên slide bài học"*. |
+| **4. Evidence & Uncertainty (Minh bạch tín hiệu)** | Mỗi thẻ ghi chú hiển thị rõ: Tên Slide, Vị trí highlight, Thời gian ghi chép. | Mỗi thẻ gợi ý đều có badge đính kèm: *"Dựa vào Highlight Slide 3"* hoặc *"Dựa vào điểm Chưa hiểu Slide 11"*. | Hiển thị trích dẫn nguồn (Source Citation) và ảnh thu nhỏ (thumbnail) của slide tương ứng. |
+| **5. Control & Recovery (Kiểm soát & Phục hồi)** | Nút Undo/Redo, kéo thả tự do, chỉnh sửa text trực tiếp bất cứ lúc nào. | Nút *Regenerate* (đổi thẻ khác), nút *Edit* trực tiếp trên thẻ, nút *Reject* loại bỏ thẻ không thích. | Nút *Chỉnh sửa*, nút *Tùy chỉnh theo mục tiêu điểm*, và nút *Khôi phục về ghi chú gốc* (Instant Reset/Rollback). |
