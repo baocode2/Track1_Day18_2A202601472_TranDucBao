@@ -1,7 +1,9 @@
 # Track 1 — Day 18 — Solution Test
 
 **Lê Quang Huy — 2026A201821**
-Case tiếp nối Day 17: **B — AI Notes: Personal Learning Notes**. Nhóm 1 người.
+Case tiếp nối Day 17: **B — AI Notes: Personal Learning Notes**.
+
+Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566).
 
 > Không đổi case. Day 18 không tiếp tục problem interview.
 
@@ -17,16 +19,17 @@ Bốn artifact đặt cạnh nhau trước khi bắt đầu, copy nguyên văn t
 | Practice Note (Interview Record) | [day17-inputs/03-practice-note-lequanghuy.md](day17-inputs/03-practice-note-lequanghuy.md) |
 | Conversation Guide cuối (chỉ để tham khảo context) | [day17-inputs/04-conversation-guide-final.md](day17-inputs/04-conversation-guide-final.md) |
 
-**Lệch so với đề:** đề nêu *ba* Practice Note, thường một note mỗi thành viên. Nhóm này
-một người, chạy một buổi phỏng vấn, nên chỉ có một note — chính là Interview Record của CP3 Day 17.
+**Lệch so với đề:** đề nêu *ba* Practice Note từ ba thành viên. Nhóm hiện có **hai** thành viên
+và **hai** interviewee: Huy phỏng vấn Phạm Duy Hoàn, Cường phỏng vấn bạn Mai (01317).
+Chi tiết trong [Evidence Huddle](01-evidence-huddle.md).
 
 Tài liệu tham khảo thêm, không nằm trong bốn artifact bắt buộc:
 [Practice Reflection CP4](day17-inputs/05-practice-reflection-day17.md) và
 [transcript buổi phỏng vấn](day17-inputs/06-transcript-day17.md).
 
-**Hypothesis Problem đang giữ:** Khi ngồi tổng hợp lại kiến thức sau buổi học, HS/SV đọc lại
-file note nhưng vẫn chưa hiểu vì note chỉ là các mẩu rời chưa được hệ thống thành sơ đồ,
-dẫn đến học trước quên sau.
+**Hypothesis Problem — chưa chốt.** Hai thành viên đang cầm hai bản khác nhau (Huy: thiếu sơ đồ;
+Cường: không tự tạo được bộ câu hỏi tự kiểm tra). Ba phương án và cái giá từng cái nằm ở cuối
+[Evidence Huddle](01-evidence-huddle.md). Phải chốt một bản trước khi sang phần thiết kế option.
 
 ## Giới hạn kết luận
 
