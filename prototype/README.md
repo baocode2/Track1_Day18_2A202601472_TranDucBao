@@ -14,14 +14,20 @@ Trục phân biệt là **ai làm việc biến ghi chú thành thứ dùng lạ
 | Phụ trách | **Lê Quang Huy**<br>2A202601821 | Đàm Việt Cường<br>2A202601566 | Trần Đức Bảo<br>2A202601472 |
 | Vai trò AI | Không hành động | Ask / Propose | Act |
 | AI làm gì | Xếp ghi chú theo slide, tự lưu chống mất file. Không sinh chữ nào. | Soạn sẵn hai nhóm thẻ, mỗi thẻ ghi rõ nguồn slide | Soạn sẵn 100%: 3 ý cốt lõi + 1 mục giải thích + 3 câu tự kiểm tra |
-| User làm gì | Kéo mẩu ghi chú vào ba khung mẫu, tự gõ toàn bộ nội dung | Duyệt / sửa / đổi / loại từng thẻ | Đọc luôn, đổi mục tiêu, hoặc rollback |
-| Trigger | User chủ động mở khay và kéo thả | Popup đề xuất sau khi học xong | Tự bật khi mở trang ôn bài |
+| User làm gì | Chọn loại thẻ, gắn mẩu nguồn, tự gõ rồi gửi vào sổ | Duyệt / sửa / đổi / bỏ từng thẻ ngay trong thread | Đọc luôn, đổi mục tiêu bằng chip, hoặc rollback |
+| Trigger | User chủ động soạn; thread không có bong bóng AI nào | Popup đề xuất sau khi học xong | Tự bật khi mở trang ôn bài |
 | Đường lùi | Gỡ nguồn, sửa tự do | Hoàn tác từng thẻ | Rollback về ghi chú thô |
 
-**Option A — phần của Huy** — khay ghi chú xếp theo slide bên phải, ba khung mẫu bên trái:
-*khung tóm tắt*, *thẻ giải thích*, *thẻ quiz*. Kéo thả được, cũng có nút bấm gắn cho máy
-không kéo được. AI chỉ làm hai việc: xếp khay và tự lưu — mốc *tự lưu lúc hh:mm:ss* hiện ở
-chân khung là toàn bộ phần AI đóng góp.
+Giao diện dựng theo dạng **khung chat**. Thread bên trái, khung soạn ở dưới, nhật ký hành vi bên phải.
+
+**Option A — phần của Huy** — thread **không có một bong bóng AI nào**. Mở lên, sổ ghi chú
+gửi một tin xếp lại ba mẩu bạn đã lưu, rồi im. Tester chọn loại thẻ (tóm tắt / giải thích /
+quiz), gắn mẩu nguồn, tự gõ, bấm *Gửi vào sổ* — thẻ hiện thành bong bóng của chính tester.
+Máy chỉ xếp và tự lưu; mốc *tự lưu lúc hh:mm:ss* ở khung soạn là toàn bộ phần máy đóng góp.
+
+> **Rủi ro đã biết của khung chat.** Chat làm người ta mong AI trả lời. Ở Option A thì đó là
+> rủi ro thật — tester có thể ngồi chờ máy nói. Prototype cố ý để sự im lặng đó lộ ra, và
+> facilitator cần ghi lại nếu tester chờ, vì đó chính là dữ liệu về Don't Act.
 
 **Option B** có hai nhóm thẻ tách riêng — *giải thích* và *tự kiểm tra* — vì hai nguồn
 phỏng vấn cho ra hai nhu cầu khác nhau: Hoàn muốn được giải thích, Mai muốn tự kiểm tra.

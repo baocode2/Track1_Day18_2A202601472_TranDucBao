@@ -6,77 +6,90 @@
 <title>AI Notes — Micro-Prototype Day 18</title>
 <style>
 :root{
-  --bg:#f6f7f9; --panel:#fff; --ink:#16181d; --muted:#6b7280; --line:#e3e6ea;
+  --bg:#f2f4f7; --panel:#fff; --ink:#16181d; --muted:#6b7280; --line:#e3e6ea;
   --accent:#2f5bd7; --accent-soft:#eaf0ff; --warn:#b45309; --warn-soft:#fff7ed;
-  --ok:#15803d; --ok-soft:#ecfdf3; --ai:#7c3aed; --ai-soft:#f5f0ff;
-  --radius:10px; --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
+  --ok:#15803d; --ok-soft:#ecfdf3; --ai:#6d3fd4; --ai-soft:#f4f0ff;
+  --radius:12px; --mono:ui-monospace,"Cascadia Code",Consolas,monospace;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
   font:15px/1.55 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif}
-.wrap{max-width:1180px;margin:0 auto;padding:20px 20px 60px}
-h1{font-size:20px;margin:0 0 2px}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 18px 50px}
+h1{font-size:19px;margin:0 0 2px}
 h2{font-size:15px;margin:0 0 10px}
-h3{font-size:13px;margin:16px 0 7px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .sub{color:var(--muted);font-size:13px;margin:0}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:14px}
-.row{display:flex;gap:14px;flex-wrap:wrap}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:15px;margin-bottom:13px}
+.row{display:flex;gap:13px;flex-wrap:wrap}
 .col{flex:1 1 380px;min-width:0}
-button{font:inherit;cursor:pointer;border-radius:7px;border:1px solid var(--line);
-  background:#fff;padding:7px 12px;color:var(--ink)}
-button:hover{border-color:#c3c9d2}
+button{font:inherit;cursor:pointer;border-radius:999px;border:1px solid var(--line);
+  background:#fff;padding:6px 14px;color:var(--ink)}
+button:hover{border-color:#b9c0ca;background:#fbfbfc}
 button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 button.primary:hover{background:#2549b0}
-button.ghost{background:transparent}
-button.mini{padding:3px 9px;font-size:12.5px}
-button:disabled{opacity:.45;cursor:not-allowed}
-.switcher{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.switcher button{padding:9px 15px;font-weight:600}
+button.mini{padding:4px 11px;font-size:12.5px}
+button:disabled{opacity:.42;cursor:not-allowed}
+.switcher{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.switcher button{padding:8px 16px;font-weight:600}
 .switcher button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
 .banner{background:var(--warn-soft);border:1px solid #fed7aa;color:#7c2d12;
-  border-radius:var(--radius);padding:11px 13px;font-size:13px;margin-bottom:14px}
-.snip{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:7px;
-  padding:10px 12px;margin-bottom:9px;background:#fcfcfd}
-.snip.unclear{border-left-color:var(--warn);background:var(--warn-soft)}
-.snip .meta{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
-.snip .body{font-size:14px}
-.dock .snip{cursor:grab;user-select:none}
-.dock .snip:active{cursor:grabbing}
-.dock .snip.used{opacity:.45}
-.tag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:99px;
-  background:var(--accent-soft);color:var(--accent);font-weight:600;vertical-align:middle}
-.tag.ai{background:var(--ai-soft);color:var(--ai)}
+  border-radius:var(--radius);padding:11px 13px;font-size:13px;margin-bottom:13px}
+
+/* ---------- chat ---------- */
+.chat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  display:flex;flex-direction:column;height:640px;overflow:hidden}
+.chead{padding:11px 15px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.avatar{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;
+  font-size:14px;font-weight:700;flex:0 0 auto}
+.avatar.ai{background:var(--ai-soft);color:var(--ai)}
+.avatar.app{background:var(--accent-soft);color:var(--accent)}
+.chead .who{font-weight:600;font-size:14px}
+.chead .st{font-size:12px;color:var(--muted)}
+.thread{flex:1;overflow-y:auto;padding:15px;background:
+  linear-gradient(180deg,#fafbfc 0%,#fff 60px)}
+.msg{display:flex;gap:9px;margin-bottom:13px;align-items:flex-end}
+.msg.me{flex-direction:row-reverse}
+.bub{max-width:78%;padding:10px 13px;border-radius:15px;font-size:14.2px;line-height:1.5}
+.msg.ai .bub{background:var(--ai-soft);border-bottom-left-radius:5px}
+.msg.app .bub{background:#f1f3f6;border-bottom-left-radius:5px}
+.msg.me .bub{background:var(--accent);color:#fff;border-bottom-right-radius:5px}
+.msg.me .bub .lbl{color:#d3ddfb}
+.sys{text-align:center;font-size:12.3px;color:var(--muted);margin:12px 0;padding:0 20px}
+.bub .lbl{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.bub .qq{font-weight:600;margin-bottom:3px;display:block}
+.bub ul{margin:5px 0 3px;padding-left:18px}
+.bub li{margin-bottom:7px}
+.badges{margin-top:7px;display:flex;gap:5px;flex-wrap:wrap}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;
+  background:var(--accent-soft);color:var(--accent);font-weight:600}
+.tag.ai{background:#fff;color:var(--ai);border:1px solid #ddd0fb}
 .tag.warn{background:var(--warn-soft);color:var(--warn)}
 .tag.ok{background:var(--ok-soft);color:var(--ok)}
 .tag.low{background:#fff1f2;color:#9f1239}
-.qcard{border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;background:#fff}
-.qcard.done{border-color:#bbf7d0;background:var(--ok-soft)}
-.qcard.gone{opacity:.38}
-.qcard .q{font-weight:600;margin-bottom:5px}
-.qcard .a{color:var(--muted);font-size:13.5px;margin-bottom:8px}
-.qcard .acts{display:flex;gap:6px;flex-wrap:wrap}
-.frame{border:1.5px dashed #c7ccd4;border-radius:8px;padding:11px;margin-bottom:11px;background:#fafbfc}
-.frame.over{border-color:var(--accent);background:var(--accent-soft)}
-.frame.filled{border-style:solid;border-color:var(--line);background:#fff}
-.frame .ftitle{font-weight:600;font-size:13.5px;margin-bottom:2px}
-.frame .fhint{font-size:12px;color:var(--muted);margin-bottom:8px}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;background:var(--accent-soft);
-  color:var(--accent);border-radius:6px;padding:3px 8px;margin:0 5px 5px 0}
-.chip button{border:0;background:transparent;padding:0 2px;color:var(--accent);font-size:14px;line-height:1}
-input[type=text],textarea,select{width:100%;font:inherit;padding:7px 9px;border:1px solid var(--line);
-  border-radius:6px;background:#fff;color:var(--ink)}
-textarea{resize:vertical;min-height:50px}
-label{display:block;font-size:12px;color:var(--muted);margin:7px 0 3px;font-weight:600}
-.log{font-family:var(--mono);font-size:12px;background:#101318;color:#d6dae1;
-  border-radius:8px;padding:11px;max-height:300px;overflow:auto;white-space:pre-wrap}
-.log .t{color:#7f8894}
-.result{background:var(--ok-soft);border:1px solid #bbf7d0;border-radius:8px;padding:13px;margin-top:8px}
-.hint{font-size:12.5px;color:var(--muted);margin-top:7px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.done .bub{outline:2px solid #bbf7d0}
+.gone .bub{opacity:.42}
+
+/* ---------- composer ---------- */
+.comp{border-top:1px solid var(--line);padding:11px 13px;background:#fcfcfd}
+.comp .lineup{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.chip{font-size:12.5px;border-radius:999px;padding:5px 11px;border:1px solid var(--line);
+  background:#fff;cursor:pointer;user-select:none}
+.chip.on{background:var(--accent-soft);border-color:#b9cbfa;color:var(--accent);font-weight:600}
+.comp textarea{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);
+  border-radius:11px;resize:vertical;min-height:46px;background:#fff;color:var(--ink)}
+.comp input[type=text]{width:100%;font:inherit;padding:8px 11px;border:1px solid var(--line);
+  border-radius:11px;margin-top:6px;background:#fff}
+.comp .send{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-top:8px;flex-wrap:wrap}
 .save{font-size:12px;color:var(--ok);font-weight:600}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
-  border-top:1px solid var(--line);padding-top:11px;margin-top:13px}
-ul.core{margin:0 0 4px;padding-left:19px}
-ul.core li{margin-bottom:4px}
+select{font:inherit;padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.log{font-family:var(--mono);font-size:12px;background:#101318;color:#d6dae1;
+  border-radius:10px;padding:11px;max-height:420px;overflow:auto;white-space:pre-wrap}
+.log .t{color:#7f8894}
+.foot{display:flex;justify-content:space-between;gap:9px;flex-wrap:wrap;
+  border-top:1px solid var(--line);padding-top:11px;margin-top:11px}
+.snipmini{border-left:3px solid var(--accent);padding:2px 0 2px 9px;margin:5px 0;font-size:13.3px}
+.snipmini.unclear{border-left-color:var(--warn)}
+.snipmini b{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
 </style>
 </head>
 <body>
@@ -92,35 +105,24 @@ ul.core li{margin-bottom:4px}
   <div id="facilNote" style="margin-top:6px"></div>
 </div>
 
-<div class="card">
-  <h2>Ngữ cảnh chung — giữ nguyên ở cả ba option</h2>
-  <p class="sub" style="margin-bottom:10px">
-    Tối trước buổi học kế tiếp. Bạn mở lại bài <i>Finding &amp; Validating Pain Points</i>.
-    Hệ thống đã lưu sẵn những dấu vết dưới đây từ lúc bạn học.
-  </p>
-  <div id="snippets"></div>
-  <div class="hint">
-    <b>Việc của bạn:</b> dùng phương án đang mở để biến các mẩu ghi chú và điểm chưa hiểu
-    thành một tài liệu hoặc công cụ ôn tập, giúp bạn tự tin trước buổi học tiếp theo.
-  </div>
-</div>
-
 <div class="switcher" id="switcher"></div>
 
 <div class="row">
-  <div class="col" style="flex:1 1 560px">
-    <div class="card" id="stage"></div>
+  <div class="col" style="flex:1 1 580px">
+    <div class="chat">
+      <div class="chead" id="chead"></div>
+      <div class="thread" id="thread"></div>
+      <div class="comp" id="comp"></div>
+    </div>
   </div>
-  <div class="col" style="flex:0 1 340px">
+  <div class="col" style="flex:0 1 330px">
     <div class="card">
       <h2>Nhật ký hành vi tester</h2>
-      <p class="sub" style="margin-bottom:9px">
-        Ghi tester <b>đã làm gì</b>, không ghi tester nghĩ gì.
-      </p>
+      <p class="sub" style="margin-bottom:9px">Ghi tester <b>đã làm gì</b>, không ghi tester nghĩ gì.</p>
       <div class="log" id="log"></div>
       <div class="foot">
-        <button class="ghost" onclick="copyLog()">Copy nhật ký</button>
-        <button class="ghost" onclick="resetAll()">Reset về ngữ cảnh ban đầu</button>
+        <button class="mini" onclick="copyLog()">Copy nhật ký</button>
+        <button class="mini" onclick="resetAll()">Reset ngữ cảnh</button>
       </div>
     </div>
   </div>
@@ -141,15 +143,14 @@ var SNIPPETS = [
    text:"Phân biệt Pain (khó khăn lúc làm job) và Consequence (hậu quả nếu không giải quyết)."}
 ];
 function snipById(id){ return SNIPPETS.filter(function(s){ return s.id===id })[0] }
+function shortKind(k){ return k.split(" · ")[1] }
 
-/* Option A — ba khung mẫu, user tự điền. AI không sinh chữ nào. */
 var FRAMES = [
-  {id:"f1", title:"Khung tóm tắt", hint:"Tóm ý chính của bài bằng lời của bạn."},
-  {id:"f2", title:"Thẻ giải thích", hint:"Giải thích lại chỗ bạn đánh dấu chưa hiểu."},
-  {id:"f3", title:"Thẻ quiz", hint:"Một câu hỏi để tự kiểm tra, kèm đáp án."}
+  {id:"f1", title:"Tóm tắt", hint:"Tóm ý chính của bài bằng lời của bạn."},
+  {id:"f2", title:"Giải thích", hint:"Giải thích lại chỗ bạn đánh dấu chưa hiểu."},
+  {id:"f3", title:"Quiz", hint:"Một câu hỏi để tự kiểm tra, kèm đáp án."}
 ];
 
-/* Option B — hai loại thẻ, phủ cả nhu cầu giải thích lẫn nhu cầu tự kiểm tra. */
 var B_CARDS = [
   {id:"b1", mode:"Giải thích", src:"Ảnh chụp + Chưa hiểu · Slide 11",
    q:"Pain khác Consequence ở chỗ nào?",
@@ -165,7 +166,6 @@ var B_CARDS = [
    a:"Pain: đọc lại note mà không nối được thành hệ thống. Consequence: mất thêm một buổi tối để làm lại từ đầu."}
 ];
 
-/* Option C — digest AI soạn sẵn 100%, ba biến thể theo mục tiêu người học. */
 var C_GOALS = {
   deep:{label:"Hiểu sâu", core:[
     {t:"Problem Hypothesis phải có đủ bốn phần: situation, job, barrier, consequence.", src:"Highlight · Slide 3"},
@@ -193,39 +193,52 @@ var C_QUIZ = [
 
 var OPTIONS = {
   A:{name:"A — User tự làm", owner:"Lê Quang Huy — 2A202601821", ai:"Không hành động",
-     facil:"Kiểm tra: khi AI không sinh chữ nào, tester có tự bỏ công điền hết ba khung không, điền khung nào trước, hay bỏ dở giữa chừng."},
+     head:"Sổ ghi chú của bạn", headSt:"Chỉ xếp ghi chú và tự lưu · không soạn nội dung",
+     avatar:"app", init:"Sổ",
+     facil:"Kiểm tra: khi không có bong bóng AI nào, tester có tự gõ không, gõ loại thẻ nào trước, hay ngồi chờ máy nói."},
   B:{name:"B — Cùng làm", owner:"Đàm Việt Cường — 2A202601566", ai:"Ask / Propose",
-     facil:"Kiểm tra: tester duyệt thẳng hay sửa; có loại thẻ nào không; ưu tiên nhóm thẻ giải thích hay nhóm thẻ tự kiểm tra."},
+     head:"Trợ lý ôn tập", headSt:"Đề xuất bản thảo · bạn duyệt từng thẻ",
+     avatar:"ai", init:"AI",
+     facil:"Kiểm tra: tester duyệt thẳng hay sửa; có loại thẻ nào không; có để ý tag “AI không chắc” không."},
   C:{name:"C — AI làm sẵn", owner:"Trần Đức Bảo — 2A202601472", ai:"Act",
-     facil:"Kiểm tra: tester dùng luôn bản AI soạn, đi đổi mục tiêu, hay bấm rollback về ghi chú thô."}
+     head:"Trợ lý ôn tập", headSt:"Đã soạn xong bản ôn tập trước khi bạn hỏi",
+     avatar:"ai", init:"AI",
+     facil:"Kiểm tra: tester dùng luôn, đổi mục tiêu, hay bấm rollback về ghi chú thô."}
 };
 
-var opt="A", log=[], state={}, dragId=null;
+var opt="A", log=[], state={};
 
 function ts(){ var d=new Date(); return d.toTimeString().slice(0,8) }
 function rec(ev){ log.push({t:ts(),opt:opt,ev:ev}); draw("log") }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){
   return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c] }) }
+function snipList(){ return SNIPPETS.map(function(s){
+  return '<div class="snipmini '+(s.unclear?"unclear":"")+'"><b>'+esc(s.kind)+"</b>"+esc(s.text)+"</div>" }).join("") }
 
 function fresh(){
-  return {
-    frames:FRAMES.map(function(f){ return {id:f.id, srcs:[], text:"", answer:""} }),
-    savedAt:null,
+  var s={ msgs:[], savedAt:null, goal:"deep", rolledBack:false, saved:false,
+    draft:{frame:0, srcs:[], text:"", answer:""},
     cards:B_CARDS.map(function(c){
-      return {id:c.id,mode:c.mode,src:c.src,low:c.low,q:c.q,a:c.a,status:"pending",edited:false} }),
-    goal:"deep", rolledBack:false, saved:false
-  };
+      return {id:c.id,mode:c.mode,src:c.src,low:c.low,q:c.q,a:c.a,status:"pending",edited:false} }) };
+  if(opt==="A"){
+    s.msgs.push({k:"app", lbl:"Sổ ghi chú", t:
+      "Mình đã gom lại ba mẩu bạn lưu trong buổi học, xếp theo slide:"+snipList()+
+      "<br>Mình <b>không soạn nội dung</b> — phần viết là của bạn. Mình chỉ giữ chỗ và tự lưu."});
+    s.msgs.push({k:"sys", t:"Soạn thẻ ở khung dưới. Mỗi thẻ bạn gửi sẽ nằm lại trong sổ này."});
+  }
+  if(opt==="B"){
+    s.msgs.push({k:"ai", lbl:"Trợ lý", t:
+      "Mình đọc ba mẩu ghi chú bạn lưu và soạn thử vài thẻ ôn tập. Mỗi thẻ mình ghi rõ lấy từ mẩu nào để bạn đối chiếu.<br><br><b>Bạn duyệt giúp mình từng thẻ nhé</b> — giữ, sửa, đổi cái khác, hay bỏ đều được."});
+    B_CARDS.forEach(function(c){ s.msgs.push({k:"card", id:c.id}) });
+  }
+  if(opt==="C"){ s.msgs.push({k:"digest"}); }
+  return s;
 }
 function st(){ if(!state[opt]) state[opt]=fresh(); return state[opt] }
+function say(k,obj){ st().msgs.push(Object.assign({k:k},obj)) }
 
-/* ---------------------------- render ---------------------------- */
+/* ------------------------------ render ------------------------------ */
 function draw(what){
-  if(!what||what==="snippets"){
-    document.getElementById("snippets").innerHTML = SNIPPETS.map(function(s){
-      return '<div class="snip '+(s.unclear?"unclear":"")+'">'+
-        '<div class="meta">'+esc(s.kind)+(s.unclear?" · chưa hiểu":"")+"</div>"+
-        '<div class="body">'+esc(s.text)+"</div></div>" }).join("");
-  }
   if(!what||what==="switcher"){
     document.getElementById("switcher").innerHTML = Object.keys(OPTIONS).map(function(k){
       return '<button aria-pressed="'+(k===opt)+'" onclick="setOpt(\''+k+'\')">'+esc(OPTIONS[k].name)+"</button>"
@@ -234,192 +247,209 @@ function draw(what){
     document.getElementById("facilNote").innerHTML =
       "<b>"+esc(o.name)+"</b> · phụ trách: "+esc(o.owner)+
       ' · vai trò AI: <span class="tag ai">'+esc(o.ai)+"</span><br>"+esc(o.facil);
+    document.getElementById("chead").innerHTML =
+      '<div class="avatar '+o.avatar+'">'+esc(o.init)+"</div><div>"+
+      '<div class="who">'+esc(o.head)+'</div><div class="st">'+esc(o.headSt)+"</div></div>";
   }
-  if(!what||what==="stage"){
-    var s=st(), el=document.getElementById("stage");
-    el.innerHTML = opt==="A" ? viewA(s) : opt==="B" ? viewB(s) : viewC(s);
-  }
+  if(!what||what==="thread"){ drawThread(); drawComp() }
   if(!what||what==="log"){
-    var el2=document.getElementById("log");
-    el2.innerHTML = log.length ? log.map(function(l){
+    var el=document.getElementById("log");
+    el.innerHTML = log.length ? log.map(function(l){
       return '<span class="t">'+l.t+"  ["+l.opt+"]</span>  "+esc(l.ev) }).join("\n")
       : '<span class="t">chưa có thao tác nào</span>';
-    el2.scrollTop = el2.scrollHeight;
+    el.scrollTop = el.scrollHeight;
   }
 }
 
-/* ------------------------- Option A: binder ------------------------- */
-function viewA(s){
-  var used={}; s.frames.forEach(function(f){ f.srcs.forEach(function(id){ used[id]=1 }) });
-  var filled = s.frames.filter(function(f){ return f.text.trim() }).length;
-
-  var dock = '<div class="dock">'+SNIPPETS.map(function(sn){
-    return '<div class="snip '+(sn.unclear?"unclear ":"")+(used[sn.id]?"used":"")+'" draggable="true"'+
-      ' ondragstart="dragStart(\''+sn.id+'\')" ondragend="dragEnd()">'+
-      '<div class="meta">'+esc(sn.kind)+"</div>"+
-      '<div class="body">'+esc(sn.text)+"</div></div>" }).join("")+"</div>";
-
-  var frames = s.frames.map(function(f,i){
-    var spec=FRAMES[i];
-    var chips = f.srcs.map(function(id){
-      return '<span class="chip">'+esc(snipById(id).kind)+
-        '<button onclick="unlink('+i+',\''+id+'\')" title="bỏ">×</button></span>' }).join("");
-    return '<div class="frame '+(f.text.trim()?"filled":"")+'" id="fr'+i+'"'+
-      ' ondragover="dragOver(event,'+i+')" ondragleave="dragLeave('+i+')" ondrop="dropOn(event,'+i+')">'+
-      '<div class="ftitle">'+esc(spec.title)+"</div>"+
-      '<div class="fhint">'+esc(spec.hint)+"</div>"+
-      (chips || '<div class="hint" style="margin:0 0 7px">Kéo một mẩu ghi chú từ khay bên phải vào đây, hoặc bấm nút dưới.</div>')+
-      '<div style="margin-bottom:7px">'+SNIPPETS.map(function(sn){
-        return '<button class="mini" onclick="link('+i+',\''+sn.id+'\')">+ '+esc(sn.kind.split(" · ")[1])+"</button>" }).join(" ")+"</div>"+
-      "<label>Nội dung bạn viết</label>"+
-      '<textarea oninput="editFrame('+i+',\'text\',this.value)" placeholder="bạn tự gõ, hệ thống không gợi ý">'+esc(f.text)+"</textarea>"+
-      (spec.id==="f3" ? "<label>Đáp án</label>"+
-        '<input type="text" value="'+esc(f.answer)+'" oninput="editFrame('+i+',\'answer\',this.value)" placeholder="bạn tự gõ">' : "")+
-      "</div>";
-  }).join("");
-
-  return '<h2>Khay ghi chú &amp; khung tự soạn <span class="tag">AI không sinh nội dung</span></h2>'+
-    '<p class="sub">Hệ thống chỉ gom ghi chú theo slide và tự lưu. Mọi chữ trong ba khung dưới đây do bạn viết.</p>'+
-    '<div class="row" style="margin-top:12px">'+
-      '<div class="col" style="flex:1 1 300px"><h3>Ba khung mẫu</h3>'+frames+"</div>"+
-      '<div class="col" style="flex:0 1 240px"><h3>Khay ghi chú</h3>'+dock+
-        '<div class="hint">Kéo thả được. Khay xếp theo slide, không tóm tắt, không sinh thêm chữ.</div></div>'+
-    "</div>"+
-    '<div class="foot">'+
-      "<span class=\"sub\">"+filled+"/3 khung đã có nội dung"+
-      (s.savedAt?' · <span class="save">tự lưu lúc '+s.savedAt+"</span>":"")+"</span>"+
-      '<button class="primary" '+(filled?"":"disabled")+' onclick="saveA()">Lưu bộ ôn tập</button>'+
-    "</div>"+
-    (s.saved?'<div class="result"><b>Đã lưu '+filled+" khung.</b> Toàn bộ nội dung do bạn viết.</div>":"");
+function badge(src,low,extra){
+  return '<div class="badges"><span class="tag ai">Dựa vào '+esc(src)+"</span>"+
+    (low?'<span class="tag low">AI không chắc — mẩu gốc quá ngắn, nên đối chiếu lại</span>':"")+
+    (extra||"")+"</div>";
 }
 
-/* ------------------------- Option B: co-pilot ------------------------- */
-function viewB(s){
-  var open=s.cards.filter(function(c){ return c.status==="pending" }).length;
-  var done=s.cards.filter(function(c){ return c.status==="accepted" }).length;
-  function group(mode){
-    var list=s.cards.filter(function(c){ return c.mode===mode });
-    return "<h3>Thẻ "+esc(mode.toLowerCase())+"</h3>"+list.map(function(c){
-      return '<div class="qcard '+(c.status==="accepted"?"done":"")+" "+(c.status==="rejected"?"gone":"")+'">'+
-        '<div class="q">'+esc(c.q)+'</div><div class="a">'+esc(c.a)+"</div>"+
-        '<div style="margin-bottom:8px"><span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
-        (c.low?' <span class="tag low">AI không chắc — mẩu gốc quá ngắn, nên đối chiếu lại</span>':"")+
-        (c.edited?' <span class="tag warn">bạn đã sửa</span>':"")+
-        (c.status==="accepted"?' <span class="tag ok">đã duyệt</span>':"")+
-        (c.status==="rejected"?' <span class="tag warn">đã loại</span>':"")+"</div>"+
-        (c.status==="pending"
-          ? '<div class="acts"><button class="primary" onclick="cardAct(\''+c.id+'\',\'accept\')">Chấp nhận</button>'+
-            '<button onclick="cardAct(\''+c.id+'\',\'edit\')">Sửa</button>'+
-            '<button onclick="cardAct(\''+c.id+'\',\'regen\')">Đổi thẻ khác</button>'+
-            '<button class="ghost" onclick="cardAct(\''+c.id+'\',\'reject\')">Loại</button></div>'
-          : '<button class="ghost mini" onclick="cardAct(\''+c.id+'\',\'undo\')">Hoàn tác</button>')+
-        "</div>" }).join("");
-  }
-  return '<h2>AI đề xuất, bạn duyệt <span class="tag ai">Ask / Propose</span></h2>'+
-    '<p class="sub">AI soạn sẵn hai nhóm thẻ từ ghi chú của bạn: nhóm giải thích chỗ khó, và nhóm câu hỏi tự kiểm tra. Mỗi thẻ ghi rõ lấy từ đâu.</p>'+
-    group("Giải thích")+group("Tự kiểm tra")+
-    '<div class="foot"><span class="sub">'+done+" duyệt · "+open+" chưa xử lý</span>"+
-    '<button class="primary" '+(open?"disabled":"")+' onclick="finishB()">Xác nhận &amp; bắt đầu ôn</button></div>'+
-    (s.saved?'<div class="result"><b>Chốt '+done+" thẻ.</b> Mỗi thẻ đều đi qua tay bạn.</div>":"");
+function drawThread(){
+  var s=st(), out="";
+  s.msgs.forEach(function(m){
+    if(m.k==="sys"){ out+='<div class="sys">'+m.t+"</div>"; return }
+    if(m.k==="card"){ out+=cardMsg(s,m.id); return }
+    if(m.k==="digest"){ out+=digestMsg(s); return }
+    if(m.k==="usercard"){ out+=userCardMsg(m); return }
+    var cls = m.k==="me" ? "me" : m.k;
+    out+='<div class="msg '+cls+'">'+
+      (m.k==="me"?"":'<div class="avatar '+(m.k==="ai"?"ai":"app")+'">'+(m.k==="ai"?"AI":"Sổ")+"</div>")+
+      '<div class="bub">'+(m.lbl?'<div class="lbl">'+esc(m.lbl)+"</div>":"")+m.t+"</div></div>";
+  });
+  var el=document.getElementById("thread");
+  el.innerHTML=out; el.scrollTop=el.scrollHeight;
 }
 
-/* ------------------------- Option C: digest ------------------------- */
-function viewC(s){
+function cardMsg(s,id){
+  var c=s.cards.filter(function(x){ return x.id===id })[0];
+  var extra = (c.edited?'<span class="tag warn">bạn đã sửa</span>':"")+
+              (c.status==="accepted"?'<span class="tag ok">bạn đã giữ</span>':"")+
+              (c.status==="rejected"?'<span class="tag warn">bạn đã bỏ</span>':"");
+  return '<div class="msg ai '+(c.status==="accepted"?"done":"")+" "+(c.status==="rejected"?"gone":"")+'">'+
+    '<div class="avatar ai">AI</div><div class="bub">'+
+    '<div class="lbl">Thẻ '+esc(c.mode.toLowerCase())+"</div>"+
+    '<div class="qq">'+esc(c.q)+"</div>"+esc(c.a)+
+    badge(c.src,c.low,extra)+
+    (c.status==="pending"
+      ? '<div class="acts"><button class="primary mini" onclick="cardAct(\''+c.id+'\',\'accept\')">Giữ thẻ này</button>'+
+        '<button class="mini" onclick="cardAct(\''+c.id+'\',\'edit\')">Sửa lại</button>'+
+        '<button class="mini" onclick="cardAct(\''+c.id+'\',\'regen\')">Đổi thẻ khác</button>'+
+        '<button class="mini" onclick="cardAct(\''+c.id+'\',\'reject\')">Bỏ thẻ này</button></div>'
+      : '<div class="acts"><button class="mini" onclick="cardAct(\''+c.id+'\',\'undo\')">Hoàn tác</button></div>')+
+    "</div></div>";
+}
+
+function digestMsg(s){
   if(s.rolledBack){
-    return '<h2>Đã quay về ghi chú thô <span class="tag warn">rollback</span></h2>'+
-      '<p class="sub">Bản tóm tắt AI soạn đã bị gỡ. Còn lại đúng ba mẩu ghi chú gốc ở đầu trang.</p>'+
-      '<button onclick="undoRollback()">Tạo lại bản tóm tắt</button>';
+    return '<div class="msg app"><div class="avatar app">Sổ</div><div class="bub">'+
+      '<div class="lbl">Đã quay về ghi chú thô</div>'+
+      "Mình đã gỡ bản ôn tập vừa soạn. Còn lại đúng ba mẩu bạn lưu:"+snipList()+"</div></div>";
   }
   var g=C_GOALS[s.goal];
-  return '<h2>AI đã soạn sẵn bản ôn tập <span class="tag ai">Act</span></h2>'+
-    '<p class="sub">Tạo tự động ngay khi bạn mở trang ôn bài. Bạn không phải thao tác gì trước đó.</p>'+
-    '<div style="margin:12px 0"><label>Tùy chỉnh theo mục tiêu</label>'+
-    '<select onchange="setGoal(this.value)">'+Object.keys(C_GOALS).map(function(k){
-      return '<option value="'+k+'" '+(s.goal===k?"selected":"")+">"+esc(C_GOALS[k].label)+"</option>" }).join("")+
-    "</select></div>"+
-    "<h3>Ba ý cốt lõi</h3><ul class=\"core\">"+g.core.map(function(c){
-      return "<li>"+esc(c.t)+'<br><span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
-        (c.low?' <span class="tag low">AI không chắc — mẩu gốc quá ngắn</span>':"")+"</li>" }).join("")+"</ul>"+
-    "<h3>Giải thích chỗ bạn đánh dấu chưa hiểu</h3>"+
-    '<div class="qcard"><div class="a" style="margin:0 0 8px">'+esc(C_EXPLAIN.text)+"</div>"+
-    '<span class="tag ai">Dựa vào '+esc(C_EXPLAIN.src)+"</span></div>"+
-    "<h3>Ba câu tự kiểm tra</h3>"+
+  return '<div class="msg ai"><div class="avatar ai">AI</div><div class="bub">'+
+    '<div class="lbl">Bản ôn tập · mục tiêu "'+esc(g.label)+'"</div>'+
+    "Chào bạn, mình soạn sẵn bản ôn tập từ ghi chú buổi vừa rồi rồi nhé.<br><br><b>Ba ý cốt lõi</b><ul>"+
+    g.core.map(function(c){
+      return "<li>"+esc(c.t)+'<div class="badges"><span class="tag ai">'+esc(shortKind(c.src))+"</span>"+
+        (c.low?'<span class="tag low">AI không chắc</span>':"")+"</div></li>" }).join("")+"</ul>"+
+    "<b>Chỗ bạn đánh dấu chưa hiểu</b><br>"+esc(C_EXPLAIN.text)+
+    '<div class="badges"><span class="tag ai">'+esc(shortKind(C_EXPLAIN.src))+"</span></div><br>"+
+    "<b>Ba câu tự kiểm tra</b><ul>"+
     C_QUIZ.map(function(c){
-      return '<div class="qcard"><div class="q">'+esc(c.q)+'</div><div class="a">'+esc(c.a)+"</div>"+
-        '<span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
-        (c.low?' <span class="tag low">AI không chắc — mẩu gốc quá ngắn</span>':"")+"</div>" }).join("")+
-    '<div class="foot"><button class="primary" onclick="startC()">Bắt đầu ôn ngay</button>'+
-    '<button class="ghost" onclick="rollback()">Rollback về ghi chú thô</button></div>'+
-    (s.saved?'<div class="result"><b>Bắt đầu ôn với bản mục tiêu "'+esc(g.label)+'".</b> Bản này do AI soạn toàn bộ.</div>':"");
+      return '<li><span class="qq">'+esc(c.q)+"</span>"+esc(c.a)+
+        '<div class="badges"><span class="tag ai">'+esc(shortKind(c.src))+"</span>"+
+        (c.low?'<span class="tag low">AI không chắc</span>':"")+"</div></li>" }).join("")+"</ul>"+
+    "</div></div>";
 }
 
-/* ---------------------------- actions ---------------------------- */
+function userCardMsg(m){
+  return '<div class="msg me"><div class="bub">'+
+    '<div class="lbl">'+esc(FRAMES[m.frame].title)+"</div>"+
+    '<div class="qq">'+esc(m.text)+"</div>"+
+    (m.answer?esc(m.answer):"")+
+    (m.srcs.length?'<div class="badges">'+m.srcs.map(function(id){
+      return '<span class="tag">'+esc(shortKind(snipById(id).kind))+"</span>" }).join("")+"</div>":"")+
+    "</div></div>";
+}
+
+/* ----------------------------- composer ----------------------------- */
+function drawComp(){
+  var s=st(), el=document.getElementById("comp");
+  if(opt==="A") el.innerHTML=compA(s);
+  else if(opt==="B") el.innerHTML=compB(s);
+  else el.innerHTML=compC(s);
+}
+
+function compA(s){
+  var d=s.draft;
+  return '<div class="lineup">'+
+    FRAMES.map(function(f,i){
+      return '<span class="chip '+(d.frame===i?"on":"")+'" onclick="setFrame('+i+')">'+esc(f.title)+"</span>" }).join("")+
+    '<span style="color:var(--muted);font-size:12.5px;margin-left:4px">'+esc(FRAMES[d.frame].hint)+"</span></div>"+
+    '<div class="lineup"><span style="font-size:12.5px;color:var(--muted)">Gắn mẩu:</span>'+
+    SNIPPETS.map(function(sn){
+      return '<span class="chip '+(d.srcs.indexOf(sn.id)>-1?"on":"")+'" onclick="toggleSrc(\''+sn.id+'\')">'+
+        esc(shortKind(sn.kind))+"</span>" }).join("")+"</div>"+
+    '<textarea id="ta" placeholder="bạn tự gõ, sổ không gợi ý gì" oninput="typing(\'text\',this.value)">'+esc(d.text)+"</textarea>"+
+    (d.frame===2?'<input type="text" id="ans" placeholder="đáp án cho câu hỏi này" value="'+esc(d.answer)+'" oninput="typing(\'answer\',this.value)">':"")+
+    '<div class="send"><span class="sub">'+
+      (s.savedAt?'<span class="save">tự lưu lúc '+s.savedAt+"</span>":"chưa có gì để lưu")+"</span>"+
+      '<button class="primary" '+(d.text.trim()?"":"disabled")+' onclick="sendA()">Gửi vào sổ</button></div>';
+}
+
+function compB(s){
+  var open=s.cards.filter(function(c){ return c.status==="pending" }).length;
+  var kept=s.cards.filter(function(c){ return c.status==="accepted" }).length;
+  return '<div class="send"><span class="sub">'+
+    (open? "Còn "+open+" thẻ chưa duyệt" : "Đã duyệt hết · giữ "+kept+" thẻ")+"</span>"+
+    '<button class="primary" '+(open?"disabled":"")+' onclick="finishB()">Chốt bộ ôn tập</button></div>';
+}
+
+function compC(s){
+  if(s.rolledBack){
+    return '<div class="send"><span class="sub">Bạn đang ở ghi chú gốc</span>'+
+      '<button class="primary" onclick="undoRollback()">Soạn lại giúp mình</button></div>';
+  }
+  return '<div class="lineup"><span style="font-size:12.5px;color:var(--muted)">Đổi mục tiêu:</span>'+
+    Object.keys(C_GOALS).map(function(k){
+      return '<span class="chip '+(s.goal===k?"on":"")+'" onclick="setGoal(\''+k+'\')">'+esc(C_GOALS[k].label)+"</span>" }).join("")+"</div>"+
+    '<div class="send"><button class="mini" onclick="rollback()">Bỏ bản này, cho mình ghi chú thô</button>'+
+    '<button class="primary" onclick="startC()">Bắt đầu ôn</button></div>';
+}
+
+/* ------------------------------ actions ------------------------------ */
 function setOpt(k){ opt=k; rec("chuyển sang option "+k); draw() }
 
-function dragStart(id){ dragId=id }
-function dragEnd(){ dragId=null }
-function dragOver(e,i){ e.preventDefault(); document.getElementById("fr"+i).classList.add("over") }
-function dragLeave(i){ var el=document.getElementById("fr"+i); if(el) el.classList.remove("over") }
-function dropOn(e,i){ e.preventDefault(); dragLeave(i); if(dragId){ link(i,dragId,true) } }
-
-function link(i,id,byDrag){
-  var s=st(), f=s.frames[i];
-  if(f.srcs.indexOf(id)>-1) return;
-  f.srcs.push(id); autosave(s);
-  rec((byDrag?"kéo":"bấm gắn")+" "+snipById(id).kind+" vào "+FRAMES[i].title.toLowerCase());
-  draw("stage");
+function setFrame(i){ var d=st().draft; d.frame=i; rec("chọn loại thẻ: "+FRAMES[i].title); draw("thread") }
+function toggleSrc(id){
+  var d=st().draft, i=d.srcs.indexOf(id);
+  if(i>-1){ d.srcs.splice(i,1); rec("bỏ gắn "+snipById(id).kind) }
+  else { d.srcs.push(id); rec("gắn "+snipById(id).kind+" vào thẻ đang soạn") }
+  autosave(); draw("thread");
 }
-function unlink(i,id){
-  var s=st(), f=s.frames[i];
-  f.srcs=f.srcs.filter(function(x){ return x!==id }); autosave(s);
-  rec("bỏ "+snipById(id).kind+" khỏi "+FRAMES[i].title.toLowerCase());
-  draw("stage");
+function typing(field,v){
+  var d=st().draft, first=!d[field];
+  d[field]=v; autosave();
+  if(first&&v) rec("bắt đầu gõ "+(field==="answer"?"đáp án":"nội dung")+" cho thẻ "+FRAMES[d.frame].title.toLowerCase());
+  var b=document.querySelector(".send button.primary");
+  if(b&&opt==="A") b.disabled=!d.text.trim();
 }
-function editFrame(i,field,v){
-  var s=st(), first=!s.frames[i][field];
-  s.frames[i][field]=v; autosave(s);
-  if(first&&v) rec("bắt đầu gõ "+(field==="answer"?"đáp án":"nội dung")+" ở "+FRAMES[i].title.toLowerCase());
-}
-function autosave(s){
-  s.savedAt=ts();
-  var el=document.querySelector(".save");
-  if(el) el.textContent="tự lưu lúc "+s.savedAt;
-}
-function saveA(){
-  var s=st(); s.saved=true;
-  rec("lưu bộ ôn tập tự soạn — "+s.frames.filter(function(f){ return f.text.trim() }).length+" khung");
-  draw("stage");
+function autosave(){ var s=st(); s.savedAt=ts();
+  var el=document.querySelector(".save"); if(el) el.textContent="tự lưu lúc "+s.savedAt }
+function sendA(){
+  var s=st(), d=s.draft;
+  say("usercard",{frame:d.frame, srcs:d.srcs.slice(), text:d.text, answer:d.answer});
+  rec("gửi thẻ "+FRAMES[d.frame].title.toLowerCase()+" vào sổ — "+d.srcs.length+" mẩu gắn kèm");
+  s.draft={frame:d.frame, srcs:[], text:"", answer:""}; s.saved=true; autosave(); draw("thread");
 }
 
 function cardAct(id,act){
   var s=st(), c=s.cards.filter(function(x){ return x.id===id })[0];
-  if(act==="accept"){ c.status="accepted"; rec("duyệt thẻ "+c.mode.toLowerCase()+': "'+c.q.slice(0,32)+'…"') }
-  if(act==="reject"){ c.status="rejected"; rec("loại thẻ "+c.mode.toLowerCase()+': "'+c.q.slice(0,32)+'…"') }
-  if(act==="undo"){ c.status="pending"; rec("hoàn tác một thẻ "+c.mode.toLowerCase()) }
+  if(act==="accept"){ c.status="accepted"; say("me",{t:"Giữ thẻ này."});
+    rec("giữ thẻ "+c.mode.toLowerCase()+': "'+c.q.slice(0,32)+'…"') }
+  if(act==="reject"){ c.status="rejected"; say("me",{t:"Bỏ thẻ này."});
+    rec("bỏ thẻ "+c.mode.toLowerCase()+': "'+c.q.slice(0,32)+'…"') }
+  if(act==="undo"){ c.status="pending"; say("me",{t:"Cho mình xem lại thẻ đó."});
+    rec("hoàn tác một thẻ "+c.mode.toLowerCase()) }
   if(act==="regen"){ c.q="["+c.q+"] — bản viết lại"; c.edited=true;
-    rec("bấm đổi thẻ khác, nguồn "+c.src) }
+    say("me",{t:"Đổi thẻ khác giúp mình."}); rec("bấm đổi thẻ khác, nguồn "+c.src) }
   if(act==="edit"){
     var nq=prompt("Sửa nội dung thẻ:",c.q);
-    if(nq!==null&&nq.trim()){ c.q=nq.trim(); c.edited=true; rec("sửa tay thẻ "+c.mode.toLowerCase()+", nguồn "+c.src) }
+    if(nq!==null&&nq.trim()){ c.q=nq.trim(); c.edited=true; say("me",{t:"Mình sửa lại thẻ này."});
+      rec("sửa tay thẻ "+c.mode.toLowerCase()+", nguồn "+c.src) }
   }
-  draw("stage");
+  draw("thread");
 }
 function finishB(){
   var s=st(); s.saved=true;
   var ex=s.cards.filter(function(c){ return c.mode==="Giải thích"&&c.status==="accepted" }).length;
   var qz=s.cards.filter(function(c){ return c.mode==="Tự kiểm tra"&&c.status==="accepted" }).length;
-  rec("chốt — giữ "+ex+" thẻ giải thích, "+qz+" thẻ tự kiểm tra, loại "+
+  say("ai",{lbl:"Trợ lý", t:"Chốt rồi nhé. Bộ ôn tập của bạn có <b>"+ex+" thẻ giải thích</b> và <b>"+qz+" thẻ tự kiểm tra</b>. Mọi thẻ đều đi qua tay bạn."});
+  rec("chốt — giữ "+ex+" thẻ giải thích, "+qz+" thẻ tự kiểm tra, bỏ "+
       s.cards.filter(function(c){ return c.status==="rejected" }).length+
       ", sửa "+s.cards.filter(function(c){ return c.edited }).length);
-  draw("stage");
+  draw("thread");
 }
 
-function setGoal(v){ var s=st(); s.goal=v; rec("đổi mục tiêu sang \""+C_GOALS[v].label+"\""); draw("stage") }
-function startC(){ var s=st(); s.saved=true;
-  rec("bắt đầu ôn bản AI soạn sẵn, mục tiêu \""+C_GOALS[s.goal].label+"\""); draw("stage") }
-function rollback(){ var s=st(); s.rolledBack=true; s.saved=false;
-  rec("rollback — bỏ bản AI soạn, quay về ghi chú thô"); draw("stage") }
-function undoRollback(){ var s=st(); s.rolledBack=false; rec("tạo lại bản tóm tắt sau rollback"); draw("stage") }
+function setGoal(v){
+  var s=st(); s.goal=v; say("me",{t:'Đổi sang mục tiêu "'+esc(C_GOALS[v].label)+'".'});
+  s.msgs.push({k:"digest"});
+  rec('đổi mục tiêu sang "'+C_GOALS[v].label+'"'); draw("thread");
+}
+function startC(){ var s=st(); s.saved=true; say("me",{t:"Bắt đầu ôn."});
+  rec('bắt đầu ôn bản AI soạn sẵn, mục tiêu "'+C_GOALS[s.goal].label+'"'); draw("thread") }
+function rollback(){
+  var s=st(); s.rolledBack=true; s.saved=false;
+  say("me",{t:"Bỏ bản này, cho mình ghi chú thô."}); s.msgs.push({k:"digest"});
+  rec("rollback — bỏ bản AI soạn, quay về ghi chú thô"); draw("thread");
+}
+function undoRollback(){
+  var s=st(); s.rolledBack=false; say("me",{t:"Soạn lại giúp mình."}); s.msgs.push({k:"digest"});
+  rec("tạo lại bản tóm tắt sau rollback"); draw("thread");
+}
 
 function resetAll(){ state={}; log=[]; opt="A"; draw() }
 function copyLog(){
