@@ -12,7 +12,7 @@ Nhóm ba người. Hiện có **hai** buổi phỏng vấn độc lập, đều 
 |---|---|---|
 | Lê Quang Huy — 2A202601821 | Có. Interviewee: Phạm Duy Hoàn — 2026A201378. 4'30". Có transcript nguyên văn để đối chiếu. | Ghi chú lúc xem bài giảng: take note chỗ tính toán và từ khó, giảng nhanh thì chụp ảnh slide. Ôn vào tối trước hôm học môn đó. Chỗ không hiểu thì gửi ảnh hỏi AI giải thích. Bỏ bài theo mục tiêu điểm. Không nêu được hậu quả cụ thể — interviewer không hỏi tới. |
 | Đàm Việt Cường — 2A202601566 | Có. Interviewee: Trần Thị Hoa Mai — 01317. 5'10". Mới có exact quote, chưa có transcript đầy đủ. | Chuyển slide VLearn sang iPad viết tay, đồng thời gõ Notepad cho ý quan trọng. Ôn trên iPad chỉ đọc tuần tự được, không đảo kiến thức lên để tự dò. Muốn tự làm quiz nhưng tổng hợp từ ghi chú tay quá tốn công. Notepad hay thất lạc, quên Ctrl+S thì mất. |
-| Trần Đức Bảo | **Chưa có.** Chưa thực hiện buổi phỏng vấn nào. | Đang phụ trách đào tiếp chi tiết **#4** ở bảng phụ. Đây là phân công cho vòng sau, **không phải** Practice Note — chi tiết #4 do Cường phỏng vấn Mai mà ra. |
+| Trần Đức Bảo | **Chưa có.** Chưa thực hiện buổi phỏng vấn nào; đã tham gia các phần khác của bài. | Ở buổi huddle chọn chi tiết **#4** (Mai — ôn trên iPad chỉ đọc tuần tự được, không đảo kiến thức lên để tự dò). Đây là **chi tiết bạn ấy chọn**, không phải buổi phỏng vấn bạn ấy làm — #4 do Cường phỏng vấn Mai mà ra. |
 
 Đề giả định ba Practice Note từ ba thành viên. Nhóm đủ ba người nhưng mới **hai** note, nên
 câu hỏi *"có gì lặp lại?"* trả lời được qua hai nguồn, chưa phải ba. Note thứ ba còn thiếu —
@@ -40,12 +40,13 @@ câu hỏi nào dẫn tới câu trả lời nào; buổi của Cường mới c
 ## Bảng phụ — evidence giữ lại, chưa đưa vào bộ ba
 
 Ba mẩu này (**#2**, **#4**, **#6** theo STT gốc) thật và không bị loại, chỉ là yếu hơn hoặc trỏ
-sang hướng khác. Mỗi mẩu có một người phụ trách đào tiếp.
+sang hướng khác. Mỗi thành viên chọn một mẩu.
 
-> **Cột "phụ trách" là người đào tiếp ở vòng sau, không phải người đã phỏng vấn.**
-> Cột "nguồn" mới là người thực hiện buổi phỏng vấn.
+> Theo đề, **mỗi thành viên chọn một chi tiết**. Cột "thành viên chọn chi tiết này" là người
+> đã chọn mẩu evidence đó ở buổi huddle — **không phải** người thực hiện buổi phỏng vấn.
+> Cột "nguồn" mới cho biết ai phỏng vấn ai.
 
-| # | Nguồn | Evidence | Vì sao chưa vào bộ ba | Phụ trách đào tiếp | Câu cần trả lời |
+| # | Nguồn | Evidence | Vì sao chưa vào bộ ba | Thành viên chọn chi tiết này | Câu còn mở |
 |---|---|---|---|---|---|
 | **#2** | Huy → Hoàn | *"mình cũng khá là học khá nhiều môn ấy nên mình sẽ là thường sẽ là tối trước hôm đấy của hôm hôm sau học môn đấy."* | Sửa **phạm vi**, không phải bằng chứng về pain. Việc của nó đã xong: đổi situation trong hypothesis. | **Lê Quang Huy** | Thời điểm "trước buổi kế tiếp" mới có một nguồn. Có nguồn thứ hai nào ôn theo lịch học sắp tới không, hay Hoàn là ngoại lệ vì học nhiều môn? |
 | **#4** | Cường → Mai | *"Nếu như mà ghi chú ở iPad... mình sẽ chỉ có cách là đọc lại từ đầu đến cuối thôi... không thể nào mà đảo lẫn các cái kiến thức đấy lên để mình biết là mình đang quên hoặc là nhớ..."* | Trùng lớn với #5 ở bảng chính, cùng nguồn cùng mạch. Thiên về mô tả giới hạn công cụ hơn là hành vi. | **Trần Đức Bảo** | Mai muốn **tự kiểm tra** hay chỉ muốn **tra nhanh tới đúng chỗ**? Mới một nguồn nói tới việc đảo kiến thức; Hoàn không nhắc lần nào. Cần nguồn thứ hai. |

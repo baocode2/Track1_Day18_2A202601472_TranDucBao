@@ -22,7 +22,8 @@ Bốn artifact đặt cạnh nhau trước khi bắt đầu, copy nguyên văn t
 
 **Lệch so với đề:** đề nêu *ba* Practice Note từ ba thành viên. Nhóm đủ ba người nhưng mới
 **hai** note: Huy phỏng vấn Phạm Duy Hoàn, Cường phỏng vấn Trần Thị Hoa Mai (01317).
-Trần Đức Bảo chưa có Practice Note.
+Trần Đức Bảo chưa thực hiện buổi phỏng vấn nào, đã tham gia các phần khác của bài; ở buổi
+huddle chọn chi tiết #4.
 Chi tiết trong [Evidence Huddle](01-evidence-huddle.md).
 
 Tài liệu tham khảo thêm, không nằm trong bốn artifact bắt buộc:
