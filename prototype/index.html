@@ -48,6 +48,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .tag.ai{background:var(--ai-soft);color:var(--ai)}
 .tag.warn{background:var(--warn-soft);color:var(--warn)}
 .tag.ok{background:var(--ok-soft);color:var(--ok)}
+.tag.low{background:#fff1f2;color:#9f1239}
 .qcard{border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px;background:#fff}
 .qcard.done{border-color:#bbf7d0;background:var(--ok-soft)}
 .qcard.gone{opacity:.38}
@@ -159,32 +160,32 @@ var B_CARDS = [
   {id:"b3", mode:"Tự kiểm tra", src:"Ghi chú ngắn · Slide 7",
    q:"Người được phỏng vấn đòi thẳng một tính năng thì dùng phản xạ nào?",
    a:"Anchor rồi Dig — neo về lần gần nhất họ gặp chuyện đó, rồi đào hành vi đã xảy ra. Không bàn tính năng."},
-  {id:"b4", mode:"Tự kiểm tra", src:"Ảnh chụp + Chưa hiểu · Slide 11",
+  {id:"b4", mode:"Tự kiểm tra", low:true, src:"Ảnh chụp + Chưa hiểu · Slide 11",
    q:"Cho một ví dụ Pain và Consequence đi kèm nó.",
    a:"Pain: đọc lại note mà không nối được thành hệ thống. Consequence: mất thêm một buổi tối để làm lại từ đầu."}
 ];
 
 /* Option C — digest AI soạn sẵn 100%, ba biến thể theo mục tiêu người học. */
 var C_GOALS = {
-  deep:{label:"Hiểu sâu",
-    core:["Problem Hypothesis phải có đủ bốn phần: situation, job, barrier, consequence.",
-          "Pain nằm ở lúc làm việc; Consequence nằm ở sau đó.",
-          "Ba phản xạ Deflect / Anchor / Dig dùng khi người được phỏng vấn khen hoặc đòi tính năng."]},
-  pass:{label:"Đủ qua bài",
-    core:["Nhớ đủ bốn phần của Problem Hypothesis.",
-          "Phân biệt được Pain và Consequence.",
-          "Thuộc tên ba phản xạ."]},
-  fast:{label:"Ôn nhanh 5 phút",
-    core:["Bốn phần: situation, job, barrier, consequence.",
-          "Pain = lúc làm. Consequence = sau đó.",
-          "Deflect, Anchor, Dig."]}
+  deep:{label:"Hiểu sâu", core:[
+    {t:"Problem Hypothesis phải có đủ bốn phần: situation, job, barrier, consequence.", src:"Highlight · Slide 3"},
+    {t:"Pain nằm ở lúc làm việc; Consequence nằm ở sau đó.", src:"Ảnh chụp + Chưa hiểu · Slide 11"},
+    {t:"Ba phản xạ Deflect / Anchor / Dig dùng khi người được phỏng vấn khen hoặc đòi tính năng.", src:"Ghi chú ngắn · Slide 7", low:true}]},
+  pass:{label:"Đủ qua bài", core:[
+    {t:"Nhớ đủ bốn phần của Problem Hypothesis.", src:"Highlight · Slide 3"},
+    {t:"Phân biệt được Pain và Consequence.", src:"Ảnh chụp + Chưa hiểu · Slide 11"},
+    {t:"Thuộc tên ba phản xạ.", src:"Ghi chú ngắn · Slide 7", low:true}]},
+  fast:{label:"Ôn nhanh 5 phút", core:[
+    {t:"Bốn phần: situation, job, barrier, consequence.", src:"Highlight · Slide 3"},
+    {t:"Pain = lúc làm. Consequence = sau đó.", src:"Ảnh chụp + Chưa hiểu · Slide 11"},
+    {t:"Deflect, Anchor, Dig.", src:"Ghi chú ngắn · Slide 7", low:true}]}
 };
 var C_EXPLAIN = {src:"Ảnh chụp + Chưa hiểu · Slide 11",
   text:"Chỗ bạn đánh dấu chưa hiểu: Pain là chỗ vướng ngay trong lúc người dùng đang làm việc của họ. Consequence là hậu quả xảy ra sau đó nếu chỗ vướng ấy không được gỡ. Một pain không kèm consequence thì thường chỉ là bất tiện."};
 var C_QUIZ = [
   {src:"Highlight · Slide 3", q:"Problem Hypothesis thiếu consequence thì hỏng ở đâu?",
    a:"Không biết pain có đáng giải quyết không."},
-  {src:"Ghi chú ngắn · Slide 7", q:"Gặp lời khen thì dùng phản xạ nào?",
+  {src:"Ghi chú ngắn · Slide 7", low:true, q:"Gặp lời khen thì dùng phản xạ nào?",
    a:"Deflect — gạt lời khen, quay lại chuyện đã xảy ra."},
   {src:"Ảnh chụp + Chưa hiểu · Slide 11", q:"Pain xảy ra ở thời điểm nào?",
    a:"Ngay trong lúc người dùng đang làm job của họ."}
@@ -211,7 +212,7 @@ function fresh(){
     frames:FRAMES.map(function(f){ return {id:f.id, srcs:[], text:"", answer:""} }),
     savedAt:null,
     cards:B_CARDS.map(function(c){
-      return {id:c.id,mode:c.mode,src:c.src,q:c.q,a:c.a,status:"pending",edited:false} }),
+      return {id:c.id,mode:c.mode,src:c.src,low:c.low,q:c.q,a:c.a,status:"pending",edited:false} }),
     goal:"deep", rolledBack:false, saved:false
   };
 }
@@ -302,6 +303,7 @@ function viewB(s){
       return '<div class="qcard '+(c.status==="accepted"?"done":"")+" "+(c.status==="rejected"?"gone":"")+'">'+
         '<div class="q">'+esc(c.q)+'</div><div class="a">'+esc(c.a)+"</div>"+
         '<div style="margin-bottom:8px"><span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
+        (c.low?' <span class="tag low">AI không chắc — mẩu gốc quá ngắn, nên đối chiếu lại</span>':"")+
         (c.edited?' <span class="tag warn">bạn đã sửa</span>':"")+
         (c.status==="accepted"?' <span class="tag ok">đã duyệt</span>':"")+
         (c.status==="rejected"?' <span class="tag warn">đã loại</span>':"")+"</div>"+
@@ -335,14 +337,17 @@ function viewC(s){
     '<select onchange="setGoal(this.value)">'+Object.keys(C_GOALS).map(function(k){
       return '<option value="'+k+'" '+(s.goal===k?"selected":"")+">"+esc(C_GOALS[k].label)+"</option>" }).join("")+
     "</select></div>"+
-    "<h3>Ba ý cốt lõi</h3><ul class=\"core\">"+g.core.map(function(t){ return "<li>"+esc(t)+"</li>" }).join("")+"</ul>"+
+    "<h3>Ba ý cốt lõi</h3><ul class=\"core\">"+g.core.map(function(c){
+      return "<li>"+esc(c.t)+'<br><span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
+        (c.low?' <span class="tag low">AI không chắc — mẩu gốc quá ngắn</span>':"")+"</li>" }).join("")+"</ul>"+
     "<h3>Giải thích chỗ bạn đánh dấu chưa hiểu</h3>"+
     '<div class="qcard"><div class="a" style="margin:0 0 8px">'+esc(C_EXPLAIN.text)+"</div>"+
     '<span class="tag ai">Dựa vào '+esc(C_EXPLAIN.src)+"</span></div>"+
     "<h3>Ba câu tự kiểm tra</h3>"+
     C_QUIZ.map(function(c){
       return '<div class="qcard"><div class="q">'+esc(c.q)+'</div><div class="a">'+esc(c.a)+"</div>"+
-        '<span class="tag ai">Dựa vào '+esc(c.src)+"</span></div>" }).join("")+
+        '<span class="tag ai">Dựa vào '+esc(c.src)+"</span>"+
+        (c.low?' <span class="tag low">AI không chắc — mẩu gốc quá ngắn</span>':"")+"</div>" }).join("")+
     '<div class="foot"><button class="primary" onclick="startC()">Bắt đầu ôn ngay</button>'+
     '<button class="ghost" onclick="rollback()">Rollback về ghi chú thô</button></div>'+
     (s.saved?'<div class="result"><b>Bắt đầu ôn với bản mục tiêu "'+esc(g.label)+'".</b> Bản này do AI soạn toàn bộ.</div>':"");
