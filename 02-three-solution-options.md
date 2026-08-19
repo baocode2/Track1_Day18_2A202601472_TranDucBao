@@ -5,7 +5,7 @@
 1. Lê Quang Huy (2A202601821) — Option A
 2. Đàm Việt Cường (2A202601566) — Option B
 3. Trần Đức Bảo (2A202601472) — Option C
-4. Hoàng Minh Quân (2A202601574) — Option D (vào sau, vắng buổi hôm trước)  
+4. Hoàng Minh Quân (2A202601574) — Option D  
 **Case B:** AI Notes — Personal Learning Notes  
 
 ---
