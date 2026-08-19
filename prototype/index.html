@@ -90,6 +90,8 @@ select{font:inherit;padding:5px 9px;border:1px solid var(--line);border-radius:9
 .snipmini{border-left:3px solid var(--accent);padding:2px 0 2px 9px;margin:5px 0;font-size:13.3px}
 .snipmini.unclear{border-left-color:var(--warn)}
 .snipmini b{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.snipmini.pick{cursor:pointer;border-radius:8px;padding:6px 9px;margin:7px 0}
+.snipmini.pick:hover{background:var(--accent-soft)}
 </style>
 </head>
 <body>
@@ -97,7 +99,7 @@ select{font:inherit;padding:5px 9px;border:1px solid var(--line);border-radius:9
 
 <div class="card">
   <h1>AI Notes — Micro-Prototype</h1>
-  <p class="sub">Track 1 · Day 18 · Case B · Lê Quang Huy — 2A202601821</p>
+  <p class="sub">Track 1 · Day 18 · Case B · AI Notes · bốn option A / B / C / D</p>
 </div>
 
 <div class="banner" id="facilitator">
@@ -191,6 +193,19 @@ var C_QUIZ = [
    a:"Ngay trong lúc người dùng đang làm job của họ."}
 ];
 
+/* Option D — canned: một lời giải thích / một mẩu. Không quiz, không digest. */
+var D_EXPLAIN = {
+  s1:{src:"Highlight · Slide 3", low:false,
+    t:"Bốn phần này không phải để cho đủ chữ. Situation để biết lúc nào kiểm chứng được. Job là việc user đang làm. Barrier là chỗ vướng. Consequence cho biết pain có đáng giải quyết không. Thiếu consequence thì chỉ còn một bất tiện, chưa thành pain.",
+    easy:"Nhớ vậy: situation = lúc nào, job = đang làm gì, barrier = vướng gì, consequence = nếu không gỡ thì sao. Thiếu cái cuối là không biết việc đó có đáng làm không."},
+  s2:{src:"Ghi chú ngắn · Slide 7", low:true,
+    t:"Ba phản xạ dùng khi người được phỏng vấn khen sản phẩm hoặc đòi một tính năng. Deflect: gạt lời khen, quay lại chuyện đã xảy ra. Anchor: neo vào lần gần nhất. Dig: đào hành vi cụ thể. Ghi chú gốc chỉ có tên ba phản xạ, chưa có ví dụ — phần còn lại mình suy ra.",
+    easy:"Khen thì gạt (Deflect). Đòi tính năng thì hỏi lần gần nhất họ gặp chuyện đó (Anchor), rồi hỏi họ đã làm gì (Dig). Không bàn tính năng."},
+  s3:{src:"Ảnh chụp + Chưa hiểu · Slide 11", low:false,
+    t:"Pain là chỗ vướng ngay trong lúc người dùng đang làm việc. Consequence là cái giá phải trả sau đó nếu chỗ vướng không được gỡ. Một pain không kèm consequence thường chỉ là bất tiện — chưa đủ để quyết định có nên giải quyết.",
+    easy:"Pain = đang làm thì vướng. Consequence = sau đó phải trả giá. Thiếu vế sau thì chưa chắc đáng sửa."}
+};
+
 var OPTIONS = {
   A:{name:"A — User tự làm", owner:"Lê Quang Huy — 2A202601821", ai:"Không hành động",
      head:"Sổ ghi chú của bạn", headSt:"Chỉ xếp ghi chú và tự lưu · không soạn nội dung",
@@ -203,7 +218,11 @@ var OPTIONS = {
   C:{name:"C — AI làm sẵn", owner:"Trần Đức Bảo — 2A202601472", ai:"Act",
      head:"Trợ lý ôn tập", headSt:"Đã soạn xong bản ôn tập trước khi bạn hỏi",
      avatar:"ai", init:"AI",
-     facil:"Kiểm tra: tester dùng luôn, đổi mục tiêu, hay bấm rollback về ghi chú thô."}
+     facil:"Kiểm tra: tester dùng luôn, đổi mục tiêu, hay bấm rollback về ghi chú thô."},
+  D:{name:"D — Chỉ đúng chỗ", owner:"Hoàng Minh Quân — 2A202601574", ai:"Ask on demand",
+     head:"Trợ lý đúng chỗ", headSt:"Im cho đến khi bạn chỉ một mẩu · không soạn bộ ôn",
+     avatar:"ai", init:"AI",
+     facil:"Kiểm tra: tester có tự chỉ vào Slide 11 (chưa hiểu) không, có xin dễ hơn không, hay ngồi chờ máy làm cả gói."}
 };
 
 var opt="A", log=[], state={};
@@ -217,6 +236,7 @@ function snipList(){ return SNIPPETS.map(function(s){
 
 function fresh(){
   var s={ msgs:[], savedAt:null, goal:"deep", rolledBack:false, saved:false,
+    pick:null, easy:false,
     draft:{frame:0, srcs:[], text:"", answer:""},
     cards:B_CARDS.map(function(c){
       return {id:c.id,mode:c.mode,src:c.src,low:c.low,q:c.q,a:c.a,status:"pending",edited:false} }) };
@@ -232,6 +252,12 @@ function fresh(){
     B_CARDS.forEach(function(c){ s.msgs.push({k:"card", id:c.id}) });
   }
   if(opt==="C"){ s.msgs.push({k:"digest"}); }
+  if(opt==="D"){
+    s.msgs.push({k:"ai", lbl:"Trợ lý", t:
+      "Mình thấy đúng ba mẩu bạn lưu. Mình <b>không soạn bộ ôn</b> và <b>không làm quiz</b>. Mình chỉ giải thích đúng một mẩu — và chỉ khi bạn chỉ vào.<br><br>Mình im cho đến lúc đó."});
+    s.msgs.push({k:"picks"});
+    s.msgs.push({k:"sys", t:"Chọn một mẩu. Mình không làm gì trước khi bạn chọn."});
+  }
   return s;
 }
 function st(){ if(!state[opt]) state[opt]=fresh(); return state[opt] }
@@ -273,6 +299,8 @@ function drawThread(){
     if(m.k==="sys"){ out+='<div class="sys">'+m.t+"</div>"; return }
     if(m.k==="card"){ out+=cardMsg(s,m.id); return }
     if(m.k==="digest"){ out+=digestMsg(s); return }
+    if(m.k==="picks"){ out+=picksMsg(); return }
+    if(m.k==="explain"){ out+=explainMsg(m); return }
     if(m.k==="usercard"){ out+=userCardMsg(m); return }
     var cls = m.k==="me" ? "me" : m.k;
     out+='<div class="msg '+cls+'">'+
@@ -325,6 +353,25 @@ function digestMsg(s){
     "</div></div>";
 }
 
+function picksMsg(){
+  return '<div class="msg app"><div class="avatar app">Sổ</div><div class="bub">'+
+    '<div class="lbl">Ba mẩu bạn đã lưu</div>'+
+    "Bấm một mẩu — mình chỉ giải thích đúng chỗ đó."+
+    SNIPPETS.map(function(s){
+      return '<div class="snipmini pick '+(s.unclear?"unclear":"")+'" onclick="askD(\''+s.id+'\')">'+
+        "<b>"+esc(s.kind)+(s.unclear?" · chưa hiểu":"")+"</b>"+esc(s.text)+"</div>" }).join("")+
+    "</div></div>";
+}
+function explainMsg(m){
+  var sn=snipById(m.id), d=D_EXPLAIN[m.id];
+  return '<div class="msg ai"><div class="avatar ai">AI</div><div class="bub">'+
+    '<div class="lbl">'+(m.easy?"Giải thích dễ hơn":"Giải thích một mẩu")+"</div>"+
+    '<div class="snipmini '+(sn.unclear?"unclear":"")+'"><b>Mẩu gốc · '+esc(sn.kind)+"</b>"+esc(sn.text)+"</div>"+
+    esc(m.easy?d.easy:d.t)+
+    badge(d.src,d.low,m.easy?'<span class="tag warn">bạn xin bản dễ hơn</span>':"")+
+    "</div></div>";
+}
+
 function userCardMsg(m){
   return '<div class="msg me"><div class="bub">'+
     '<div class="lbl">'+esc(FRAMES[m.frame].title)+"</div>"+
@@ -340,7 +387,8 @@ function drawComp(){
   var s=st(), el=document.getElementById("comp");
   if(opt==="A") el.innerHTML=compA(s);
   else if(opt==="B") el.innerHTML=compB(s);
-  else el.innerHTML=compC(s);
+  else if(opt==="C") el.innerHTML=compC(s);
+  else el.innerHTML=compD(s);
 }
 
 function compA(s){
@@ -378,6 +426,20 @@ function compC(s){
       return '<span class="chip '+(s.goal===k?"on":"")+'" onclick="setGoal(\''+k+'\')">'+esc(C_GOALS[k].label)+"</span>" }).join("")+"</div>"+
     '<div class="send"><button class="mini" onclick="rollback()">Bỏ bản này, cho mình ghi chú thô</button>'+
     '<button class="primary" onclick="startC()">Bắt đầu ôn</button></div>';
+}
+
+function compD(s){
+  var open=s.pick ? snipById(s.pick) : null;
+  return '<div class="lineup"><span style="font-size:12.5px;color:var(--muted)">Chọn một mẩu:</span>'+
+    SNIPPETS.map(function(sn){
+      return '<span class="chip '+(s.pick===sn.id?"on":"")+'" onclick="askD(\''+sn.id+'\')">'+
+        esc(shortKind(sn.kind))+(sn.unclear?" · chưa hiểu":"")+"</span>" }).join("")+"</div>"+
+    '<div class="send"><span class="sub">'+
+      (open ? "Đang giải thích "+esc(shortKind(open.kind)) : "Mình chưa soạn gì — bạn chọn một mẩu")+"</span>"+
+      (open
+        ? '<span><button class="mini" onclick="easierD()">Giải thích dễ hơn</button> '+
+          '<button class="mini" onclick="closeD()">Đóng, về ba mẩu</button></span>'
+        : "")+"</div>";
 }
 
 /* ------------------------------ actions ------------------------------ */
@@ -449,6 +511,31 @@ function rollback(){
 function undoRollback(){
   var s=st(); s.rolledBack=false; say("me",{t:"Soạn lại giúp mình."}); s.msgs.push({k:"digest"});
   rec("tạo lại bản tóm tắt sau rollback"); draw("thread");
+}
+
+function askD(id){
+  var s=st(), sn=snipById(id);
+  s.pick=id; s.easy=false;
+  say("me",{t:"Giải thích giúp mình mẩu này: "+esc(sn.kind)+"."});
+  s.msgs.push({k:"explain", id:id, easy:false});
+  rec("chọn mẩu "+sn.kind+(sn.unclear?" — chỗ đánh dấu chưa hiểu":""));
+  draw("thread");
+}
+function easierD(){
+  var s=st(); if(!s.pick) return;
+  s.easy=true;
+  say("me",{t:"Giải thích dễ hơn giúp mình."});
+  s.msgs.push({k:"explain", id:s.pick, easy:true});
+  rec("xin bản giải thích dễ hơn cho "+snipById(s.pick).kind);
+  draw("thread");
+}
+function closeD(){
+  var s=st(), sn=s.pick?snipById(s.pick):null;
+  s.pick=null; s.easy=false;
+  say("me",{t:"Đóng lời giải này, cho mình về ba mẩu."});
+  s.msgs.push({k:"picks"});
+  rec("đóng lời giải"+(sn?" — "+sn.kind:"")+", quay về ba mẩu thô");
+  draw("thread");
 }
 
 function resetAll(){ state={}; log=[]; opt="A"; draw() }

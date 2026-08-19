@@ -2,9 +2,10 @@
 
 **Nhóm:** cuong  
 **Thành viên:** 
-1. Lê Quang Huy (2A202601821)
-2. Đàm Việt Cường (2A202601566)
-3. Trần Đức Bảo (2A202601472)  
+1. Lê Quang Huy (2A202601821) — Option A
+2. Đàm Việt Cường (2A202601566) — Option B
+3. Trần Đức Bảo (2A202601472) — Option C
+4. Hoàng Minh Quân (2A202601574) — Option D (vào sau, vắng buổi hôm trước)  
 **Case B:** AI Notes — Personal Learning Notes  
 
 ---
@@ -19,7 +20,7 @@ Nhóm 3 thành viên rà soát lại 5 hướng trong Solution Parking Lot từ 
 - **Nhu cầu của Mai (từ phỏng vấn của Cường, Bảo chọn chi tiết #4):** Cần chuyển đổi ghi chú thành **công cụ tự kiểm tra (quiz/đảo kiến thức)** và chống mất file (khớp Hướng 3, 4).
 - **Điểm chung của cả nhóm:** Đều nhận thấy người học bị nghẽn ở **chi phí chuyển đổi từ mẩu note thô thành thứ dùng lại được**.
 
-Nhóm phân công 3 thành viên phụ trách thiết kế 3 cơ chế giải pháp với 3 mức độ can thiệp (Role Split) hoàn toàn khác nhau để đưa vào thử nghiệm.
+Nhóm phân công mỗi thành viên một cơ chế, khác nhau về role split. Quân vắng buổi trước, nhận **Option D** — đo baseline “giải thích đúng một chỗ” của Hoàn (Hướng 2), chỗ A/B/C đều bỏ qua.
 
 ---
 
@@ -27,7 +28,7 @@ Nhóm phân công 3 thành viên phụ trách thiết kế 3 cơ chế giải ph
 
 ### 2.1. Những thành phần BẮT BUỘC GIỮ NGUYÊN (Common Context & Task)
 
-| Thành phần | Quyết định chung cho cả ba Option A / B / C |
+| Thành phần | Quyết định chung cho Option A / B / C / D |
 |---|---|
 | **Target user** | Người học tham gia khóa học AI thực chiến trên nền tảng VLearn. |
 | **Situation** | Tối trước buổi học kế tiếp, người học mở lại hệ thống để ôn bài *"Finding & Validating Pain Points"*. Trên bài đã lưu sẵn 3 highlight, 2 note ngắn và 1 ảnh chụp/slide đánh dấu *"Chưa hiểu: Phân biệt Pain vs Consequence"*. |
@@ -57,9 +58,29 @@ Hoàn thành ba câu kiểm tra khoảng cách (không nhắc màu sắc, layout
 - **B khác C vì:** Option B yêu cầu con người tương tác duyệt từng thẻ (*Ask pattern*), trong khi Option C hệ thống tự động xuất bản trọn gói tài liệu ôn tập ngay lập tức (*Act pattern*) và con người chỉ can thiệp khi muốn rollback/điều chỉnh.
 - **A khác C vì:** Option A đòi hỏi 100% nỗ lực biên tập từ con người từ trang giấy trắng, còn Option C là trải nghiệm tự động hóa 1-click toàn diện từ AI.
 
+### 2.3. Option D — Hoàng Minh Quân (2A202601574)
+
+Cùng target user, situation, outcome task, desired outcome và 3 snippet. Chỉ đổi cơ chế.
+
+| Thành phần | Option D (On-demand Explain / User chỉ tay) |
+|---|---|
+| **Thành viên phụ trách** | **Hoàng Minh Quân**<br>2A202601574 |
+| **Solution Mechanism** | **On-demand Single-Snippet Explain:** AI im. User chỉ đúng một mẩu (highlight / note / chỗ chưa hiểu). AI sinh **một** lời giải thích kèm mẩu gốc. Có bản “dễ hơn” và nút đóng về ba mẩu thô. Không quiz, không digest. |
+| **User làm gì?** | Chỉ một mẩu, đọc lời giải, xin giải thích dễ hơn, hoặc đóng về ghi chú thô. Có thể chỉ mẩu khác. |
+| **AI làm gì?** | **Ask on demand:** không viết chữ nào cho đến khi được chỉ. Khi được chỉ: giải thích đúng mẩu đó, ghi nguồn, gắn tag “không chắc” nếu mẩu gốc quá ngắn. |
+| **Trigger** | User bấm một mẩu. Không popup, không tự chạy khi mở trang. |
+| **Trade-off chính** | **Ưu:** khớp workaround đang chạy của Hoàn; sai thì chỉ sai một chỗ, dễ đối chiếu. **Nhược:** không đáp nhu cầu tự kiểm tra của Mai; không ra “thứ dùng lại được” cho cả buổi nếu user chỉ dừng ở một mẩu. |
+
+Distance thêm:
+- **D khác A vì:** A bắt user tự viết. D cho AI viết, nhưng chỉ sau khi user chỉ đúng một mẩu.
+- **D khác B vì:** B máy đưa sẵn cả bộ thẻ (giải thích + quiz). D không đề xuất gì, không làm quiz.
+- **D khác C vì:** C đã xong 100% khi mở trang. D không làm gì nếu user không chỉ.
+
 ### Phổ phân chia vai trò (Human–AI Role Spectrum):
 ```text
 [OPTION A - Lê Quang Huy] USER CREATES / INITIATES (Zero-Inference Hub & Manual Binder)
+    ↓
+[OPTION D - Hoàng Minh Quân] USER POINTS, AI EXPLAINS ONE SNIPPET (Ask on demand)
     ↓
 [OPTION B - Đàm Việt Cường] USER + AI CO-CREATE (Interactive AI Co-Pilot with Card Review & Dual Mode)
     ↓
@@ -71,8 +92,8 @@ Hoàn thành ba câu kiểm tra khoảng cách (không nhắc màu sắc, layout
 ## 4. Đối chiếu Gate 2 (Gate 2 Checklist)
 
 > [!CHECK] **GATE 2 — Meaningful Options**
-> - [x] **Cùng chung nền tảng:** Cả ba options đều cùng target user, situation ("trước buổi học kế tiếp"), cùng outcome task, cùng desired outcome và cùng bộ 3 data fixture từ bài 17.
-> - [x] **Khác biệt có ý nghĩa về cơ chế:** Phân hóa rõ ràng từ *Zero-Inference* $\rightarrow$ *Ask & Propose (Co-Creation)* $\rightarrow$ *Act with Guardrails (Autonomous)*.
-> - [x] **Phân công rõ ràng 3 thành viên:** Mỗi thành viên trong nhóm phụ trách thiết kế và build 1 option độc lập (Huy: Option A, Cường: Option B, Bảo: Option C).
-> - [x] **Bao quát cả 2 nguồn evidence:** Option B và C đều thiết kế để đáp ứng đồng thời cả nhu cầu được giải thích điểm chưa hiểu (của Hoàn) và nhu cầu tự kiểm tra kiến thức (của Mai).
-> - [x] **Không tạo option bù nhìn:** Cả ba option đều là những hướng giải quyết nghiêm túc, có ưu và nhược điểm thực tế.
+> - [x] **Cùng chung nền tảng:** A / B / C / D cùng target user, situation ("trước buổi học kế tiếp"), cùng outcome task, cùng desired outcome và cùng bộ 3 data fixture từ bài 17.
+> - [x] **Khác biệt có ý nghĩa về cơ chế:** *Zero-Inference* $\rightarrow$ *Ask on demand (một mẩu)* $\rightarrow$ *Ask & Propose (cả bộ)* $\rightarrow$ *Act with Guardrails*.
+> - [x] **Phân công rõ ràng:** Huy A, Cường B, Bảo C, Quân D.
+> - [x] **Bao quát cả 2 nguồn evidence:** B và C đáp cả giải thích (Hoàn) lẫn tự kiểm tra (Mai). D cố ý chỉ đo baseline giải thích từng chỗ của Hoàn.
+> - [x] **Không tạo option bù nhìn:** D không phải bản B/C đổi giao diện — khác đơn vị việc (một mẩu vs cả buổi).

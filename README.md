@@ -3,7 +3,9 @@
 **Lê Quang Huy — 2A202601821**
 Case tiếp nối Day 17: **B — AI Notes: Personal Learning Notes**.
 
-Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472).
+Thành viên: Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472), Hoàng Minh Quân (2A202601574).
+
+Phân công option: Huy A · Cường B · Bảo C · **Quân D** (vào sau, vắng buổi hôm trước). Cột D: [03-human-ai-design-hoangminhquan.md](03-human-ai-design-hoangminhquan.md).
 
 > Không đổi case. Day 18 không tiếp tục problem interview.
 
@@ -46,10 +48,8 @@ Không được kết luận *"User đã xác nhận solution này đúng."*
 
 Theo quy tắc mục 10 của đề.
 
-**Có dùng AI:** dựng cấu trúc repo và copy artifact Day 17 sang; biên tập file markdown.
-(Sẽ cập nhật tiếp khi làm các checkpoint: gợi ý cơ chế còn thiếu trong Parking Lot, tạo
-content fixture / canned AI output, viết code prototype, rà xem ba option có khác nhau thật
-về mechanism hay role split không, soát câu dẫn dắt trong test prompt.)
+**Có dùng AI:** dựng cấu trúc repo và copy artifact Day 17 sang; biên tập file markdown;
+viết canned output và code Option D trong prototype; rà distance D với A/B/C.
 
 **Không dùng AI:** tạo quote / observation / feedback không tồn tại; viết lại evidence làm
 mất ranh giới giữa lời tester và diễn giải của người làm; chọn option thay tester hoặc thay
