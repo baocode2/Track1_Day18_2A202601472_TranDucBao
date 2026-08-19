@@ -1,4 +1,4 @@
-# Chặng 2 — Ba Solution Options (Meaningful Options)
+# Chặng 2 — Bốn Solution Options (Meaningful Options)
 
 **Nhóm:** cuong  
 **Thành viên:** 
@@ -97,3 +97,53 @@ Distance thêm:
 > - [x] **Phân công rõ ràng:** Huy A, Cường B, Bảo C, Quân D.
 > - [x] **Bao quát cả 2 nguồn evidence:** B và C đáp cả giải thích (Hoàn) lẫn tự kiểm tra (Mai). D cố ý chỉ đo baseline giải thích từng chỗ của Hoàn.
 > - [x] **Không tạo option bù nhìn:** D không phải bản B/C đổi giao diện — khác đơn vị việc (một mẩu vs cả buổi).
+
+---
+
+## 5. Bổ sung — Option D (Hoàng Minh Quân, 2A202601574)
+
+Nhóm có thành viên thứ tư sau khi Chặng 2 đã chốt ba option. Thêm **Option D — On-demand
+Explain**, không thay thế option nào. Thiết kế đầy đủ ở
+[03-human-ai-design-hoangminhquan.md](03-human-ai-design-hoangminhquan.md).
+
+| Thành phần | Option D (On-demand Explain) |
+|---|---|
+| **Thành viên phụ trách** | **Hoàng Minh Quân**<br>2A202601574 |
+| **Solution Mechanism** | AI **im hoàn toàn** cho đến khi user bấm vào một mẩu. Được chỉ thì sinh **đúng một** lời giải thích cho mẩu đó, kèm mẩu gốc để đối chiếu. Không bộ ôn, không quiz. |
+| **User làm gì?** | Chỉ một mẩu, đọc, bấm *Giải thích dễ hơn*, hoặc *Đóng, về ba mẩu*. |
+| **AI làm gì?** | **Ask on demand** — không đề xuất, không phủ đầu. Chỉ trả lời đúng phạm vi mẩu được chỉ. |
+| **Trigger** | User bấm vào một mẩu. Không có trigger nào khác. |
+| **Trade-off chính** | **Ưu:** rủi ro thấp nhất trong bốn option — sai một lời giải, mẩu gốc nằm ngay cạnh, đóng một bấm.<br>**Nhược:** không tạo ra artifact dùng lại được. Đóng xong là hết. |
+
+### 5.1. Vì sao D không thừa
+
+D **đo lại chính baseline đang chạy của Hoàn** (evidence #1): gặp chỗ không hiểu thì gửi đúng
+chỗ đó cho AI, xin giải thích dễ hiểu. Evidence Huddle đã gọi đây là *"baseline mọi solution
+phải vượt qua"* — nhưng A, B và C đều nhảy thẳng sang làm cả bộ ôn, không cái nào đo baseline đó.
+
+Câu D trả lời được mà A/B/C không trả lời được:
+
+> Chỗ vướng thật sự là **tốn công làm cả bộ ôn tập**, hay chỉ là **cần giải thích đúng một
+> chỗ đang mắc**?
+
+Nếu tester chọn D, phần lớn Hypothesis Problem hiện tại phải viết lại — vì lõi của nó đang
+đặt ở *chi phí chuyển note thô thành thứ dùng lại được*, mà D không tạo ra thứ dùng lại được nào.
+
+### 5.2. Distance check bốn chiều
+
+- **D khác A vì:** A bắt user tự viết toàn bộ. D để AI viết, nhưng chỉ sau khi user chỉ đúng một mẩu.
+- **D khác B vì:** B đưa sẵn cả bộ thẻ không cần ai gọi, user chỉ duyệt. D không đề xuất gì và không bao giờ làm quiz.
+- **D khác C vì:** C xong 100% ngay khi mở trang. D không làm gì nếu user không chỉ.
+
+```text
+[OPTION A - Huy]    USER CREATES                          (Don't Act)
+    ↓
+[OPTION D - Quân]   USER POINTS, AI EXPLAINS ONE SNIPPET  (Ask on demand)
+    ↓
+[OPTION B - Cường]  AI PROPOSES A SET, USER REVIEWS       (Ask / Propose)
+    ↓
+[OPTION C - Bảo]    AI CREATES THE WHOLE PACK             (Act)
+```
+
+D nằm giữa A và B trên phổ: AI có sinh nội dung (khác A), nhưng chỉ khi được gọi và chỉ một
+đơn vị (khác B).

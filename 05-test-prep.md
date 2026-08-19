@@ -1,7 +1,7 @@
 # Chặng 5 — Chuẩn bị test
 
 **Nhóm:** cuong
-**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472)
+**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472), Hoàng Minh Quân (2A202601574)
 **Case B** — AI Notes: Personal Learning Notes
 
 Chạy trên [bản prototype chung](prototype/index.html) — xem [Chặng 4](04-micro-prototype.md).
@@ -28,12 +28,18 @@ Câu này bám đúng situation trong Hypothesis Problem đã chốt: *ngồi ô
 
 ---
 
-## 2. Outcome task — dùng chung cho cả A, B và C
+## 2. Outcome task — dùng chung cho cả A, B, C và D
 
 > **"Trong tình huống này, hãy dùng từng phương án để biến các mẩu ghi chú và điểm chưa hiểu
 > thành một thứ bạn dùng lại được để ôn trước buổi học kế tiếp."**
 
-Đọc nguyên văn câu này, **giữ y hệt ở cả ba option**. Không đổi chữ giữa chừng.
+Đọc nguyên văn câu này, **giữ y hệt ở cả bốn option**. Không đổi chữ giữa chừng.
+
+> **Option D không tạo ra "thứ dùng lại được" nào — và đó là chỗ cần quan sát, không phải lỗi.**
+> D chỉ giải thích đúng một mẩu rồi đóng, không để lại artifact. Nếu tester thấy D chưa làm
+> xong task, ghi lại đúng câu họ nói. Nếu tester thấy D là đủ, ghi lại luôn — vì lúc đó lõi
+> của Hypothesis Problem (*chi phí chuyển note thô thành thứ dùng lại được*) đang bị chính
+> tester phản chứng. Facilitator **không được** giải thích hộ, không được nói D làm kiểu khác.
 
 Ba chỗ câu này cố tình tránh:
 
@@ -49,11 +55,11 @@ Ba chỗ câu này cố tình tránh:
 
 | # | Thứ cần quan sát | Ghi cụ thể cái gì | Vì sao chọn |
 |---|---|---|---|
-| 1 | **First action** | Trong 30 giây đầu mỗi option, tester làm gì đầu tiên | Ở Option A đây là phép thử nặng nhất: tester **tự gõ** hay **ngồi chờ AI nói**? Khung chat làm người ta mong máy trả lời, mà A thì máy im. Chờ là dữ liệu, không phải lỗi |
+| 1 | **First action** | Trong 30 giây đầu mỗi option, tester làm gì đầu tiên | Nặng nhất ở **A và D** — hai option duy nhất máy im lúc mở. A: tester tự gõ hay ngồi chờ? D: tester tự chỉ một mẩu hay chờ máy soạn cả gói? Khung chat làm người ta mong máy trả lời. Chờ là dữ liệu, không phải lỗi |
 | 2 | **Evidence read / ignored** | Có rê chuột, dừng lại, hay nhắc tới badge *"Dựa vào Slide X"* và tag đỏ *"AI không chắc"* không | Đây là toàn bộ câu hỏi Gate 3. Nếu tester bỏ qua hết tín hiệu nguồn ở Option C thì hàng rào duy nhất của C không hoạt động |
 | 3 | **Correction / recovery** | Có bấm *Bỏ thẻ này*, *Hoàn tác*, hay *Bỏ bản này cho mình ghi chú thô* không, và ở thời điểm nào | Đường phục hồi chỉ có giá trị nếu người ta thật sự dùng. Không ai bấm rollback ở C thì cái nút đó là trang trí |
 | 4 | **Hesitation** | Chỗ dừng trên 5 giây mà không thao tác gì; ghi lại đang nhìn vào đâu | Chỗ khựng chỉ ra chỗ quyền quyết định không rõ ai cầm |
-| 5 | **Option được chọn và trade-off** | Cuối buổi hỏi chọn cái nào, và **đổi cái gì lấy cái gì** | Câu tổng hợp bắt buộc. Nhưng chỉ ghi nhận, không dùng làm bằng chứng solution đúng |
+| 5 | **Option được chọn và trade-off** | Cuối buổi hỏi chọn cái nào trong bốn, và **đổi cái gì lấy cái gì** | Câu tổng hợp bắt buộc. Nếu tester chọn **D**, đó là tín hiệu mạnh nhất buổi test: baseline sẵn có đã đủ, ba option kia đang giải một bài toán chưa chắc tồn tại. Chỉ ghi nhận, không dùng làm bằng chứng solution đúng |
 
 **Hai thứ bỏ, ghi rõ để không ai tưởng là quên:**
 - *Misunderstanding* — phần lớn lộ ra qua hesitation và evidence-ignored rồi, giữ thêm là trùng.
@@ -63,23 +69,29 @@ Ba chỗ câu này cố tình tránh:
 
 ## 4. Thứ tự chạy — xoay vòng giữa các tester
 
-Không phải tester nào cũng chạy A → B → C. Người sau mệt hơn, và cái nhìn sau bị cái nhìn
-trước làm nhiễu. Xoay vòng:
+Không phải tester nào cũng chạy A → B → C → D. Option chạy sau bị option chạy trước làm nhiễu,
+và tester mệt dần. Xoay vòng theo hình vuông Latin, mỗi option xuất hiện đúng một lần ở mỗi vị trí:
 
 | Tester | Thứ tự |
 |---|---|
-| 1 | A → B → C |
-| 2 | B → C → A |
-| 3 | C → A → B |
+| 1 | A → B → C → D |
+| 2 | B → D → A → C |
+| 3 | C → A → D → B |
+| 4 | D → C → B → A |
 
 Bấm **Reset ngữ cảnh** giữa hai tester.
+
+> **Bốn option là dài.** Ước lượng 5–7 phút mỗi option cộng phần hỏi cuối, tức khoảng 25–35
+> phút một tester — chưa kể phần xin phép và câu context. Nếu chỉ có 15–20 phút, cắt xuống
+> ba option cho tester đó và **ghi rõ bỏ option nào**, thay vì chạy vội cả bốn rồi thu được
+> bốn quan sát hời hợt. Bỏ option nào thì theo bảng xoay vòng, bỏ cái đứng cuối.
 
 ---
 
 ## 5. Luật facilitation
 
 1. **Tester tự điều khiển prototype.** Không cầm chuột hộ, không chỉ tay vào màn hình.
-2. **Dùng cùng một task cho A/B/C.** Đọc nguyên văn mục 2, không diễn đạt lại.
+2. **Dùng cùng một task cho A/B/C/D.** Đọc nguyên văn mục 2, không diễn đạt lại.
 3. **Không narrate, không giải thích icon.** Tester hỏi cái nút này là gì thì dùng câu cứu hộ số 3.
 4. **Không lấp im lặng.** Tester im thì mình cũng im. Đếm thầm tới 5 rồi mới được nói.
 5. **Không hỏi "Bạn có thích không?"** Không hỏi ý kiến, không hỏi đánh giá, không hỏi nên có thêm gì.
@@ -109,6 +121,7 @@ của người ghi, tách riêng.
 | First action — A | | |
 | First action — B | | |
 | First action — C | | |
+| First action — D | | |
 | Evidence read / ignored | | |
 | Correction / recovery | | |
 | Hesitation | | |
@@ -126,7 +139,7 @@ validated"*. Chỉ ghi thao tác và lời nguyên văn.
 
 Cuối buổi, nhóm **được** kết luận theo đúng dạng:
 
-> *"Với Hypothesis Problem này, chúng tôi đã thử ba cách giải. Tester đã ………, vì vậy
+> *"Với Hypothesis Problem này, chúng tôi đã thử bốn cách giải. Tester đã ………, vì vậy
 > iteration tiếp theo chúng tôi sẽ ………"*
 
 Nhóm **không được** kết luận *"User đã xác nhận solution này đúng."*

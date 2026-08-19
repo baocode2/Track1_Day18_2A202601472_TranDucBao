@@ -1,7 +1,7 @@
 # Evidence Huddle — Day 18
 
 **Nhóm:** cuong
-**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472)
+**Thành viên:** Lê Quang Huy (2A202601821), Đàm Việt Cường (2A202601566), Trần Đức Bảo (2A202601472), Hoàng Minh Quân (2A202601574)
 **Case B** — AI Notes: Personal Learning Notes
 
 ## Nguồn
