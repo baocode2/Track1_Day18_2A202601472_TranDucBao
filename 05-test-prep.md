@@ -156,3 +156,87 @@ lượng, và buổi test này đo *interaction*, không đo *value*.
 - [ ] Mở sẵn biểu mẫu mục 6
 - [ ] Xin phép ghi âm/ghi hình **trước khi** bật máy; không đưa bản ghi lên repo công khai
 - [ ] Đọc thuộc ba câu cứu hộ, để không phải nghĩ tại chỗ
+
+---
+
+## 9. Bản chạy tay — cầm theo lúc test
+
+> **Đây không phải buổi phỏng vấn.** Day 17 mới là interview. Hôm nay chủ yếu là **ngồi im và
+> nhìn**. Cả buổi facilitator chỉ mở miệng ở bốn thời điểm dưới đây. Ngoài bốn chỗ đó, chỉ
+> được dùng ba câu cứu hộ.
+
+### Mốc 1 — Mở đầu (1 phút, trước khi bật máy)
+
+Xin phép ghi âm **trước khi** bật, rồi đọc:
+
+> *"Mình đang thử vài phương án cho một công cụ ghi chú. Mình không kiểm tra bạn — mình kiểm
+> tra thiết kế, nên bạn làm gì cũng không sai. Đây là bản dựng thử, bấm hỏng cũng không sao.
+> Bạn cứ nói to suy nghĩ của mình nhé."*
+
+Không mô tả trước có mấy phương án, không nói phương án nào có AI.
+
+### Mốc 2 — Câu context (tối đa 2 phút, trước khi mở prototype)
+
+> *"Gần đây bạn có từng ngồi ôn lại một bài học bằng chính ghi chú hoặc ảnh chụp bạn đã lưu
+> trong lúc học không?"*
+
+- **Có** → hỏi thêm đúng một câu: *"Lần gần nhất là khi nào?"* → **dừng**, không đào tiếp.
+- **Không** → ghi vào biên bản, vẫn chạy test, nhưng **không rút value claim** từ người này.
+
+### Mốc 3 — Mỗi option: đọc task rồi im
+
+Đọc **nguyên văn**, giống hệt cả bốn lần, không diễn đạt lại:
+
+> *"Trong tình huống này, hãy dùng từng phương án để biến các mẩu ghi chú và điểm chưa hiểu
+> thành một thứ bạn dùng lại được để ôn trước buổi học kế tiếp."*
+
+Rồi **im**. Trong lúc tester làm, chỉ được dùng ba câu này:
+
+| Khi nào | Nói gì |
+|---|---|
+| Tester im quá lâu | *"Bạn cứ nói to suy nghĩ của mình nhé."* |
+| Tester khựng, không thao tác | *"Bạn sẽ làm gì tiếp theo?"* |
+| Tester hỏi nút này là gì / nó chạy thế nào | *"Theo bạn, nó nên hoạt động như thế nào?"* |
+
+Hết một option, hỏi **đúng một câu** rồi chuyển:
+
+> *"Vừa rồi có chỗ nào bạn không chắc chuyện gì đang xảy ra không?"*
+
+Câu này hỏi về **chỗ khó hiểu**, không hỏi thích hay không. Nghe xong ghi lại, không bình luận.
+
+### Mốc 4 — Cuối buổi, sau khi chạy hết (3 câu)
+
+1. *"Trong mấy cái vừa rồi, nếu tối mai bạn phải ôn thật, bạn dùng cái nào?"*
+2. *"Chọn cái đó thì bạn mất gì so với mấy cái kia?"*
+3. *"Có cái nào bạn chắc chắn không dùng không? Vì sao?"*
+
+Câu 1 hỏi **hành vi sắp tới trong tình huống thật**, không hỏi *"bạn thích cái nào"*. Khác nhau
+ở chỗ: thích là ý kiến, dùng là lựa chọn có cái giá đi kèm — và câu 2 chính là để lấy cái giá đó.
+
+### Câu tuyệt đối không hỏi
+
+| Không hỏi | Vì sao |
+|---|---|
+| *"Bạn có thích không?"* | Lấy ý kiến, không lấy hành vi |
+| *"Cái này có hữu ích không?"* | Tester sẽ trả lời lịch sự, không trả lời thật |
+| *"Bạn nghĩ nên thêm tính năng gì?"* | Biến tester thành người thiết kế |
+| *"Ý bạn là ... đúng không?"* | Nói hộ. Đúng lỗi đã làm hỏng buổi Day 17 |
+| *"Chắc là do ... nhỉ?"* | Mớm nguyên nhân trước tester |
+| Bất cứ câu nào giải thích icon | Vi phạm luật 3; mất luôn dữ liệu về việc giao diện tự nói được hay không |
+
+### Vừa chạy vừa ghi gì
+
+Prototype tự ghi thao tác ở cột phải. Người ngồi cạnh ghi thêm **năm thứ này**, chỉ ghi cái
+quan sát được, không ghi suy đoán:
+
+1. **First action** — 30 giây đầu mỗi option, tester chạm vào cái gì trước.
+2. **Evidence** — có dừng lại ở badge *"Dựa vào Slide X"* / tag đỏ *"AI không chắc"* không.
+3. **Correction / recovery** — có bấm *Bỏ thẻ*, *Hoàn tác*, *Rollback*, *Đóng* không, lúc nào.
+4. **Hesitation** — chỗ dừng trên 5 giây; ghi lại lúc đó đang nhìn vào đâu.
+5. **Câu tester tự nói ra** — chép **nguyên văn**, không tóm tắt lại bằng lời mình.
+
+### Kết thúc
+
+- Bấm **Copy nhật ký** dán vào biên bản **trước khi** Reset — reset là mất sạch.
+- Bấm **Reset ngữ cảnh** cho tester sau.
+- Cảm ơn, không giải thích phương án nào "đúng", không hỏi thêm ý kiến sau khi đã tắt máy.
